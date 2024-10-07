@@ -21,9 +21,21 @@ public class HomeFormSalesManager extends javax.swing.JFrame {
         initComponents();
         LoginForm lf = new LoginForm();
        lvl1.setText(lf.getUsername());
+       
+      //------------------------------------------------------------------- 
+        B1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                openViewItem();
+            }
+        });
+       
     }
-
-   
+     private void openViewItem() {
+        // Create a new instance of ViewItemsForm and make it visible
+        ViewItem viewItemsForm = new ViewItem();
+        viewItemsForm.setVisible(true);
+    }
+   //------------------------------------------------------------------------
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -196,6 +208,8 @@ public class HomeFormSalesManager extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
+        
+
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.

@@ -12,6 +12,7 @@ import javax.swing.JOptionPane;
 import Admin.HomeFormAdmin;
 import SalesManager.HomeFormSalesManager;
 import FinanceManager.HomeFormFinanceManager;
+import SalesManager.ViewItem; // 
 import InventoryManager.HomeFormInventoryManager;
 import PurchaseManager.HomeFormPurchaseManager;
 
