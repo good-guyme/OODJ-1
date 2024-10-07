@@ -147,6 +147,11 @@
     <Component class="javax.swing.JButton" name="loginbtn">
       <Properties>
         <Property name="text" type="java.lang.String" value="Login"/>
+        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+          <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
+            <EtchetBorder/>
+          </Border>
+        </Property>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="loginbtnActionPerformed"/>
@@ -155,6 +160,11 @@
     <Component class="javax.swing.JButton" name="clearbtn">
       <Properties>
         <Property name="text" type="java.lang.String" value="Clear"/>
+        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+          <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
+            <EtchetBorder/>
+          </Border>
+        </Property>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="clearbtnActionPerformed"/>

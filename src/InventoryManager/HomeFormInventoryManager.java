@@ -4,7 +4,6 @@
  */
 package InventoryManager;
 
-
 import FinanceManager.*;
 import Login.LoginForm;
 
@@ -35,9 +34,9 @@ public class HomeFormInventoryManager extends javax.swing.JFrame {
         jSeparator1 = new javax.swing.JSeparator();
         jLabel1 = new javax.swing.JLabel();
         usernamelbl = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        itementrybtn = new javax.swing.JButton();
+        supplierentrybtn = new javax.swing.JButton();
+        logoutbtn = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -48,20 +47,30 @@ public class HomeFormInventoryManager extends javax.swing.JFrame {
         usernamelbl.setFont(new java.awt.Font("Segoe UI", 3, 36)); // NOI18N
         usernamelbl.setText("jLabel2");
 
-        jButton1.setText("Item Entry");
-        jButton1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-
-        jButton2.setText("Supplier Entry");
-        jButton2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-
-        jButton3.setText("Logout");
-        jButton3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        itementrybtn.setText("Item Entry");
+        itementrybtn.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        itementrybtn.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        itementrybtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                itementrybtnActionPerformed(evt);
+            }
+        });
+
+        supplierentrybtn.setText("Supplier Entry");
+        supplierentrybtn.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        supplierentrybtn.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        supplierentrybtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                supplierentrybtnActionPerformed(evt);
+            }
+        });
+
+        logoutbtn.setText("Logout");
+        logoutbtn.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        logoutbtn.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        logoutbtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                logoutbtnActionPerformed(evt);
             }
         });
 
@@ -76,21 +85,23 @@ public class HomeFormInventoryManager extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(158, 158, 158)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(80, 80, 80)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(97, 97, 97)
-                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jLabel1)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(usernamelbl))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(275, 275, 275)
-                        .addComponent(jLabel2)))
-                .addContainerGap(234, Short.MAX_VALUE))
+                        .addGap(179, 179, 179)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(itementrybtn, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(80, 80, 80)
+                                .addComponent(supplierentrybtn, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(97, 97, 97)
+                                .addComponent(logoutbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(85, 85, 85)
+                                .addComponent(jLabel2)))))
+                .addContainerGap(213, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -105,18 +116,29 @@ public class HomeFormInventoryManager extends javax.swing.JFrame {
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(178, 178, 178)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2)
-                    .addComponent(jButton3))
+                    .addComponent(itementrybtn)
+                    .addComponent(supplierentrybtn)
+                    .addComponent(logoutbtn))
                 .addContainerGap(137, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+    private void logoutbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutbtnActionPerformed
+        this.dispose();
+        new LoginForm().setVisible(true);//To go to LoginForm
+    }//GEN-LAST:event_logoutbtnActionPerformed
+
+    private void itementrybtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itementrybtnActionPerformed
+        this.dispose();
+        new Item_Entry().setVisible(true);//To go to Item_Entry
+    }//GEN-LAST:event_itementrybtnActionPerformed
+
+    private void supplierentrybtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_supplierentrybtnActionPerformed
+        this.dispose();
+        new Supplier_Entry().setVisible(true);//To go to Supplier_Entry
+    }//GEN-LAST:event_supplierentrybtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -157,12 +179,12 @@ public class HomeFormInventoryManager extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton itementrybtn;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JButton logoutbtn;
+    private javax.swing.JButton supplierentrybtn;
     private javax.swing.JLabel usernamelbl;
     // End of variables declaration//GEN-END:variables
 }

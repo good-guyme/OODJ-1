@@ -72,6 +72,7 @@ public class LoginForm extends javax.swing.JFrame {
         passwordtxt.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
 
         loginbtn.setText("Login");
+        loginbtn.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         loginbtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 loginbtnActionPerformed(evt);
@@ -79,6 +80,7 @@ public class LoginForm extends javax.swing.JFrame {
         });
 
         clearbtn.setText("Clear");
+        clearbtn.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         clearbtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 clearbtnActionPerformed(evt);

@@ -30,8 +30,8 @@ public class Item_Entry extends javax.swing.JFrame {
         jSeparator2 = new javax.swing.JSeparator();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        backbtn = new javax.swing.JButton();
+        gotosupplierentrybtn = new javax.swing.JButton();
         jComboBox1 = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
 
@@ -53,11 +53,21 @@ public class Item_Entry extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(jTable1);
 
-        jButton3.setText("Back");
-        jButton3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        backbtn.setText("Back");
+        backbtn.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        backbtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backbtnActionPerformed(evt);
+            }
+        });
 
-        jButton4.setText("Supplier Entry");
-        jButton4.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        gotosupplierentrybtn.setText("Supplier Entry");
+        gotosupplierentrybtn.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        gotosupplierentrybtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                gotosupplierentrybtnActionPerformed(evt);
+            }
+        });
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
@@ -71,9 +81,9 @@ public class Item_Entry extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(backbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(gotosupplierentrybtn, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2)
@@ -106,13 +116,23 @@ public class Item_Entry extends javax.swing.JFrame {
                             .addComponent(jLabel1))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton4)
-                    .addComponent(jButton3))
+                    .addComponent(gotosupplierentrybtn)
+                    .addComponent(backbtn))
                 .addGap(13, 13, 13))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void backbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backbtnActionPerformed
+        this.dispose();
+        new HomeFormInventoryManager().setVisible(true);
+    }//GEN-LAST:event_backbtnActionPerformed
+
+    private void gotosupplierentrybtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gotosupplierentrybtnActionPerformed
+        this.dispose();
+        new Supplier_Entry().setVisible(true);
+    }//GEN-LAST:event_gotosupplierentrybtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -150,8 +170,8 @@ public class Item_Entry extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
+    private javax.swing.JButton backbtn;
+    private javax.swing.JButton gotosupplierentrybtn;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
