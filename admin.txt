@@ -1,0 +1,5 @@
+Admin;1234;AD;
+SalesManager;1234;SM;
+PurchaseManager;1234;PM;
+InventoryManager;1234;IM;
+FinanceManager;1234;FM
