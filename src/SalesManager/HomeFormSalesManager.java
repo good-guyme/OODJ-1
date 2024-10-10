@@ -20,21 +20,18 @@ public class HomeFormSalesManager extends javax.swing.JFrame {
     public HomeFormSalesManager() {
         initComponents();
         LoginForm lf = new LoginForm();
-       lvl1.setText(lf.getUsername());
+     // lvl1.setText(lf.getUsername());
        
+     
+     
+     
+     
+     
       //------------------------------------------------------------------- 
-        B1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                openViewItem();
-            }
-        });
        
     }
-     private void openViewItem() {
-        // Create a new instance of ViewItemsForm and make it visible
-        ViewItem viewItemsForm = new ViewItem();
-        viewItemsForm.setVisible(true);
-    }
+     
+    
    //------------------------------------------------------------------------
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -62,7 +59,6 @@ public class HomeFormSalesManager extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(204, 204, 255));
-        setPreferredSize(new java.awt.Dimension(800, 500));
 
         jpanel.setBackground(new java.awt.Color(0, 204, 204));
         jpanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -71,8 +67,6 @@ public class HomeFormSalesManager extends javax.swing.JFrame {
         lvl2.setForeground(new java.awt.Color(0, 51, 255));
         lvl2.setText("SALES MANAGEMENT DASHBOARD");
         jpanel.add(lvl2, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 10, 390, 40));
-
-        lvl1.setText("HI");
         jpanel.add(lvl1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -80,8 +74,18 @@ public class HomeFormSalesManager extends javax.swing.JFrame {
         jPanel3.setBackground(new java.awt.Color(204, 204, 255));
 
         B1.setText("List of Items (View)");
+        B1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                B1ActionPerformed(evt);
+            }
+        });
 
         B2.setText("Daily Item-wise Sales Entry ");
+        B2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                B2ActionPerformed(evt);
+            }
+        });
 
         B3.setText("Sales Report");
 
@@ -204,6 +208,23 @@ public class HomeFormSalesManager extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void B2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B2ActionPerformed
+       
+     this.dispose();
+     new SalesEntry().setVisible(true);
+    }//GEN-LAST:event_B2ActionPerformed
+
+    private void B1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B1ActionPerformed
+        this.dispose();
+        
+       new ViewItem().setVisible(true);
+   
+    }//GEN-LAST:event_B1ActionPerformed
+    
+    
+
+    
+    
     /**
      * @param args the command line arguments
      */
