@@ -4,6 +4,11 @@
  */
 package InventoryManager;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author yihan
@@ -15,6 +20,7 @@ public class Item_Entry extends javax.swing.JFrame {
      */
     public Item_Entry() {
         initComponents();
+//        loadDataIntoTable(); //Automatically load data when the form is created
     }
 
     /**
@@ -45,7 +51,7 @@ public class Item_Entry extends javax.swing.JFrame {
         itemcb = new javax.swing.JComboBox<>();
         codetxt = new javax.swing.JTextField();
         codetxt1 = new javax.swing.JTextField();
-        jLabel7 = new javax.swing.JLabel();
+        searchbtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -54,17 +60,14 @@ public class Item_Entry extends javax.swing.JFrame {
 
         itementrytbl.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
                 "CODE", "ITEM", "PRICE PER ITEM(RM)", "QUANTITY"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.Object.class, java.lang.Double.class, java.lang.Integer.class
+                java.lang.String.class, java.lang.String.class, java.lang.Double.class, java.lang.Integer.class
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -102,6 +105,11 @@ public class Item_Entry extends javax.swing.JFrame {
 
         editbtn.setText("Edit");
         editbtn.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        editbtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editbtnActionPerformed(evt);
+            }
+        });
 
         deletebtn.setText("Delete");
         deletebtn.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -118,7 +126,8 @@ public class Item_Entry extends javax.swing.JFrame {
             }
         });
 
-        jLabel7.setText("SEARCH :");
+        searchbtn.setText("Search");
+        searchbtn.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -139,9 +148,9 @@ public class Item_Entry extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel7)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(codetxt1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(codetxt1, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(searchbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 490, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(18, 18, 18)
@@ -183,7 +192,7 @@ public class Item_Entry extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(codetxt1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel7))
+                    .addComponent(searchbtn))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -222,7 +231,28 @@ public class Item_Entry extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+    private void loadDataIntoTable() {
+        DefaultTableModel model = (DefaultTableModel) itementrytbl.getModel(); // Get the table model
 
+        // Read the data from the text file
+    try (BufferedReader br = new BufferedReader(new FileReader("ItemEntryRecord.txt"))) {
+        String line;
+        while ((line = br.readLine()) != null) {
+            if (line.trim().isEmpty()) continue; // Skip empty lines
+            System.out.println("Read line: " + line); // Debugging statement
+            String[] data = line.split(";"); // Assuming data is semicolon-separated
+            
+            // Check the data before adding to the model
+            if (data.length == 4) { // Ensure we have the expected number of columns
+                model.addRow(data); // Add each row of data to the table
+            } else {
+                System.out.println("Invalid data format: " + line);
+            }
+        }
+        } catch (IOException e) {
+            e.printStackTrace(); // Handle the exception
+        }
+    }
     private void backbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backbtnActionPerformed
         this.dispose();
         new HomeFormInventoryManager().setVisible(true);
@@ -236,6 +266,10 @@ public class Item_Entry extends javax.swing.JFrame {
     private void itemcbItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_itemcbItemStateChanged
         // TODO add your handling code here:
     }//GEN-LAST:event_itemcbItemStateChanged
+
+    private void editbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editbtnActionPerformed
+
+    }//GEN-LAST:event_editbtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -287,11 +321,11 @@ public class Item_Entry extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JTextField ppitxt;
     private javax.swing.JSpinner quantityspi;
     private javax.swing.JButton savebtn;
+    private javax.swing.JButton searchbtn;
     // End of variables declaration//GEN-END:variables
 }
