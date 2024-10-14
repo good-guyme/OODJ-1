@@ -1,5 +1,0 @@
-1;Electrical Kettle;134.0;10
-2;Smartphone;456.0;20
-4;Espresso Machine;123.0;2
-123;Smartphone;123.0;10
-06;Electrical Kettle;5678.0;90
