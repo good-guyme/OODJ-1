@@ -324,12 +324,48 @@ public class Item_Entry extends javax.swing.JFrame {
             return; // Stop if validation fails
         }
 
+        // Check if the item already exists in the table
+        DefaultTableModel model = (DefaultTableModel) itementrytbl.getModel();
+        boolean itemExists = false;
+        int existingRowIndex = -1; // To store the index of the existing item
+
+        for (int i = 0; i < model.getRowCount(); i++) {
+            String existingItem = model.getValueAt(i, 1).toString(); // Get the item column
+            if (existingItem.equalsIgnoreCase(item)) { // Check if item already exists (case-insensitive)
+                itemExists = true;
+                existingRowIndex = i;
+                break;
+            }
+        }
+
+        if (itemExists) {
+            // Provide enhanced feedback: Suggest updating the item instead
+            String message = "The item '" + item + "' already exists in the system.\n"
+                    + "Would you like to update the existing item instead?\n"
+                    + "(Code: " + model.getValueAt(existingRowIndex, 0).toString() + ", "
+                    + "Price: " + model.getValueAt(existingRowIndex, 2).toString() + ", "
+                    + "Quantity: " + model.getValueAt(existingRowIndex, 3).toString() + ")";
+
+            int response = javax.swing.JOptionPane.showConfirmDialog(this, message, "Duplicate Item Found", javax.swing.JOptionPane.YES_NO_OPTION, javax.swing.JOptionPane.QUESTION_MESSAGE);
+
+            if (response == javax.swing.JOptionPane.YES_OPTION) {
+                // Optionally populate the fields for updating if the user chooses to update
+                codetxt.setText(model.getValueAt(existingRowIndex, 0).toString()); // Set the existing code
+                itemcb.setSelectedItem(item); // Set the existing item
+                ppitxt.setText(model.getValueAt(existingRowIndex, 2).toString()); // Set the existing price
+                quantityspi.setValue(Integer.parseInt(model.getValueAt(existingRowIndex, 3).toString())); // Set the existing quantity
+
+                // Auto-select the existing row in the table for the user
+                itementrytbl.setRowSelectionInterval(existingRowIndex, existingRowIndex); // Automatically select the row in the table
+            }
+            return; // Stop adding new item
+        }
+
         try {
             // Convert pricePerItem to a double to ensure it's valid
             double price = Double.parseDouble(pricePerItem);
 
             // Add the new row to the table
-            DefaultTableModel model = (DefaultTableModel) itementrytbl.getModel();
             model.addRow(new Object[]{code, item, price, quantity});
 
             // Create the file if it doesn't exist
@@ -419,12 +455,14 @@ public class Item_Entry extends javax.swing.JFrame {
         if (selectedRow >= 0) {
             // Get updated data from the input fields
             String code = codetxt.getText();
-            String item = (String) itemcb.getSelectedItem();
             String pricePerItem = ppitxt.getText();
             int quantity = (Integer) quantityspi.getValue();
 
+            // Retrieve the original item name from the selected row
+            String item = itementrytbl.getValueAt(selectedRow, 1).toString();
+
             // Validation
-            if (code.isEmpty() || item == null || pricePerItem.isEmpty() || quantity <= 0) {
+            if (code.isEmpty() || pricePerItem.isEmpty() || quantity <= 0) {
                 javax.swing.JOptionPane.showMessageDialog(this, "Please fill out all fields and ensure values are valid.", "Input Error", javax.swing.JOptionPane.ERROR_MESSAGE);
                 return; // Stop if validation fails
             }
@@ -435,10 +473,9 @@ public class Item_Entry extends javax.swing.JFrame {
 
                 // Update the table
                 DefaultTableModel model = (DefaultTableModel) itementrytbl.getModel();
-                model.setValueAt(code, selectedRow, 0);
-                model.setValueAt(item, selectedRow, 1);
-                model.setValueAt(price, selectedRow, 2);
-                model.setValueAt(quantity, selectedRow, 3);
+                model.setValueAt(code, selectedRow, 0); // Update the code
+                model.setValueAt(price, selectedRow, 2); // Update the price per item
+                model.setValueAt(quantity, selectedRow, 3); // Update the quantity
 
                 // Update the text file
                 try (FileWriter writer = new FileWriter("ItemEntryRecord.txt", false)) { // false means overwrite

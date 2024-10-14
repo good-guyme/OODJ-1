@@ -385,14 +385,24 @@ public class Supplier_Entry extends javax.swing.JFrame {
         String payment = (String) paymentcb.getSelectedItem();
 
         // Validation
-        if (id.isEmpty() || name.isEmpty() || address.isEmpty() || item == null || quantity <= 0 || date.isEmpty() || phone.isEmpty() || payment.isEmpty()) {
+        if (id.isEmpty() || name.isEmpty() || address.isEmpty() || item == null || quantity <= 0 || date.isEmpty() || phone.isEmpty() || payment == null) {
             javax.swing.JOptionPane.showMessageDialog(this, "Please fill out all fields and ensure values are valid.", "Input Error", javax.swing.JOptionPane.ERROR_MESSAGE);
             return; // Stop if validation fails
         }
 
+        // Check for duplicate name and item
+        DefaultTableModel model = (DefaultTableModel) supplierentrytbl.getModel();
+        for (int i = 0; i < model.getRowCount(); i++) {
+            String existingName = model.getValueAt(i, 1).toString(); // Name column
+            String existingItem = model.getValueAt(i, 3).toString(); // Item column
+            if (existingName.equals(name) && existingItem.equals(item)) {
+                javax.swing.JOptionPane.showMessageDialog(this, "This name and item combination already exists.", "Duplicate Entry", javax.swing.JOptionPane.ERROR_MESSAGE);
+                return; // Stop if a duplicate is found
+            }
+        }
+
         try {
             // Add the new row to the table
-            DefaultTableModel model = (DefaultTableModel) supplierentrytbl.getModel();
             model.addRow(new Object[]{id, name, address, item, quantity, date, phone, payment});
 
             // Create the file if it doesn't exist
@@ -476,38 +486,37 @@ public class Supplier_Entry extends javax.swing.JFrame {
                 String phone = supplierentrytbl.getValueAt(selectedRow, 6).toString();
                 String payment = supplierentrytbl.getValueAt(selectedRow, 7).toString();
 
-                // Populate your fields or perform further actions here
+                // Populate your fields
                 idtxt.setText(id);
                 nametxt.setText(name);
                 addresstxt.setText(address);
                 itemcb.setSelectedItem(item);
-                datetxt.setText(date);
                 quantityspi.setValue(quantity);
+                datetxt.setText(date);
                 phonetxt.setText(phone);
                 paymentcb.setSelectedItem(payment);
-                // Populate additional fields if necessary
             } catch (NumberFormatException ex) {
                 System.out.println("Error parsing quantity: " + ex.getMessage());
             } catch (ArrayIndexOutOfBoundsException ex) {
                 System.out.println("Selected row index is out of bounds: " + ex.getMessage());
             }
         } else {
-            System.out.println("No row selected.");
+            javax.swing.JOptionPane.showMessageDialog(this, "Please select a supplier to edit.", "Selection Error", javax.swing.JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_editbtnActionPerformed
 
     private void savebtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_savebtnActionPerformed
-        int selectedRow = supplierentrytbl.getSelectedRow();
+        int selectedRow = supplierentrytbl.getSelectedRow(); // Get the selected row index
 
-        if (selectedRow >= 0) {
+        if (selectedRow >= 0) { // Check if a row is selected
             // Get updated data from the input fields
-            String id = idtxt.getText(); // Assuming you have idtxt for ID
-            String name = nametxt.getText(); // Assuming you have nametxt for Name
-            String address = addresstxt.getText(); // Assuming you have addresstxt for Address
+            String id = idtxt.getText().trim(); // Assuming you have idtxt for ID
+            String name = nametxt.getText().trim(); // Assuming you have nametxt for Name
+            String address = addresstxt.getText().trim(); // Assuming you have addresstxt for Address
             String item = (String) itemcb.getSelectedItem(); // ComboBox for Item
             int quantity = (Integer) quantityspi.getValue(); // Spinner for Quantity
-            String date = datetxt.getText(); // Assuming you have datetxt for Date
-            String phone = phonetxt.getText(); // Assuming you have phonetxt for Phone
+            String date = datetxt.getText().trim(); // Assuming you have datetxt for Date
+            String phone = phonetxt.getText().trim(); // Assuming you have phonetxt for Phone
             String payment = (String) paymentcb.getSelectedItem(); // ComboBox for Payment
 
             // Validation
@@ -516,9 +525,21 @@ public class Supplier_Entry extends javax.swing.JFrame {
                 return; // Stop if validation fails
             }
 
+            // Check for duplicate name and item
+            DefaultTableModel model = (DefaultTableModel) supplierentrytbl.getModel(); // Use the same model variable
+            for (int i = 0; i < model.getRowCount(); i++) {
+                if (i != selectedRow) { // Avoid checking the selected row
+                    String existingName = model.getValueAt(i, 1).toString(); // Name column
+                    String existingItem = model.getValueAt(i, 3).toString(); // Item column
+                    if (existingName.equals(name) && existingItem.equals(item)) {
+                        javax.swing.JOptionPane.showMessageDialog(this, "This name and item combination already exists.", "Duplicate Entry", javax.swing.JOptionPane.ERROR_MESSAGE);
+                        return; // Stop if a duplicate is found
+                    }
+                }
+            }
+
             try {
-                // Update the table
-                DefaultTableModel model = (DefaultTableModel) supplierentrytbl.getModel();
+                // Update the table (reuse the existing model variable)
                 model.setValueAt(id, selectedRow, 0);         // ID
                 model.setValueAt(name, selectedRow, 1);       // Name
                 model.setValueAt(address, selectedRow, 2);    // Address
@@ -552,7 +573,7 @@ public class Supplier_Entry extends javax.swing.JFrame {
                 itemcb.setSelectedIndex(-1);
                 quantityspi.setValue(0);
                 datetxt.setText("");
-                phonetxt.setText(""); 
+                phonetxt.setText("");
                 paymentcb.setSelectedIndex(-1);
 
                 // Optionally show a success message
