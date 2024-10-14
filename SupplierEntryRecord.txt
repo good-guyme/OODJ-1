@@ -1,3 +1,4 @@
+1;1;1;Electrical Kettle;10;1;1;COD;
 2;2;2;Smartphone;20;2;2;Net 15;
 3;3;3;Laptop;30;3;3;Net 30;
 4;4;4;Espresso Machine;40;4;4;Net 60;

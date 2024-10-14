@@ -1,3 +1,4 @@
+1;Electrical Kettle;1.0;10
 2;Smartphone;2.0;20
 3;Laptop;3.0;30
 4;Espresso Machine;4.0;40
