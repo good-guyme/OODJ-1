@@ -1,0 +1,2 @@
+2;chen1;puchong3;Espresso Machine;20;tuesday 2;1234567890;Net 60;
+5;4;3;Smartphone;10;0;1;Net 15;
