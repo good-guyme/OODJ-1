@@ -4,8 +4,8 @@
  */
 package InventoryManager;
 
-import FinanceManager.*;
 import Login.LoginForm;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -31,13 +31,13 @@ public class HomeFormInventoryManager extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jSeparator1 = new javax.swing.JSeparator();
         jLabel1 = new javax.swing.JLabel();
         usernamelbl = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
+        jLabel2 = new javax.swing.JLabel();
         itementrybtn = new javax.swing.JButton();
         supplierentrybtn = new javax.swing.JButton();
         logoutbtn = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -47,9 +47,10 @@ public class HomeFormInventoryManager extends javax.swing.JFrame {
         usernamelbl.setFont(new java.awt.Font("Segoe UI", 3, 36)); // NOI18N
         usernamelbl.setText("jLabel2");
 
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 3, 36)); // NOI18N
+        jLabel2.setText("DASHBOARD");
+
         itementrybtn.setText("Item Entry");
-        itementrybtn.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        itementrybtn.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         itementrybtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 itementrybtnActionPerformed(evt);
@@ -57,8 +58,6 @@ public class HomeFormInventoryManager extends javax.swing.JFrame {
         });
 
         supplierentrybtn.setText("Supplier Entry");
-        supplierentrybtn.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        supplierentrybtn.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         supplierentrybtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 supplierentrybtnActionPerformed(evt);
@@ -66,16 +65,11 @@ public class HomeFormInventoryManager extends javax.swing.JFrame {
         });
 
         logoutbtn.setText("Logout");
-        logoutbtn.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        logoutbtn.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         logoutbtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 logoutbtnActionPerformed(evt);
             }
         });
-
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 3, 36)); // NOI18N
-        jLabel2.setText("DASHBOARD");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -83,49 +77,49 @@ public class HomeFormInventoryManager extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.TRAILING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(130, 130, 130)
+                .addComponent(itementrybtn)
+                .addGap(122, 122, 122)
+                .addComponent(supplierentrybtn)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 143, Short.MAX_VALUE)
+                .addComponent(logoutbtn)
+                .addGap(138, 138, 138))
+            .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(usernamelbl))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(179, 179, 179)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(itementrybtn, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(80, 80, 80)
-                                .addComponent(supplierentrybtn, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(97, 97, 97)
-                                .addComponent(logoutbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(85, 85, 85)
-                                .addComponent(jLabel2)))))
-                .addContainerGap(213, Short.MAX_VALUE))
+                        .addGap(281, 281, 281)
+                        .addComponent(jLabel2)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(28, 28, 28)
+                .addGap(22, 22, 22)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(usernamelbl))
-                .addGap(18, 18, 18)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(178, 178, 178)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(47, 47, 47)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 140, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(itementrybtn)
                     .addComponent(supplierentrybtn)
                     .addComponent(logoutbtn))
-                .addContainerGap(137, Short.MAX_VALUE))
+                .addGap(134, 134, 134))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void logoutbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutbtnActionPerformed
+        JOptionPane.showMessageDialog(null, "Logout Successfull");
         this.dispose();
         new LoginForm().setVisible(true);//To go to LoginForm
     }//GEN-LAST:event_logoutbtnActionPerformed
