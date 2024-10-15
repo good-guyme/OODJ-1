@@ -35,7 +35,7 @@
                   <Component id="btnback" alignment="0" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="432" max="32767" attributes="0"/>
+              <EmptySpace pref="440" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -62,7 +62,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI" size="36" style="3"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="USER REGIDTRATION"/>
+        <Property name="text" type="java.lang.String" value="USER REGISTRATION"/>
       </Properties>
     </Component>
   </SubComponents>

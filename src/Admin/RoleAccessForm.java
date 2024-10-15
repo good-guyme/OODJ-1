@@ -28,6 +28,10 @@ public class RoleAccessForm extends javax.swing.JFrame {
 
         btnback = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
+        btnfinance = new javax.swing.JButton();
+        btnsales = new javax.swing.JButton();
+        btninventrory = new javax.swing.JButton();
+        btnpurchase = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(800, 500));
@@ -38,29 +42,71 @@ public class RoleAccessForm extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Segoe UI", 3, 36)); // NOI18N
         jLabel2.setText("ROLE ACCESS");
 
+        btnfinance.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btnfinance.setText("Finance Manager");
+        btnfinance.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnfinanceActionPerformed(evt);
+            }
+        });
+
+        btnsales.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btnsales.setText("Sales Manager");
+
+        btninventrory.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btninventrory.setText("Inventory Manager");
+
+        btnpurchase.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btnpurchase.setText("Purchase Manager");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(177, 177, 177)
+                        .addComponent(btnpurchase, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addContainerGap()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(btnback)
+                                .addComponent(jLabel2)))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(177, 177, 177)
+                            .addComponent(btnfinance, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnback)
-                    .addComponent(jLabel2))
-                .addContainerGap(567, Short.MAX_VALUE))
+                    .addComponent(btnsales, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btninventrory, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(192, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 418, Short.MAX_VALUE)
+                .addGap(90, 90, 90)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnfinance, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btninventrory, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnsales, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnpurchase, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 176, Short.MAX_VALUE)
                 .addComponent(btnback)
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnfinanceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnfinanceActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnfinanceActionPerformed
 
     /**
      * @param args the command line arguments
@@ -99,6 +145,10 @@ public class RoleAccessForm extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnback;
+    private javax.swing.JButton btnfinance;
+    private javax.swing.JButton btninventrory;
+    private javax.swing.JButton btnpurchase;
+    private javax.swing.JButton btnsales;
     private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables
 }

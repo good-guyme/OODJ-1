@@ -36,7 +36,7 @@ public class UserRegistrationForm extends javax.swing.JFrame {
         btnback.setText("Back");
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 3, 36)); // NOI18N
-        jLabel2.setText("USER REGIDTRATION");
+        jLabel2.setText("USER REGISTRATION");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -47,7 +47,7 @@ public class UserRegistrationForm extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnback)
                     .addComponent(jLabel2))
-                .addContainerGap(432, Short.MAX_VALUE))
+                .addContainerGap(440, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

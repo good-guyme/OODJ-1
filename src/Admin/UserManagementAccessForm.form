@@ -29,7 +29,12 @@
                   <Component id="btnback" alignment="0" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="567" max="32767" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
+          </Group>
+          <Group type="102" alignment="1" attributes="0">
+              <EmptySpace pref="317" max="32767" attributes="0"/>
+              <Component id="btnregist" min="-2" pref="205" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="278" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -38,7 +43,9 @@
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jLabel2" min="-2" pref="47" max="-2" attributes="0"/>
-              <EmptySpace pref="417" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="156" max="-2" attributes="0"/>
+              <Component id="btnregist" min="-2" pref="67" max="-2" attributes="0"/>
+              <EmptySpace pref="194" max="32767" attributes="0"/>
               <Component id="btnback" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -56,8 +63,19 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI" size="36" style="3"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="ROLE ACCESS"/>
+        <Property name="text" type="java.lang.String" value="USER MANAGEMENT"/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnregist">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Segoe UI" size="18" style="1"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="User registration"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnregistActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>
