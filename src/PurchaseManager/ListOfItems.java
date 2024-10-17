@@ -8,7 +8,12 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
-
+import Login.LoginForm;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import javax.swing.RowFilter;
+import javax.swing.table.TableRowSorter;
 /**
  *
  * @author gorde
@@ -16,10 +21,11 @@ import javax.swing.table.DefaultTableModel;
 public class ListOfItems extends javax.swing.JFrame {
 
     /**
-     * Creates new form ListOfItems
+     * Creates new form PurchaseOrder
      */
     public ListOfItems() {
         initComponents();
+        loadDataIntoTable();
     }
  
 
@@ -33,45 +39,67 @@ public class ListOfItems extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel4 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        usernametxt = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        itemListTable = new javax.swing.JTable();
+        idtxt = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        backButton = new javax.swing.JButton();
+        searchButton = new javax.swing.JButton();
+
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        jLabel4.setText("WELCOME,");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(800, 500));
         setSize(new java.awt.Dimension(800, 500));
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 204));
+        jPanel1.setBackground(new java.awt.Color(255, 204, 204));
         jPanel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         jPanel1.setForeground(new java.awt.Color(255, 204, 204));
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 3, 36)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         jLabel1.setText("List Of Items");
+
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        jLabel5.setText("WELCOME,");
+
+        usernametxt.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        usernametxt.setText("jLabel2");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(293, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(286, 286, 286))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel5)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(usernametxt)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1))
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(usernametxt)))
         );
 
         jScrollPane2.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
         jScrollPane2.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
         jScrollPane2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        itemListTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -125,36 +153,57 @@ public class ListOfItems extends javax.swing.JFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "Item 1", "Item 2", "Item 3", "Item 4"
+                "Code", "Item", "Price Per item", "Quantity"
             }
         ));
-        jScrollPane2.setViewportView(jTable1);
+        jScrollPane2.setViewportView(itemListTable);
 
-        jButton1.setText("SAVE");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        idtxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                idtxtActionPerformed(evt);
             }
         });
 
-        jButton2.setText("DISCARD ALL");
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel2.setText("ITEM ID :");
+
+        backButton.setBackground(new java.awt.Color(255, 102, 102));
+        backButton.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        backButton.setText("BACK");
+        backButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backButtonActionPerformed(evt);
+            }
+        });
+
+        searchButton.setText("SEARCH");
+        searchButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane2)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(40, 40, 40)
-                                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 788, Short.MAX_VALUE)
+                        .addContainerGap())
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(idtxt, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(searchButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(backButton)
+                        .addGap(15, 15, 15))))
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -163,57 +212,82 @@ public class ListOfItems extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 361, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(idtxt, javax.swing.GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE)
+                    .addComponent(searchButton)
+                    .addComponent(backButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 346, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+    private void loadDataIntoTable() {
+        DefaultTableModel model = (DefaultTableModel) itemListTable.getModel(); // Get the table model
+        model.setRowCount(0); // Clear existing data in the table
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-                                                 
-    // Get the table model
-    DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
-    
-    // Initialize a StringBuilder to store the non-empty rows
-    StringBuilder savedData = new StringBuilder();
-    
-    // Iterate through the table rows
-    for (int i = 0; i < model.getRowCount(); i++) {
-        boolean isRowEmpty = true;
-        StringBuilder rowData = new StringBuilder();
-        
-        // Iterate through the columns of the current row
-        for (int j = 0; j < model.getColumnCount(); j++) {
-            Object cellValue = model.getValueAt(i, j);
-            
-            // Check if the cell is non-empty (not null or not empty string)
-            if (cellValue != null && !cellValue.toString().trim().isEmpty()) {
-                isRowEmpty = false;
+        // Read the data from the text file
+        try (BufferedReader br = new BufferedReader(new FileReader("ItemEntryRecord.txt"))) {
+        String line;
+        while ((line = br.readLine()) != null) {
+            if (line.trim().isEmpty()) {
+                continue; // Skip empty lines
             }
-            
-            // Append the cell value to the row data
-            rowData.append(cellValue).append("\t");
+            System.out.println("Read line: " + line); // Debugging statement
+            String[] data = line.split(";");
+
+            // Check the data before adding to the model
+            System.out.println("Data length: " + data.length); // Debugging statement
+            for (int i = 0; i < data.length; i++) {
+                System.out.println("Data[" + i + "]: " + data[i]); // Print each piece of data
+            }
+
+            // Adjust this check to ensure you have the expected number of columns
+            if (data.length == 4) {
+                
+                model.addRow(data); // Add each row of data to the table
+                
+            } else {
+                System.out.println("Invalid data format: " + line);
+            }
         }
-        
-        // Save non-empty rows only
-        if (!isRowEmpty) {
-            savedData.append("Row ").append(i + 1).append(": ").append(rowData).append("\n");
-        }
+    } catch (IOException e) {
+        JOptionPane.showMessageDialog(null, "Unable to load data!"); // Handle the exception
+    }
     }
     
-    // Output the saved data 
-    System.out.println("Saved Data:");
-    System.out.println(savedData.toString());
-    
-    JOptionPane.showMessageDialog(this, "Changes have been saved.");
- 
+    private void idtxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idtxtActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_idtxtActionPerformed
 
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
+        this.dispose();
+        new HomeFormPurchaseManager().setVisible(true);
+    }//GEN-LAST:event_backButtonActionPerformed
+
+    private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed
+        String selectedItem = (String) idtxt.getText(); // Get the selected item from the combo box
+        DefaultTableModel model = (DefaultTableModel) itemListTable.getModel(); // Get the table model
+
+        // Clear any previous search results
+        TableRowSorter<DefaultTableModel> sorter = new TableRowSorter<>(model);
+        itemListTable.setRowSorter(sorter);
+
+        if (selectedItem == null || selectedItem.isEmpty()) {
+            // If no item is selected, show all rows
+            sorter.setRowFilter(null);
+        } else {
+            // Use a RowFilter to filter the table based on the selected item
+            sorter.setRowFilter(RowFilter.regexFilter("(?i)" + selectedItem)); // Case-insensitive search
+        }
+
+        if (itemListTable.getRowCount() == 0) {
+            JOptionPane.showMessageDialog(null, "Item not found!"); // Show message if no items match
+            sorter.setRowFilter(null); //show back all datas
+        }
+    }//GEN-LAST:event_searchButtonActionPerformed
 
     
     public static void main(String args[]) {
@@ -229,6 +303,9 @@ public class ListOfItems extends javax.swing.JFrame {
                     break;
                 }
             }
+            
+            
+    
         } catch (ClassNotFoundException ex) {
             java.util.logging.Logger.getLogger(ListOfItems.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
@@ -238,7 +315,7 @@ public class ListOfItems extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(ListOfItems.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
+        //</editor-fold>\\
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -249,11 +326,16 @@ public class ListOfItems extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton backButton;
+    private javax.swing.JTextField idtxt;
+    private javax.swing.JTable itemListTable;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JButton searchButton;
+    private javax.swing.JLabel usernametxt;
     // End of variables declaration//GEN-END:variables
 }

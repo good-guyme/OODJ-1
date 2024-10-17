@@ -1,4 +1,3 @@
-A01;Electrical Kettle;50.00,5
-A02;Smartphone;100.00,10
-A03;Laptop;500.00;15
-A04;Espresso Machine;1000;20
+2;Smartphone;2.0;20
+3;Laptop;3.0;30
+4;Espresso Machine;4.0;40

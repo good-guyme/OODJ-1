@@ -1,5 +1,5 @@
-Admin;1234;AD;
-SalesManager;1234;SM;
-PurchaseManager;1234;PM;
-InventoryManager;1234;IM;
-FinanceManager;1234;FM
+USID1;Admin;1234;AD;
+USID2;SalesManager;1234;SM;
+USID3;PurchaseManager;1234;PM;
+USID4;InventoryManager;1234;IM;
+USID5;FinanceManager;1234;FM;
