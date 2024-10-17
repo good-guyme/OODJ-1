@@ -38,7 +38,7 @@ public class HomeFormPurchaseManager extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         ListButton = new javax.swing.JButton();
         PurchaseOrderButton = new javax.swing.JButton();
-        SupplierButton = new javax.swing.JButton();
+        PurchaseListButt = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -74,7 +74,7 @@ public class HomeFormPurchaseManager extends javax.swing.JFrame {
         );
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
-        jLabel2.setText("MAIN MENU");
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/PurchaseManager/Image/menu.png"))); // NOI18N
 
         ListButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/PurchaseManager/Image/list.png"))); // NOI18N
         ListButton.setText("ITEM LIST");
@@ -84,6 +84,7 @@ public class HomeFormPurchaseManager extends javax.swing.JFrame {
             }
         });
 
+        PurchaseOrderButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/PurchaseManager/Image/purchase.png"))); // NOI18N
         PurchaseOrderButton.setText("PURCHASE ORDER");
         PurchaseOrderButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -91,10 +92,11 @@ public class HomeFormPurchaseManager extends javax.swing.JFrame {
             }
         });
 
-        SupplierButton.setText("LIST OF SUPPLIER");
-        SupplierButton.addActionListener(new java.awt.event.ActionListener() {
+        PurchaseListButt.setIcon(new javax.swing.ImageIcon(getClass().getResource("/PurchaseManager/Image/purcaseorder.png"))); // NOI18N
+        PurchaseListButt.setText("PURCHASE ORDER LIST");
+        PurchaseListButt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SupplierButtonActionPerformed(evt);
+                PurchaseListButtActionPerformed(evt);
             }
         });
 
@@ -108,31 +110,30 @@ public class HomeFormPurchaseManager extends javax.swing.JFrame {
                         .addContainerGap()
                         .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(271, 271, 271)
-                                .addComponent(jLabel2))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(19, 19, 19)
-                                .addComponent(ListButton)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(PurchaseOrderButton)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(SupplierButton)))
-                        .addGap(0, 308, Short.MAX_VALUE)))
+                        .addGap(19, 19, 19)
+                        .addComponent(ListButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(PurchaseOrderButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(PurchaseListButt)
+                        .addGap(0, 258, Short.MAX_VALUE)))
                 .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(223, 223, 223)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 369, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 220, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(PurchaseOrderButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(ListButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(SupplierButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(PurchaseListButt, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(51, 51, 51))
         );
 
@@ -144,9 +145,9 @@ public class HomeFormPurchaseManager extends javax.swing.JFrame {
         new PurchaseOrder().setVisible(true);
     }//GEN-LAST:event_PurchaseOrderButtonActionPerformed
 
-    private void SupplierButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SupplierButtonActionPerformed
+    private void PurchaseListButtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PurchaseListButtActionPerformed
         
-    }//GEN-LAST:event_SupplierButtonActionPerformed
+    }//GEN-LAST:event_PurchaseListButtActionPerformed
 
     private void ListButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ListButtonActionPerformed
         this.dispose();
@@ -193,8 +194,8 @@ public class HomeFormPurchaseManager extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton ListButton;
+    private javax.swing.JButton PurchaseListButt;
     private javax.swing.JButton PurchaseOrderButton;
-    private javax.swing.JButton SupplierButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;

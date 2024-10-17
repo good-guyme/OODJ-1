@@ -11,6 +11,7 @@ import javax.swing.JOptionPane;
 import Login.LoginForm;
 import java.io.BufferedReader;
 import java.io.FileReader;
+import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 /**
  *
@@ -20,7 +21,8 @@ public class PurchaseOrder extends javax.swing.JFrame {
 
     /**
      * Creates new form TEST
-     */
+    */
+    LoginForm lf = new LoginForm();
     public PurchaseOrder() {
         initComponents();
         LoginForm lf = new LoginForm();
@@ -86,6 +88,7 @@ private void populateFormFromTableSelection() {
         jScrollPane1 = new javax.swing.JScrollPane();
         orderTable = new javax.swing.JTable();
         refreshbtn = new javax.swing.JButton();
+        returnButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(800, 500));
@@ -144,8 +147,21 @@ private void populateFormFromTableSelection() {
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel7.setText("PURCHASED BY :");
 
-        editBtn.setText("EDIT");
+        idtxt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                idtxtActionPerformed(evt);
+            }
+        });
 
+        editBtn.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        editBtn.setText("EDIT");
+        editBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editBtnActionPerformed(evt);
+            }
+        });
+
+        deleteBtn.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         deleteBtn.setText("DELETE");
         deleteBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -153,6 +169,7 @@ private void populateFormFromTableSelection() {
             }
         });
 
+        addBtn.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         addBtn.setText("ADD");
         addBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -172,10 +189,20 @@ private void populateFormFromTableSelection() {
 
         jScrollPane2.setViewportView(jScrollPane1);
 
+        refreshbtn.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         refreshbtn.setText("REFRESH");
         refreshbtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 refreshbtnActionPerformed(evt);
+            }
+        });
+
+        returnButton.setBackground(new java.awt.Color(255, 102, 153));
+        returnButton.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        returnButton.setText("BACK");
+        returnButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                returnButtonActionPerformed(evt);
             }
         });
 
@@ -207,12 +234,14 @@ private void populateFormFromTableSelection() {
                         .addGroup(layout.createSequentialGroup()
                             .addContainerGap()
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 772, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jScrollPane2)
                                 .addGroup(layout.createSequentialGroup()
                                     .addComponent(addBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGap(18, 18, 18)
                                     .addComponent(editBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addGap(69, 69, 69)
+                                    .addComponent(returnButton, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(69, 69, 69)
                                     .addComponent(refreshbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGap(18, 18, 18)
                                     .addComponent(deleteBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))))))
@@ -247,7 +276,8 @@ private void populateFormFromTableSelection() {
                     .addComponent(addBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(editBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(deleteBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(refreshbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(refreshbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(returnButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -308,13 +338,105 @@ private void populateFormFromTableSelection() {
      }
      
     private void deleteBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteBtnActionPerformed
-        
+        try {
+            //get selected row of data
+            int selectedRow = orderTable.getSelectedRow();
+            String orderId = (String) orderTable.getValueAt(selectedRow, 0);
+            FileReader fr = new FileReader("order.txt");
+            BufferedReader br = new BufferedReader(fr);
+            String read;
+
+            ArrayList<ArrayList<String>> orderList = new ArrayList<>();
+            while ((read = br.readLine()) != null) {
+                ArrayList<String> record = new ArrayList<>();
+                record.add(read.split(";")[0]);
+                record.add(read.split(";")[1]);
+                record.add(read.split(";")[2]);
+                record.add(read.split(";")[3]);
+                record.add(read.split(";")[4]);
+                
+                orderList.add(record);
+            }
+            for (int row = 0; row < orderList.size(); row++) {
+                System.out.println(orderId);
+                if (orderList.get(row).get(0).equals(orderId)) {
+                    System.out.println("lalu");
+                    orderList.remove(row);
+                    break;
+                }
+            }
+
+            // Writing the updated TODO records back to the file
+            FileWriter fw = new FileWriter("order.txt");
+            for (int i = 0; i < orderList.size(); i++) {
+                fw.write(orderList.get(i).get(0) + ";");
+                fw.write(orderList.get(i).get(1) + ";");
+                fw.write(orderList.get(i).get(2) + ";");
+                fw.write(orderList.get(i).get(3) + ";");
+                fw.write(orderList.get(i).get(4) + ";\n");
+                
+            }
+
+            fw.close();
+            JOptionPane.showMessageDialog(null, "successfully deleted a record");
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(null, "Successfully deleted Item");
+        }
     }//GEN-LAST:event_deleteBtnActionPerformed
 
     private void refreshbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshbtnActionPerformed
         refreshData();
         populateFormFromTableSelection();
     }//GEN-LAST:event_refreshbtnActionPerformed
+
+    private void editBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editBtnActionPerformed
+        try {
+            // Read all data from file into a list
+            BufferedReader br = new BufferedReader(new FileReader("order.txt"));
+            ArrayList<String> Lines = new ArrayList<>();
+            String line;
+            while ((line = br.readLine()) != null) {
+                Lines.add(line);
+            }
+            br.close();
+
+            // Get the ID of the current record being edited
+            String orderToUpdate = idtxt.getText();
+
+            // Rewrite file with updated record
+            FileWriter fw = new FileWriter("order.txt");
+            for (String orderLine : Lines) {
+                String[] orderData = orderLine.split(";");
+                if (orderData[0].equals(orderToUpdate)) { // If ID matches, update record
+                    fw.write(
+                            idtxt.getText() + ";"
+                            + nametxt.getText() + ";"
+                            + amounttxt.getText() + ";"
+                            + datetxt.getText() + ";"
+                            + lf.getUsername() + ";\n"
+                    );
+                } else { // Keep the record as it is
+                    fw.write(orderLine + "\n");
+                }
+            }
+            fw.close();
+
+            JOptionPane.showMessageDialog(null, "Record updated successfully!");
+            this.refreshData(); // Refresh table data
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(null, "Error updating record: " + e.getMessage());
+        }
+                   
+    }//GEN-LAST:event_editBtnActionPerformed
+
+    private void idtxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idtxtActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_idtxtActionPerformed
+
+    private void returnButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_returnButtonActionPerformed
+        this.dispose();
+        new HomeFormPurchaseManager().setVisible(true);
+    }//GEN-LAST:event_returnButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -373,6 +495,7 @@ private void populateFormFromTableSelection() {
     private javax.swing.JTextField nametxt;
     private javax.swing.JTable orderTable;
     private javax.swing.JButton refreshbtn;
+    private javax.swing.JButton returnButton;
     private javax.swing.JLabel usernametxt1;
     private javax.swing.JTextField usernametxt2;
     // End of variables declaration//GEN-END:variables

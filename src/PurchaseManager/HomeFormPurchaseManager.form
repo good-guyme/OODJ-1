@@ -31,24 +31,21 @@
                       <Component id="jPanel1" max="32767" attributes="0"/>
                   </Group>
                   <Group type="102" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="271" max="-2" attributes="0"/>
-                              <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
-                              <Component id="ListButton" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="PurchaseOrderButton" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="SupplierButton" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
-                      <EmptySpace min="0" pref="308" max="32767" attributes="0"/>
+                      <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
+                      <Component id="ListButton" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="PurchaseOrderButton" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="PurchaseListButt" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="0" pref="258" max="32767" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
+          </Group>
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="223" max="-2" attributes="0"/>
+              <Component id="jLabel2" min="-2" pref="369" max="-2" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -56,13 +53,13 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
               <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
               <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="220" max="32767" attributes="0"/>
+              <EmptySpace pref="18" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                   <Component id="PurchaseOrderButton" max="32767" attributes="0"/>
                   <Component id="ListButton" max="32767" attributes="0"/>
-                  <Component id="SupplierButton" max="32767" attributes="0"/>
+                  <Component id="PurchaseListButt" max="32767" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
           </Group>
@@ -131,7 +128,9 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI" size="36" style="1"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="MAIN MENU"/>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/PurchaseManager/Image/menu.png"/>
+        </Property>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="ListButton">
@@ -147,18 +146,24 @@
     </Component>
     <Component class="javax.swing.JButton" name="PurchaseOrderButton">
       <Properties>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/PurchaseManager/Image/purchase.png"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="PURCHASE ORDER"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="PurchaseOrderButtonActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="SupplierButton">
+    <Component class="javax.swing.JButton" name="PurchaseListButt">
       <Properties>
-        <Property name="text" type="java.lang.String" value="LIST OF SUPPLIER"/>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/PurchaseManager/Image/purcaseorder.png"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="PURCHASE ORDER LIST"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="SupplierButtonActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="PurchaseListButtActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

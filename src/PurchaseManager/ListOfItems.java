@@ -37,7 +37,7 @@ public class ListOfItems extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
+        backButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(800, 500));
@@ -129,10 +129,10 @@ public class ListOfItems extends javax.swing.JFrame {
         ));
         jScrollPane2.setViewportView(jTable1);
 
-        jButton1.setText("SAVE");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        backButton.setText("BACK");
+        backButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                backButtonActionPerformed(evt);
             }
         });
 
@@ -149,7 +149,7 @@ public class ListOfItems extends javax.swing.JFrame {
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(backButton, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(23, 23, 23))
         );
         layout.setVerticalGroup(
@@ -160,53 +160,20 @@ public class ListOfItems extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 361, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(backButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
                                                  
-    // Get the table model
-    DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
-    
-    // Initialize a StringBuilder to store the non-empty rows
-    StringBuilder savedData = new StringBuilder();
-    
-    // Iterate through the table rows
-    for (int i = 0; i < model.getRowCount(); i++) {
-        boolean isRowEmpty = true;
-        StringBuilder rowData = new StringBuilder();
-        
-        // Iterate through the columns of the current row
-        for (int j = 0; j < model.getColumnCount(); j++) {
-            Object cellValue = model.getValueAt(i, j);
-            
-            // Check if the cell is non-empty (not null or not empty string)
-            if (cellValue != null && !cellValue.toString().trim().isEmpty()) {
-                isRowEmpty = false;
-            }
-            
-            // Append the cell value to the row data
-            rowData.append(cellValue).append("\t");
-        }
-        
-        // Save non-empty rows only
-        if (!isRowEmpty) {
-            savedData.append("Row ").append(i + 1).append(": ").append(rowData).append("\n");
-        }
-    }
-    
-    // Output the saved data 
-    System.out.println("Saved Data:");
-    System.out.println(savedData.toString());
-    
-    JOptionPane.showMessageDialog(this, "Changes have been saved.");
+    this.dispose();
+    new HomeFormPurchaseManager().setVisible(true);
  
 
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_backButtonActionPerformed
 
     
     public static void main(String args[]) {
@@ -245,7 +212,7 @@ public class ListOfItems extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton backButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;
