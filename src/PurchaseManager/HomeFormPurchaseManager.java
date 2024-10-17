@@ -146,7 +146,8 @@ public class HomeFormPurchaseManager extends javax.swing.JFrame {
     }//GEN-LAST:event_PurchaseOrderButtonActionPerformed
 
     private void PurchaseListButtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PurchaseListButtActionPerformed
-        
+        this.dispose();
+        new ListOfPurchaseOrder().setVisible(true);
     }//GEN-LAST:event_PurchaseListButtActionPerformed
 
     private void ListButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ListButtonActionPerformed
