@@ -4,6 +4,11 @@
  */
 package Admin;
 
+import FinanceManager.HomeFormFinanceManager;
+import InventoryManager.HomeFormInventoryManager;
+import PurchaseManager.HomeFormPurchaseManager;
+import SalesManager.HomeFormSalesManager;
+
 /**
  *
  * @author yihan
@@ -38,6 +43,11 @@ public class RoleAccessForm extends javax.swing.JFrame {
         setSize(new java.awt.Dimension(800, 500));
 
         btnback.setText("Back");
+        btnback.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnbackActionPerformed(evt);
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 3, 36)); // NOI18N
         jLabel2.setText("ROLE ACCESS");
@@ -52,12 +62,27 @@ public class RoleAccessForm extends javax.swing.JFrame {
 
         btnsales.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btnsales.setText("Sales Manager");
+        btnsales.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnsalesActionPerformed(evt);
+            }
+        });
 
         btninventrory.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btninventrory.setText("Inventory Manager");
+        btninventrory.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btninventroryActionPerformed(evt);
+            }
+        });
 
         btnpurchase.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btnpurchase.setText("Purchase Manager");
+        btnpurchase.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnpurchaseActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -106,7 +131,33 @@ public class RoleAccessForm extends javax.swing.JFrame {
 
     private void btnfinanceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnfinanceActionPerformed
         // TODO add your handling code here:
+        this.dispose();//to close the current form
+        new HomeFormFinanceManager().setVisible(true);
     }//GEN-LAST:event_btnfinanceActionPerformed
+
+    private void btnbackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnbackActionPerformed
+        // TODO add your handling code here:
+        this.dispose();//to close the current form
+        new HomeFormAdmin().setVisible(true);
+    }//GEN-LAST:event_btnbackActionPerformed
+
+    private void btninventroryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btninventroryActionPerformed
+        // TODO add your handling code here:
+        this.dispose();//to close the current form
+        new HomeFormInventoryManager().setVisible(true);
+    }//GEN-LAST:event_btninventroryActionPerformed
+
+    private void btnpurchaseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnpurchaseActionPerformed
+        // TODO add your handling code here:
+        this.dispose();//to close the current form
+        new HomeFormPurchaseManager().setVisible(true);
+    }//GEN-LAST:event_btnpurchaseActionPerformed
+
+    private void btnsalesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsalesActionPerformed
+        // TODO add your handling code here:
+        this.dispose();//to close the current form
+        new HomeFormSalesManager().setVisible(true);
+    }//GEN-LAST:event_btnsalesActionPerformed
 
     /**
      * @param args the command line arguments
