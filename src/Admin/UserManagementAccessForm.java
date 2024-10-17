@@ -82,6 +82,8 @@ public class UserManagementAccessForm extends javax.swing.JFrame {
 
     private void btnregistActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnregistActionPerformed
         // TODO add your handling code here:
+        this.dispose();//to close the current form
+        new UserRegistrationForm().setVisible(true);
     }//GEN-LAST:event_btnregistActionPerformed
 
     private void btnbackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnbackActionPerformed
