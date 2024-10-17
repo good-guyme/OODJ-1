@@ -1,53 +1,105 @@
-
 package SalesManager;
+
+
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
-
 public class SalesEntry extends javax.swing.JFrame {
 
-   
     public SalesEntry() {
         initComponents();
+        refreshData();
     }
 
-   
-    @SuppressWarnings("unchecked")
+    public void refreshData() {
+        try {
+            DefaultTableModel model = (DefaultTableModel) tbl1.getModel();
+            model.setRowCount(0);
+            FileReader fr = new FileReader("sales.txt");
+            BufferedReader br = new BufferedReader(fr);
+            String read;
 
+            while ((read = br.readLine()) != null) {
+                {
+                    String name = read.split(";")[0];
+                    String barcode = read.split(";")[1];
+                    String quantity = read.split(";")[2];
+                    String price = read.split(";")[3];
+
+                    model.addRow(
+                            new Object[]{name, barcode, quantity, price}
+                    );
+
+                }
+            }
+
+        } catch (IOException e) {
+
+        }
+    }
+
+    @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tbl1 = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        txt1 = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
         B1 = new javax.swing.JButton();
         B2 = new javax.swing.JButton();
         B3 = new javax.swing.JButton();
+        T1 = new javax.swing.JTextField();
+        T3 = new javax.swing.JTextField();
+        spin1 = new javax.swing.JSpinner();
+        jLabel1 = new javax.swing.JLabel();
+        T2 = new javax.swing.JTextField();
         B4 = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        T1 = new javax.swing.JTable();
-        Spin1 = new javax.swing.JSpinner();
-        Spin2 = new javax.swing.JSpinner();
-        jLabel4 = new javax.swing.JLabel();
-        txt4 = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        B5 = new javax.swing.JButton();
+        jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel1.setText("Name");
+        tbl1.setBackground(new java.awt.Color(204, 204, 255));
+        tbl1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        tbl1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel2.setText("Quantity");
-
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel3.setText("Boxes");
-
-        txt1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt1ActionPerformed(evt);
+            },
+            new String [] {
+                "Name", "Bar Code", "Quantity", "Price"
+            }
+        ));
+        tbl1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbl1MouseClicked(evt);
             }
         });
+        jScrollPane1.setViewportView(tbl1);
+
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 319, 392));
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("NAME");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 77, 70, 30));
+
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("QUANTITY");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 170, -1, -1));
+
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setText("PRICE");
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 210, 56, -1));
 
         B1.setText("ADD");
         B1.addActionListener(new java.awt.event.ActionListener() {
@@ -55,136 +107,250 @@ public class SalesEntry extends javax.swing.JFrame {
                 B1ActionPerformed(evt);
             }
         });
+        getContentPane().add(B1, new org.netbeans.lib.awtextra.AbsoluteConstraints(383, 317, -1, -1));
 
-        B2.setText("Delete");
-
-        B3.setText("EDIT");
-
-        B4.setText("SAVE");
-
-        T1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Name", "Quantity", "Boxes", "Price"
+        B2.setText("EDIT");
+        B2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                B2ActionPerformed(evt);
             }
-        ));
-        jScrollPane1.setViewportView(T1);
+        });
+        getContentPane().add(B2, new org.netbeans.lib.awtextra.AbsoluteConstraints(598, 317, -1, -1));
 
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel4.setText("Price");
+        B3.setText("DELETE");
+        B3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                B3ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(B3, new org.netbeans.lib.awtextra.AbsoluteConstraints(688, 317, -1, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(47, 543, Short.MAX_VALUE)
-                .addComponent(B4)
-                .addGap(85, 85, 85))
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(76, 76, 76)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 526, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(56, 56, 56)
-                        .addComponent(B1)
-                        .addGap(26, 26, 26)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addGap(80, 80, 80)
-                                .addComponent(B2)
-                                .addGap(80, 80, 80)
-                                .addComponent(B3))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addComponent(jLabel2))
-                                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(202, 202, 202)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(txt4, javax.swing.GroupLayout.DEFAULT_SIZE, 85, Short.MAX_VALUE)
-                                    .addComponent(Spin1)
-                                    .addComponent(Spin2)
-                                    .addComponent(txt1))))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(54, 54, 54)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txt1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(29, 29, 29)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(Spin1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(28, 28, 28)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(Spin2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(23, 23, 23)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(txt4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(53, 53, 53)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(B1)
-                    .addComponent(B2)
-                    .addComponent(B3)
-                    .addComponent(B4))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(18, Short.MAX_VALUE))
-        );
+        T1.setBackground(new java.awt.Color(204, 204, 255));
+        T1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                T1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(T1, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 80, 165, -1));
+
+        T3.setBackground(new java.awt.Color(204, 204, 255));
+        getContentPane().add(T3, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 210, 89, -1));
+
+        spin1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        spin1.setToolTipText("");
+        getContentPane().add(spin1, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 170, 89, -1));
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("BAR CODE");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 130, 90, -1));
+
+        T2.setBackground(new java.awt.Color(204, 204, 255));
+        T2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                T2ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(T2, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 130, 165, -1));
+
+        B4.setText("CLEAR");
+        B4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                B4ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(B4, new org.netbeans.lib.awtextra.AbsoluteConstraints(473, 317, -1, -1));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 478, 37, -1));
+
+        B5.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        B5.setText("BACK");
+        B5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                B5ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(B5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 80, -1));
+
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/SalesManager/1.jpg"))); // NOI18N
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 500));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-//-------------------------------------------------------------------------------------------------------------------------------------
+
+    private void T1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_T1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_T1ActionPerformed
+
+    private void T2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_T2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_T2ActionPerformed
+
+
     private void B1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B1ActionPerformed
 
-        // code to load data into table and validation for not leabing blank data
-        if (txt1.getText().equals("") || Spin1.getValue() == null || Spin2.getValue() == null || txt4.getText().equals("")) {
-            // if any of the space lefft blank then show massage
-            JOptionPane.showMessageDialog(this, "Please Enter all Data!");  // if u want this option u need to import optioon pane.
-        } else {
-            String spinnerValue1 = Spin1.getValue().toString();
-            String spinnerValue2 = Spin2.getValue().toString();
+        try {
+            //loginframe lf = new loginframe();
+            String filename = "sales.txt";
+            FileWriter fw = new FileWriter(filename, true);
 
-            String data[] = {txt1.getText(), spinnerValue1, spinnerValue2, txt4.getText()};  // string to enter data.
+            fw.write(
+                    T1.getText() + ";"
+                    + T2.getText() + ";"
+                    + spin1.getValue() + ";"
+                    + T3.getText() + ";\n"
+            );
 
-            DefaultTableModel tblModel = (DefaultTableModel) T1.getModel();
-            //add string array data
-            tblModel.addRow(data);
-            //saveToFile("Sales.txt");
-
-            // rows added massage
-            JOptionPane.showMessageDialog(this, "Addes successcully");
-            //clear text field for new entry
-            txt1.setText("");
-            Spin1.setValue(0);  // Assuming 0 is your default value
-            Spin2.setValue(0);  // Assuming 0 is your default value
-            txt4.setText("");
-
+            fw.close();
+            JOptionPane.showMessageDialog(
+                    null, "Item Added Successfully !");
+            this.refreshData();
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(
+                    null, e.getMessage());
         }
 
+// TODO add your handling code here:
     }//GEN-LAST:event_B1ActionPerformed
 
+    private void B4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B4ActionPerformed
 
-    private void txt1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt1ActionPerformed
+        T1.setText("");
+        T2.setText("");
+        T3.setText("");
+        spin1.setValue("0");
+        //B1.setEnabled(true);
+
+// TODO add your handling code here:
+    }//GEN-LAST:event_B4ActionPerformed
+
+    private void tbl1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl1MouseClicked
+        DefaultTableModel df = (DefaultTableModel) tbl1.getModel();
+        int selectIndex = tbl1.getSelectedRow();
+        // Check if a row is selected
+        T1.setText(tbl1.getValueAt(selectIndex, 0).toString());
+        T2.setText(tbl1.getValueAt(selectIndex, 1).toString());
+        spin1.setValue(Integer.parseInt(df.getValueAt(selectIndex, 2).toString()));
+        T3.setText(tbl1.getValueAt(selectIndex, 3).toString());
+
+        B1.setEnabled(false);
+
+// TODO add your handling code here:
+    }//GEN-LAST:event_tbl1MouseClicked
+
+
+    private void B2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B2ActionPerformed
+
+        try {
+            String filename = "sales.txt";
+            StringBuilder fileContent = new StringBuilder();
+            String itemIdToEdit = T1.getText(); // Assuming T1 contains the ID of the item to edit
+            boolean itemFound = false;
+
+            // Read the current file contents
+            BufferedReader br = new BufferedReader(new FileReader(filename));
+            String line;
+            while ((line = br.readLine()) != null) {
+                String[] parts = line.split(";"); // Split the line by ';'
+
+                // Check if this line matches the ID to edit
+                if (parts[0].equals(itemIdToEdit)) {
+                    // Modify this line with new values
+                    line = T1.getText() + ";" + T2.getText() + ";" + spin1.getValue() + ";" + T3.getText() + ";";
+                    itemFound = true; // Mark as found
+                }
+
+                // Append the (possibly modified) line to the StringBuilder
+                fileContent.append(line).append("\n");
+            }
+            br.close();
+
+            // Show message if the item was not found
+            if (!itemFound) {
+                JOptionPane.showMessageDialog(null, "Item not found!");
+                return;
+            }
+
+            // Write the modified contents back to the file
+            FileWriter fw = new FileWriter(filename);
+            fw.write(fileContent.toString());
+            fw.close();
+
+            JOptionPane.showMessageDialog(null, "Item Edited Successfully!");
+            this.refreshData();
+              B1.setEnabled(true);
+
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
+
+// TODO add your handling code here:
+    }//GEN-LAST:event_B2ActionPerformed
+
+    private void B3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B3ActionPerformed
+
+                                        
+    try {
+        String filename = "sales.txt";
+        StringBuilder fileContent = new StringBuilder();
+        String itemIdToDelete = T1.getText(); // Assuming T1 contains the ID of the item to delete
+        boolean itemFound = false;
+
+        // Read the current file contents
+        BufferedReader br = new BufferedReader(new FileReader(filename));
+        String line;
+        while ((line = br.readLine()) != null) {
+            String[] parts = line.split(";"); // Split the line by ';'
+            
+            // Check if this line matches the ID to delete
+            if (parts[0].equals(itemIdToDelete)) {
+                itemFound = true; // Mark as found, do not append this line
+                continue; // Skip appending this line to fileContent
+            }
+            
+            // Append the line to the StringBuilder if it is not the one to delete
+            fileContent.append(line).append("\n");
+        }
+        br.close();
+
+        // Show message if the item was not found
+        if (!itemFound) {
+            JOptionPane.showMessageDialog(null, "Item not found!");
+            return;
+        }
+
+        // Write the modified contents back to the file
+        FileWriter fw = new FileWriter(filename);
+        fw.write(fileContent.toString());
+        fw.close();
+        
+        JOptionPane.showMessageDialog(null, "Item Deleted Successfully!");
+        this.refreshData();
+        
+    } catch (IOException e) {
+        JOptionPane.showMessageDialog(null, e.getMessage());
+    }
+
+
+        
+        
+        
+        
+
+
+
+
+
         // TODO add your handling code here:
-    }//GEN-LAST:event_txt1ActionPerformed
-//-----------------------------------------------------------------------------------------------------
+    }//GEN-LAST:event_B3ActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
+    private void B5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B5ActionPerformed
+    this.dispose();
+    new HomeFormSalesManager().setVisible(true);
+        
+
+// TODO add your handling code here:
+    }//GEN-LAST:event_B5ActionPerformed
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -208,6 +374,7 @@ public class SalesEntry extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(SalesEntry.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -222,16 +389,18 @@ public class SalesEntry extends javax.swing.JFrame {
     private javax.swing.JButton B2;
     private javax.swing.JButton B3;
     private javax.swing.JButton B4;
-    private javax.swing.JSpinner Spin1;
-    private javax.swing.JSpinner Spin2;
-    private javax.swing.JTable T1;
+    private javax.swing.JButton B5;
+    private javax.swing.JTextField T1;
+    private javax.swing.JTextField T2;
+    private javax.swing.JTextField T3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField txt1;
-    private javax.swing.JTextField txt4;
+    private javax.swing.JSpinner spin1;
+    private javax.swing.JTable tbl1;
     // End of variables declaration//GEN-END:variables
-
 }
