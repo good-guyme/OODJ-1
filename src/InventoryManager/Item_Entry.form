@@ -288,9 +288,9 @@
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="4">
             <StringItem index="0" value="Electrical Kettle"/>
-            <StringItem index="1" value="Smartphone"/>
-            <StringItem index="2" value="Laptop"/>
-            <StringItem index="3" value="Espresso Machine"/>
+            <StringItem index="1" value="Toaster"/>
+            <StringItem index="2" value="Microwave Oven"/>
+            <StringItem index="3" value="Blender"/>
           </StringArray>
         </Property>
         <Property name="selectedIndex" type="int" value="-1"/>
@@ -326,9 +326,9 @@
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="4">
             <StringItem index="0" value="Electrical Kettle"/>
-            <StringItem index="1" value="Smartphone"/>
-            <StringItem index="2" value="Laptop"/>
-            <StringItem index="3" value="Espresso Machine"/>
+            <StringItem index="1" value="Toaster"/>
+            <StringItem index="2" value="Microwave Oven"/>
+            <StringItem index="3" value="Blender"/>
           </StringArray>
         </Property>
         <Property name="selectedIndex" type="int" value="-1"/>

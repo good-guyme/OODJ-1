@@ -118,7 +118,7 @@ public class Item_Entry extends javax.swing.JFrame {
 
         quantityspi.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
-        itemcb.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Electrical Kettle", "Smartphone", "Laptop", "Espresso Machine" }));
+        itemcb.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Electrical Kettle", "Toaster", "Microwave Oven", "Blender" }));
         itemcb.setSelectedIndex(-1);
         itemcb.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -145,7 +145,7 @@ public class Item_Entry extends javax.swing.JFrame {
             }
         });
 
-        searchcb.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Electrical Kettle", "Smartphone", "Laptop", "Espresso Machine" }));
+        searchcb.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Electrical Kettle", "Toaster", "Microwave Oven", "Blender" }));
         searchcb.setSelectedIndex(-1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -313,13 +313,48 @@ public class Item_Entry extends javax.swing.JFrame {
 
     private void addbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addbtnActionPerformed
         // Get data from the input fields
-        String code = codetxt.getText();
+        String code = codetxt.getText().trim();
         String item = (String) itemcb.getSelectedItem();
-        String pricePerItem = ppitxt.getText();
+        String pricePerItem = ppitxt.getText().trim();
         int quantity = (Integer) quantityspi.getValue();
 
-        // Validation
-        if (code.isEmpty() || item == null || pricePerItem.isEmpty() || quantity <= 0) {
+        // Validate the ID (only allow between 1 and 4)
+        try {
+            int codeValue = Integer.parseInt(code);
+            if (codeValue < 1 || codeValue > 4) {
+                JOptionPane.showMessageDialog(this, "ID must be between 1 and 4.", "ID Error", JOptionPane.ERROR_MESSAGE);
+                return; // Stop the process if the ID is not in the allowed range
+            }
+
+            // Automatically assign item based on the ID
+            switch (codeValue) {
+                case 1:
+                    item = "Electrical Kettle";
+                    break;
+                case 2:
+                    item = "Toaster";
+                    break;
+                case 3:
+                    item = "Microwave Oven";
+                    break;
+                case 4:
+                    item = "Blender";
+                    break;
+                default:
+                    JOptionPane.showMessageDialog(this, "Invalid ID.", "ID Error", JOptionPane.ERROR_MESSAGE);
+                    return;
+            }
+
+            // Set the selected item in the combo box (if needed)
+            itemcb.setSelectedItem(item);
+
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Invalid ID. Please enter a number between 1 and 4.", "ID Error", JOptionPane.ERROR_MESSAGE);
+            return; // Stop the process if the ID is not a valid number
+        }
+
+        // Validation for other fields
+        if (code.isEmpty() || pricePerItem.isEmpty() || quantity <= 0) {
             javax.swing.JOptionPane.showMessageDialog(this, "Please fill out all fields and ensure values are valid.", "Input Error", javax.swing.JOptionPane.ERROR_MESSAGE);
             return; // Stop if validation fails
         }
@@ -379,7 +414,7 @@ public class Item_Entry extends javax.swing.JFrame {
                 writer.write(code + ";" + item + ";" + price + ";" + quantity + System.lineSeparator());
             }
 
-            // Optionally clear the input fields after adding
+            // Clear the input fields after adding
             codetxt.setText("");
             itemcb.setSelectedIndex(-1);
             ppitxt.setText("");
@@ -389,7 +424,7 @@ public class Item_Entry extends javax.swing.JFrame {
             javax.swing.JOptionPane.showMessageDialog(this, "Item added successfully.", "Success", javax.swing.JOptionPane.INFORMATION_MESSAGE);
 
         } catch (NumberFormatException e) {
-            javax.swing.JOptionPane.showMessageDialog(this, "Please enter a valid number for price.", "Input Error", javax.swing.JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Please enter a valid number for price.", "Input Error", JOptionPane.ERROR_MESSAGE);
         } catch (IOException e) {
             javax.swing.JOptionPane.showMessageDialog(this, "Error writing to file.", "File Error", javax.swing.JOptionPane.ERROR_MESSAGE);
             e.printStackTrace();
@@ -454,17 +489,28 @@ public class Item_Entry extends javax.swing.JFrame {
 
         if (selectedRow >= 0) {
             // Get updated data from the input fields
-            String code = codetxt.getText();
-            String pricePerItem = ppitxt.getText();
-            int quantity = (Integer) quantityspi.getValue();
-
-            // Retrieve the original item name from the selected row
-            String item = itementrytbl.getValueAt(selectedRow, 1).toString();
+            String code = codetxt.getText().trim(); // Text field for Code
+            String item = (String) itemcb.getSelectedItem(); // ComboBox for Item
+            String pricePerItem = ppitxt.getText().trim(); // Text field for Price per Item
+            int quantity = (Integer) quantityspi.getValue(); // Spinner for Quantity
 
             // Validation
-            if (code.isEmpty() || pricePerItem.isEmpty() || quantity <= 0) {
+            if (code.isEmpty() || item == null || pricePerItem.isEmpty() || quantity <= 0) {
                 javax.swing.JOptionPane.showMessageDialog(this, "Please fill out all fields and ensure values are valid.", "Input Error", javax.swing.JOptionPane.ERROR_MESSAGE);
                 return; // Stop if validation fails
+            }
+
+            // Check for duplicate entry before updating
+            DefaultTableModel model = (DefaultTableModel) itementrytbl.getModel();
+            for (int i = 0; i < model.getRowCount(); i++) {
+                if (i != selectedRow) { // Skip the current selected row
+                    String existingCode = model.getValueAt(i, 0).toString(); // Code column
+                    String existingItem = model.getValueAt(i, 1).toString(); // Item column
+                    if (existingCode.equals(code) && existingItem.equals(item)) {
+                        javax.swing.JOptionPane.showMessageDialog(this, "This code and item combination already exists.", "Duplicate Entry", javax.swing.JOptionPane.ERROR_MESSAGE);
+                        return; // Stop if a duplicate is found
+                    }
+                }
             }
 
             try {
@@ -472,9 +518,9 @@ public class Item_Entry extends javax.swing.JFrame {
                 double price = Double.parseDouble(pricePerItem);
 
                 // Update the table
-                DefaultTableModel model = (DefaultTableModel) itementrytbl.getModel();
-                model.setValueAt(code, selectedRow, 0); // Update the code
-                model.setValueAt(price, selectedRow, 2); // Update the price per item
+                model.setValueAt(code, selectedRow, 0);    // Update the code
+                model.setValueAt(item, selectedRow, 1);    // Update the item
+                model.setValueAt(price, selectedRow, 2);   // Update the price per item
                 model.setValueAt(quantity, selectedRow, 3); // Update the quantity
 
                 // Update the text file
@@ -490,13 +536,13 @@ public class Item_Entry extends javax.swing.JFrame {
                     }
                 }
 
-                // Optionally clear the input fields after saving
+                // Clear input fields after saving
                 codetxt.setText("");
                 itemcb.setSelectedIndex(-1);
                 ppitxt.setText("");
                 quantityspi.setValue(0);
 
-                // Optionally show a success message
+                // Show a success message
                 javax.swing.JOptionPane.showMessageDialog(this, "Item updated successfully.", "Success", javax.swing.JOptionPane.INFORMATION_MESSAGE);
 
             } catch (NumberFormatException e) {

@@ -8,6 +8,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import javax.swing.JOptionPane;
 import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
@@ -24,6 +25,7 @@ public class Supplier_Entry extends javax.swing.JFrame {
     public Supplier_Entry() {
         initComponents();
         loadDataIntoTable(); //Automatically load data when the form is created
+
     }
 
     /**
@@ -101,7 +103,7 @@ public class Supplier_Entry extends javax.swing.JFrame {
             }
         });
 
-        itemcb.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Electrical Kettle", "Smartphone", "Laptop", "Espresso Machine" }));
+        itemcb.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Electrical Kettle", "Toaster", "Microwave Oven", "Blender" }));
         itemcb.setSelectedIndex(-1);
         itemcb.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -161,7 +163,7 @@ public class Supplier_Entry extends javax.swing.JFrame {
 
         jLabel11.setText("ADDRESS: ");
 
-        searchcb.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Electrical Kettle", "Smartphone", "Laptop", "Espresso Machine" }));
+        searchcb.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Electrical Kettle", "Toaster", "Microwave Oven", "Blender" }));
         searchcb.setSelectedIndex(-1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -384,19 +386,55 @@ public class Supplier_Entry extends javax.swing.JFrame {
         String phone = phonetxt.getText().trim();
         String payment = (String) paymentcb.getSelectedItem();
 
-        // Validation
-        if (id.isEmpty() || name.isEmpty() || address.isEmpty() || item == null || quantity <= 0 || date.isEmpty() || phone.isEmpty() || payment == null) {
-            javax.swing.JOptionPane.showMessageDialog(this, "Please fill out all fields and ensure values are valid.", "Input Error", javax.swing.JOptionPane.ERROR_MESSAGE);
+        // Validate the ID (only allow between 1 and 4)
+        try {
+            int idValue = Integer.parseInt(id);
+            if (idValue < 1 || idValue > 4) {
+                JOptionPane.showMessageDialog(this, "ID must be between 1 and 4.", "ID Error", JOptionPane.ERROR_MESSAGE);
+                return; // Stop the process if the ID is not in the allowed range
+            }
+
+            // Automatically assign item based on the ID
+            switch (idValue) {
+                case 1:
+                    item = "Electrical Kettle";
+                    break;
+                case 2:
+                    item = "Toaster";
+                    break;
+                case 3:
+                    item = "Microwave Oven";
+                    break;
+                case 4:
+                    item = "Blender";
+                    break;
+                default:
+                    JOptionPane.showMessageDialog(this, "Invalid ID.", "ID Error", JOptionPane.ERROR_MESSAGE);
+                    return;
+            }
+
+            // Set the selected item in the combo box (if needed)
+            itemcb.setSelectedItem(item);
+
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Invalid ID. Please enter a number between 1 and 4.", "ID Error", JOptionPane.ERROR_MESSAGE);
+            return; // Stop the process if the ID is not a valid number
+        }
+
+        // Validation for other fields
+        if (name.isEmpty() || address.isEmpty() || item == null || quantity <= 0 || date.isEmpty() || phone.isEmpty() || payment == null) {
+            JOptionPane.showMessageDialog(this, "Please fill out all fields and ensure values are valid.", "Input Error", JOptionPane.ERROR_MESSAGE);
             return; // Stop if validation fails
         }
 
         // Check for duplicate name and item
         DefaultTableModel model = (DefaultTableModel) supplierentrytbl.getModel();
         for (int i = 0; i < model.getRowCount(); i++) {
+            String existingID = model.getValueAt(i, 0).toString(); //ID column
             String existingName = model.getValueAt(i, 1).toString(); // Name column
             String existingItem = model.getValueAt(i, 3).toString(); // Item column
-            if (existingName.equals(name) && existingItem.equals(item)) {
-                javax.swing.JOptionPane.showMessageDialog(this, "This name and item combination already exists.", "Duplicate Entry", javax.swing.JOptionPane.ERROR_MESSAGE);
+            if (existingID.equals(id) && existingName.equals(name) && existingItem.equals(item)) {
+                javax.swing.JOptionPane.showMessageDialog(this, "This id, name and item already exists.", "Duplicate Entry", javax.swing.JOptionPane.ERROR_MESSAGE);
                 return; // Stop if a duplicate is found
             }
         }
@@ -510,13 +548,13 @@ public class Supplier_Entry extends javax.swing.JFrame {
 
         if (selectedRow >= 0) { // Check if a row is selected
             // Get updated data from the input fields
-            String id = idtxt.getText().trim(); // Assuming you have idtxt for ID
-            String name = nametxt.getText().trim(); // Assuming you have nametxt for Name
-            String address = addresstxt.getText().trim(); // Assuming you have addresstxt for Address
+            String id = idtxt.getText().trim(); // idtxt for ID
+            String name = nametxt.getText().trim(); //  nametxt for Name
+            String address = addresstxt.getText().trim(); // addresstxt for Address
             String item = (String) itemcb.getSelectedItem(); // ComboBox for Item
             int quantity = (Integer) quantityspi.getValue(); // Spinner for Quantity
-            String date = datetxt.getText().trim(); // Assuming you have datetxt for Date
-            String phone = phonetxt.getText().trim(); // Assuming you have phonetxt for Phone
+            String date = datetxt.getText().trim(); // datetxt for Date
+            String phone = phonetxt.getText().trim(); // phonetxt for Phone
             String payment = (String) paymentcb.getSelectedItem(); // ComboBox for Payment
 
             // Validation
@@ -529,10 +567,11 @@ public class Supplier_Entry extends javax.swing.JFrame {
             DefaultTableModel model = (DefaultTableModel) supplierentrytbl.getModel(); // Use the same model variable
             for (int i = 0; i < model.getRowCount(); i++) {
                 if (i != selectedRow) { // Avoid checking the selected row
+                    String existingID = model.getValueAt(i, 0).toString(); //ID column
                     String existingName = model.getValueAt(i, 1).toString(); // Name column
                     String existingItem = model.getValueAt(i, 3).toString(); // Item column
-                    if (existingName.equals(name) && existingItem.equals(item)) {
-                        javax.swing.JOptionPane.showMessageDialog(this, "This name and item combination already exists.", "Duplicate Entry", javax.swing.JOptionPane.ERROR_MESSAGE);
+                    if (existingID.equals(id) && existingName.equals(name) && existingItem.equals(item)) {
+                        javax.swing.JOptionPane.showMessageDialog(this, "This id, name and item combination already exists.", "Duplicate Entry", javax.swing.JOptionPane.ERROR_MESSAGE);
                         return; // Stop if a duplicate is found
                     }
                 }

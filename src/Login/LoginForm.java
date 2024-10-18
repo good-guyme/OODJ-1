@@ -5,7 +5,7 @@
 package Login;
 
 import Admin.HomeFormAdmin;
-//import SalesManager.HomeFormSalesManager;
+import SalesManager.HomeFormSalesManager;
 import FinanceManager.HomeFormFinanceManager;
 import InventoryManager.HomeFormInventoryManager;
 import PurchaseManager.HomeFormPurchaseManager;
@@ -204,7 +204,7 @@ public class LoginForm extends javax.swing.JFrame {
                 else if (role.equals("SM")) {
                     JOptionPane.showMessageDialog(null, "Login Successful");
                     this.dispose(); // Close the current form
-//                    new HomeFormSalesManager().setVisible(true); // Open the Sales Manager home form
+                    new HomeFormSalesManager().setVisible(true); // Open the Sales Manager home form
                 }
 
                 br.close(); // Close the BufferedReader after use
