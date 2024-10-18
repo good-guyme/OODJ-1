@@ -26,17 +26,11 @@ public class ItemList extends javax.swing.JFrame {
             String line;
             while ((line = br.readLine()) != null) {
                 if (line.trim().isEmpty()) {
-                     continue; // Skip empty lines
+                    continue; // Skip empty lines
                 }
 
-                System.out.println("Read line: " + line); // Debugging statement
+                /*System.out.println("Read line: " + line); // Debugging statement*/
                 String[] data = line.split(";");
-
-                // Check the data before adding to the model
-                System.out.println("Data length: " + data.length); // Debugging statement
-                for (int i = 0; i < data.length; i++) {
-                    System.out.println("Data[" + i + "]: " + data[i]); // Print each piece of data
-                }
 
                 // Adjust this check to ensure you have the expected number of columns
                 if (data.length == 4) {
@@ -44,7 +38,7 @@ public class ItemList extends javax.swing.JFrame {
                     model.addRow(data); // Add each row of data to the table
 
                 } else {
-                    System.out.println("Invalid data format: " + line);
+                    JOptionPane.showMessageDialog(null, "Invalid data!");
                 }
             }
         } catch (IOException e) {
@@ -148,7 +142,7 @@ public class ItemList extends javax.swing.JFrame {
     }//GEN-LAST:event_B2ActionPerformed
 
     private void B1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B1ActionPerformed
-      
+
         String selectedItem = (String) txt1.getText(); // Get the selected item from the combo box
         DefaultTableModel model = (DefaultTableModel) tbl1.getModel(); // Get the table model
 
@@ -168,8 +162,6 @@ public class ItemList extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Item not found!"); // Show message if no items match
             sorter.setRowFilter(null); //show back all datas
         }
-        
-        
 
 // TODO add your handling code here:
     }//GEN-LAST:event_B1ActionPerformed
