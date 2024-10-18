@@ -1,13 +1,13 @@
 
 package SalesManager;
-//import Login.LoginForm;
+import Login.LoginForm;
 
 public class HomeFormSalesManager extends javax.swing.JFrame {
 
     public HomeFormSalesManager() {
         initComponents();
-        // LoginForm lf = new LoginForm();
-       //lvl1.setText(lf.getUsername());
+         LoginForm lf = new LoginForm();
+       lvl1.setText(lf.getUsername());
         
     }
  
@@ -26,6 +26,7 @@ public class HomeFormSalesManager extends javax.swing.JFrame {
         lvl1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -45,6 +46,13 @@ public class HomeFormSalesManager extends javax.swing.JFrame {
             }
         });
 
+        jButton3.setText("List Of Purchase Orders");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -58,8 +66,9 @@ public class HomeFormSalesManager extends javax.swing.JFrame {
                         .addGap(51, 51, 51)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jButton2)
-                            .addComponent(jButton1))))
-                .addContainerGap(225, Short.MAX_VALUE))
+                            .addComponent(jButton1)
+                            .addComponent(jButton3))))
+                .addContainerGap(197, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -70,7 +79,9 @@ public class HomeFormSalesManager extends javax.swing.JFrame {
                 .addComponent(jButton1)
                 .addGap(18, 18, 18)
                 .addComponent(jButton2)
-                .addContainerGap(113, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jButton3)
+                .addContainerGap(72, Short.MAX_VALUE))
         );
 
         pack();
@@ -89,6 +100,11 @@ new SalesEntry().setVisible(true);
      // this.dispose();
 new ItemList().setVisible(true);  // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+     this.dispose();
+     new ListOfPurchaseOrders().setVisible(true);// TODO add your handling code here:
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -130,6 +146,7 @@ new ItemList().setVisible(true);  // TODO add your handling code here:
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JLabel lvl1;
     // End of variables declaration//GEN-END:variables
 }

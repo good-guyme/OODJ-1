@@ -1,58 +1,68 @@
 package SalesManager;
 
-//import java.io.BufferedReader;
-//import java.io.FileReader;
-//import java.io.IOException;
-//import javax.swing.JOptionPane;
-import javax.swing.JTable;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import javax.swing.JOptionPane;
+import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
 
 public class ItemList extends javax.swing.JFrame {
-private JTable tbl1;
-    private DefaultTableModel df;
+
     public ItemList() {
         initComponents();
+        loadData();
     }
 
-    
-      
-    
-    
-//     private void loadSalesData() {
-//        String filePath = "sales.txt"; // Path to your sales.txt file
-//        try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
-//            String line;
-//            while ((line = br.readLine()) != null) {
-//                String[] data = line.split(","); // Assuming data is comma-separated
-//                df.addRow(data); // Add row to the table
-//            }
-//        } catch (IOException e) {
-//            JOptionPane.showMessageDialog(this, "Error reading sales data", "Error", JOptionPane.ERROR_MESSAGE);
-//        }
-//    }
-//    
-//    
-//    
-    
-    
-    
-    
-    
-    
-    
-    
     @SuppressWarnings("unchecked")
+
+    private void loadData() {
+        DefaultTableModel model = (DefaultTableModel) tbl1.getModel(); //  Created to add / delete or load data in table model
+        model.setRowCount(0); // Clear existing data in the table to load data.
+
+        // Read the data from the text file
+        try (BufferedReader br = new BufferedReader(new FileReader("sales.txt"))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                if (line.trim().isEmpty()) {
+                     continue; // Skip empty lines
+                }
+
+                System.out.println("Read line: " + line); // Debugging statement
+                String[] data = line.split(";");
+
+                // Check the data before adding to the model
+                System.out.println("Data length: " + data.length); // Debugging statement
+                for (int i = 0; i < data.length; i++) {
+                    System.out.println("Data[" + i + "]: " + data[i]); // Print each piece of data
+                }
+
+                // Adjust this check to ensure you have the expected number of columns
+                if (data.length == 4) {
+
+                    model.addRow(data); // Add each row of data to the table
+
+                } else {
+                    System.out.println("Invalid data format: " + line);
+                }
+            }
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(null, "Unable to load data!"); // Handle the exception
+        }
+    }
+
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         jLabel3 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jTextField5 = new javax.swing.JTextField();
+        tbl1 = new javax.swing.JTable();
+        txt1 = new javax.swing.JTextField();
         B1 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        B2 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         jLabel3.setText("jLabel3");
@@ -60,7 +70,7 @@ private JTable tbl1;
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tbl1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -68,14 +78,24 @@ private JTable tbl1;
                 "Name", "Bar Code", "Quantity", "Price"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tbl1);
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 430, 410));
 
-        jTextField5.setBackground(new java.awt.Color(204, 204, 255));
-        getContentPane().add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 90, 200, -1));
+        txt1.setBackground(new java.awt.Color(204, 204, 255));
+        txt1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(txt1, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 90, 200, -1));
 
         B1.setText("SEARCH");
+        B1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                B1ActionPerformed(evt);
+            }
+        });
         getContentPane().add(B1, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 90, -1, -1));
 
         jPanel1.setBackground(new java.awt.Color(204, 204, 255));
@@ -83,11 +103,11 @@ private JTable tbl1;
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 22)); // NOI18N
         jLabel4.setText("LIST OF ITEMS");
 
-        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
-        jButton1.setText("BACK");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        B2.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        B2.setText("BACK");
+        B2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                B2ActionPerformed(evt);
             }
         });
 
@@ -97,7 +117,7 @@ private JTable tbl1;
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(B2, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(191, 191, 191)
                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(333, Short.MAX_VALUE))
@@ -108,7 +128,7 @@ private JTable tbl1;
                 .addGap(6, 6, 6)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(B2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(11, Short.MAX_VALUE))
         );
 
@@ -120,17 +140,44 @@ private JTable tbl1;
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-    this.dispose();
-    new HomeFormSalesManager().setVisible(true);
-
+    private void B2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B2ActionPerformed
+        this.dispose();
+        new HomeFormSalesManager().setVisible(true);
 
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_B2ActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
+    private void B1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B1ActionPerformed
+      
+        String selectedItem = (String) txt1.getText(); // Get the selected item from the combo box
+        DefaultTableModel model = (DefaultTableModel) tbl1.getModel(); // Get the table model
+
+        // Clear any previous search results
+        TableRowSorter<DefaultTableModel> sorter = new TableRowSorter<>(model);
+        tbl1.setRowSorter(sorter);
+
+        if (selectedItem == null || selectedItem.isEmpty()) {
+            // If no item is selected, show all rows
+            sorter.setRowFilter(null);
+        } else {
+            // Use a RowFilter to filter the table based on the selected item
+            sorter.setRowFilter(RowFilter.regexFilter("(?i)" + selectedItem)); // Case-insensitive search
+        }
+
+        if (tbl1.getRowCount() == 0) {
+            JOptionPane.showMessageDialog(null, "Item not found!"); // Show message if no items match
+            sorter.setRowFilter(null); //show back all datas
+        }
+        
+        
+
+// TODO add your handling code here:
+    }//GEN-LAST:event_B1ActionPerformed
+
+    private void txt1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt1ActionPerformed
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -166,13 +213,14 @@ private JTable tbl1;
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton B1;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton B2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField5;
+    private javax.swing.JTable tbl1;
+    private javax.swing.JTextField txt1;
     // End of variables declaration//GEN-END:variables
+
 }

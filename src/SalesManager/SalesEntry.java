@@ -1,6 +1,5 @@
 package SalesManager;
 
-
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -25,13 +24,13 @@ public class SalesEntry extends javax.swing.JFrame {
 
             while ((read = br.readLine()) != null) {
                 {
-                    String name = read.split(";")[0];
-                    String barcode = read.split(";")[1];
+                    String barcode = read.split(";")[0];
+                    String name = read.split(";")[1];
                     String quantity = read.split(";")[2];
                     String price = read.split(";")[3];
 
                     model.addRow(
-                            new Object[]{name, barcode, quantity, price}
+                            new Object[]{barcode, name, quantity, price}
                     );
 
                 }
@@ -54,12 +53,11 @@ public class SalesEntry extends javax.swing.JFrame {
         B1 = new javax.swing.JButton();
         B2 = new javax.swing.JButton();
         B3 = new javax.swing.JButton();
-        T1 = new javax.swing.JTextField();
+        T2 = new javax.swing.JTextField();
         T3 = new javax.swing.JTextField();
         spin1 = new javax.swing.JSpinner();
         jLabel1 = new javax.swing.JLabel();
-        T2 = new javax.swing.JTextField();
-        B4 = new javax.swing.JButton();
+        T1 = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         B5 = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
@@ -74,7 +72,7 @@ public class SalesEntry extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Name", "Bar Code", "Quantity", "Price"
+                "Bar Code", "Name", "Quantity", "Price"
             }
         ));
         tbl1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -89,7 +87,7 @@ public class SalesEntry extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("NAME");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 77, 70, 30));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 120, 70, 30));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
@@ -107,7 +105,7 @@ public class SalesEntry extends javax.swing.JFrame {
                 B1ActionPerformed(evt);
             }
         });
-        getContentPane().add(B1, new org.netbeans.lib.awtextra.AbsoluteConstraints(383, 317, -1, -1));
+        getContentPane().add(B1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 320, -1, -1));
 
         B2.setText("EDIT");
         B2.addActionListener(new java.awt.event.ActionListener() {
@@ -115,7 +113,7 @@ public class SalesEntry extends javax.swing.JFrame {
                 B2ActionPerformed(evt);
             }
         });
-        getContentPane().add(B2, new org.netbeans.lib.awtextra.AbsoluteConstraints(598, 317, -1, -1));
+        getContentPane().add(B2, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 320, -1, -1));
 
         B3.setText("DELETE");
         B3.addActionListener(new java.awt.event.ActionListener() {
@@ -123,15 +121,15 @@ public class SalesEntry extends javax.swing.JFrame {
                 B3ActionPerformed(evt);
             }
         });
-        getContentPane().add(B3, new org.netbeans.lib.awtextra.AbsoluteConstraints(688, 317, -1, -1));
+        getContentPane().add(B3, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 320, -1, -1));
 
-        T1.setBackground(new java.awt.Color(204, 204, 255));
-        T1.addActionListener(new java.awt.event.ActionListener() {
+        T2.setBackground(new java.awt.Color(204, 204, 255));
+        T2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                T1ActionPerformed(evt);
+                T2ActionPerformed(evt);
             }
         });
-        getContentPane().add(T1, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 80, 165, -1));
+        getContentPane().add(T2, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 130, 165, -1));
 
         T3.setBackground(new java.awt.Color(204, 204, 255));
         getContentPane().add(T3, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 210, 89, -1));
@@ -143,23 +141,15 @@ public class SalesEntry extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("BAR CODE");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 130, 90, -1));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 80, 90, -1));
 
-        T2.setBackground(new java.awt.Color(204, 204, 255));
-        T2.addActionListener(new java.awt.event.ActionListener() {
+        T1.setBackground(new java.awt.Color(204, 204, 255));
+        T1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                T2ActionPerformed(evt);
+                T1ActionPerformed(evt);
             }
         });
-        getContentPane().add(T2, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 130, 165, -1));
-
-        B4.setText("CLEAR");
-        B4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                B4ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(B4, new org.netbeans.lib.awtextra.AbsoluteConstraints(473, 317, -1, -1));
+        getContentPane().add(T1, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 80, 165, 30));
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 478, 37, -1));
 
         B5.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
@@ -177,13 +167,13 @@ public class SalesEntry extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void T1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_T1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_T1ActionPerformed
-
     private void T2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_T2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_T2ActionPerformed
+
+    private void T1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_T1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_T1ActionPerformed
 
 
     private void B1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B1ActionPerformed
@@ -208,20 +198,13 @@ public class SalesEntry extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(
                     null, e.getMessage());
         }
-
-// TODO add your handling code here:
-    }//GEN-LAST:event_B1ActionPerformed
-
-    private void B4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B4ActionPerformed
-
         T1.setText("");
         T2.setText("");
         T3.setText("");
-        spin1.setValue("0");
-        //B1.setEnabled(true);
+        spin1.setValue(0);
 
 // TODO add your handling code here:
-    }//GEN-LAST:event_B4ActionPerformed
+    }//GEN-LAST:event_B1ActionPerformed
 
     private void tbl1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl1MouseClicked
         DefaultTableModel df = (DefaultTableModel) tbl1.getModel();
@@ -277,76 +260,80 @@ public class SalesEntry extends javax.swing.JFrame {
 
             JOptionPane.showMessageDialog(null, "Item Edited Successfully!");
             this.refreshData();
-              B1.setEnabled(true);
+            B1.setEnabled(true);
 
         } catch (IOException e) {
             JOptionPane.showMessageDialog(null, e.getMessage());
         }
+
+        T1.setText("");
+        T2.setText("");
+        T3.setText("");
+        spin1.setValue(0);
 
 // TODO add your handling code here:
     }//GEN-LAST:event_B2ActionPerformed
 
     private void B3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B3ActionPerformed
 
-                                        
-    try {
-        String filename = "sales.txt";
-        StringBuilder fileContent = new StringBuilder();
-        String itemIdToDelete = T1.getText(); // Assuming T1 contains the ID of the item to delete
-        boolean itemFound = false;
+        try {
+            String filename = "sales.txt";
+            StringBuilder fileContent = new StringBuilder();
+            String itemIdToDelete = T1.getText(); // Assuming T1 contains the ID of the item to delete
+            boolean itemFound = false;
 
-        // Read the current file contents
-        BufferedReader br = new BufferedReader(new FileReader(filename));
-        String line;
-        while ((line = br.readLine()) != null) {
-            String[] parts = line.split(";"); // Split the line by ';'
-            
-            // Check if this line matches the ID to delete
-            if (parts[0].equals(itemIdToDelete)) {
-                itemFound = true; // Mark as found, do not append this line
-                continue; // Skip appending this line to fileContent
+            // Read the current file contents
+            BufferedReader br = new BufferedReader(new FileReader(filename));
+            String line;
+            while ((line = br.readLine()) != null) {
+                String[] parts = line.split(";"); // Split the line by ';'
+
+                // Check if this line matches the ID to delete
+                if (parts[0].equals(itemIdToDelete)) {
+                    itemFound = true; // Mark as found, do not append this line
+                    continue; // Skip appending this line to fileContent
+                }
+
+                // Append the line to the StringBuilder if it is not the one to delete
+                fileContent.append(line).append("\n");
             }
-            
-            // Append the line to the StringBuilder if it is not the one to delete
-            fileContent.append(line).append("\n");
+            br.close();
+
+            // Show message if the item was not found
+            if (!itemFound) {
+                JOptionPane.showMessageDialog(null, "Item not found!");
+                T1.setText("");
+                T2.setText("");
+                T3.setText("");
+                spin1.setValue(0);
+                return;
+            }
+
+            // Write the modified contents back to the file
+            FileWriter fw = new FileWriter(filename);
+            fw.write(fileContent.toString());
+            fw.close();
+
+            JOptionPane.showMessageDialog(null, "Item Deleted Successfully!");
+            this.refreshData();
+
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
         }
-        br.close();
 
-        // Show message if the item was not found
-        if (!itemFound) {
-            JOptionPane.showMessageDialog(null, "Item not found!");
-            return;
-        }
+        T1.setText("");
+        T2.setText("");
+        T3.setText("");
+        spin1.setValue(0);
 
-        // Write the modified contents back to the file
-        FileWriter fw = new FileWriter(filename);
-        fw.write(fileContent.toString());
-        fw.close();
-        
-        JOptionPane.showMessageDialog(null, "Item Deleted Successfully!");
-        this.refreshData();
-        
-    } catch (IOException e) {
-        JOptionPane.showMessageDialog(null, e.getMessage());
-    }
-
-
-        
-        
-        
-        
-
-
-
-
+        B1.setEnabled(true);
 
         // TODO add your handling code here:
     }//GEN-LAST:event_B3ActionPerformed
 
     private void B5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B5ActionPerformed
-    this.dispose();
-    new HomeFormSalesManager().setVisible(true);
-        
+        this.dispose();
+        new HomeFormSalesManager().setVisible(true);
 
 // TODO add your handling code here:
     }//GEN-LAST:event_B5ActionPerformed
@@ -388,7 +375,6 @@ public class SalesEntry extends javax.swing.JFrame {
     private javax.swing.JButton B1;
     private javax.swing.JButton B2;
     private javax.swing.JButton B3;
-    private javax.swing.JButton B4;
     private javax.swing.JButton B5;
     private javax.swing.JTextField T1;
     private javax.swing.JTextField T2;
