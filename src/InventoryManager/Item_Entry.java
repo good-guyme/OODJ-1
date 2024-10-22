@@ -37,31 +37,29 @@ public class Item_Entry extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel2 = new javax.swing.JLabel();
-        jSeparator2 = new javax.swing.JSeparator();
+        jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         itementrytbl = new javax.swing.JTable();
+        quantityspi = new javax.swing.JSpinner();
+        ppitxt = new javax.swing.JTextField();
         backbtn = new javax.swing.JButton();
+        itemcb = new javax.swing.JComboBox<>();
         gotosupplierentrybtn = new javax.swing.JButton();
+        codetxt = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
+        searchbtn = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
+        savevtb = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
+        searchcb = new javax.swing.JComboBox<>();
         jLabel6 = new javax.swing.JLabel();
         addbtn = new javax.swing.JButton();
         editbtn = new javax.swing.JButton();
         deletebtn = new javax.swing.JButton();
-        quantityspi = new javax.swing.JSpinner();
-        ppitxt = new javax.swing.JTextField();
-        itemcb = new javax.swing.JComboBox<>();
-        codetxt = new javax.swing.JTextField();
-        searchbtn = new javax.swing.JButton();
-        savevtb = new javax.swing.JButton();
-        searchcb = new javax.swing.JComboBox<>();
+        jLabel2 = new javax.swing.JLabel();
+        jSeparator2 = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 3, 36)); // NOI18N
-        jLabel2.setText("ITEM ENTRY");
 
         itementrytbl.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -73,14 +71,29 @@ public class Item_Entry extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(itementrytbl);
 
-        backbtn.setText("Back");
+        quantityspi.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+
+        backbtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/InventoryManager/Image/Back btn .png"))); // NOI18N
         backbtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 backbtnActionPerformed(evt);
             }
         });
 
-        gotosupplierentrybtn.setText("Supplier Entry");
+        itemcb.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Electrical Kettle", "Toaster", "Microwave Oven", "Blender" }));
+        itemcb.setSelectedIndex(-1);
+        itemcb.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                itemcbItemStateChanged(evt);
+            }
+        });
+        itemcb.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemcbActionPerformed(evt);
+            }
+        });
+
+        gotosupplierentrybtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/InventoryManager/Image/Supplierbtn1.png"))); // NOI18N
         gotosupplierentrybtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 gotosupplierentrybtnActionPerformed(evt);
@@ -89,9 +102,26 @@ public class Item_Entry extends javax.swing.JFrame {
 
         jLabel3.setText("CODE :");
 
+        searchbtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/InventoryManager/Image/Searchbtn.jpg"))); // NOI18N
+        searchbtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchbtnActionPerformed(evt);
+            }
+        });
+
         jLabel4.setText("ITEMS :");
 
+        savevtb.setText("Save");
+        savevtb.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                savevtbActionPerformed(evt);
+            }
+        });
+
         jLabel5.setText("PRICE PER ITEM(RM) :");
+
+        searchcb.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Electrical Kettle", "Toaster", "Microwave Oven", "Blender" }));
+        searchcb.setSelectedIndex(-1);
 
         jLabel6.setText("QUANTITY :");
 
@@ -116,352 +146,141 @@ public class Item_Entry extends javax.swing.JFrame {
             }
         });
 
-        quantityspi.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 3, 36)); // NOI18N
+        jLabel2.setText("ITEM ENTRY");
 
-        itemcb.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Electrical Kettle", "Toaster", "Microwave Oven", "Blender" }));
-        itemcb.setSelectedIndex(-1);
-        itemcb.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                itemcbItemStateChanged(evt);
-            }
-        });
-        itemcb.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                itemcbActionPerformed(evt);
-            }
-        });
-
-        searchbtn.setText("Search");
-        searchbtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                searchbtnActionPerformed(evt);
-            }
-        });
-
-        savevtb.setText("Save");
-        savevtb.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                savevtbActionPerformed(evt);
-            }
-        });
-
-        searchcb.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Electrical Kettle", "Toaster", "Microwave Oven", "Blender" }));
-        searchcb.setSelectedIndex(-1);
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addGap(588, 588, 588))
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel2Layout.createSequentialGroup()
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 490, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(backbtn))
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jPanel2Layout.createSequentialGroup()
+                                    .addGap(18, 18, 18)
+                                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel5)
+                                        .addGroup(jPanel2Layout.createSequentialGroup()
+                                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                                    .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addComponent(jLabel6))
+                                            .addGap(71, 71, 71)
+                                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                                .addComponent(ppitxt, javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(codetxt, javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(itemcb, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(quantityspi)))
+                                        .addComponent(gotosupplierentrybtn, javax.swing.GroupLayout.Alignment.TRAILING))
+                                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(addbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(savevtb, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGap(18, 18, 18)
+                                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(editbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(deletebtn, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGap(67, 67, 67))))
+                        .addGroup(jPanel2Layout.createSequentialGroup()
+                            .addComponent(searchcb, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(searchbtn)
+                            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+            .addComponent(jSeparator2, javax.swing.GroupLayout.Alignment.TRAILING)
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(searchcb)
+                    .addComponent(searchbtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(backbtn))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel3)
+                            .addComponent(codetxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel4)
+                            .addComponent(itemcb, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel5)
+                            .addComponent(ppitxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel6)
+                            .addComponent(quantityspi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(43, 43, 43)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(addbtn)
+                                    .addComponent(editbtn))
+                                .addGap(29, 29, 29)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(deletebtn)
+                                    .addComponent(savevtb))
+                                .addGap(29, 66, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(gotosupplierentrybtn)))))
+                .addGap(25, 25, 25))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addGap(588, 588, 588))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 490, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(18, 18, 18)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel5)
-                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                .addComponent(gotosupplierentrybtn)
-                                                .addGroup(layout.createSequentialGroup()
-                                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                                            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                        .addComponent(jLabel6))
-                                                    .addGap(71, 71, 71)
-                                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                                        .addComponent(ppitxt, javax.swing.GroupLayout.Alignment.LEADING)
-                                                        .addComponent(codetxt, javax.swing.GroupLayout.Alignment.LEADING)
-                                                        .addComponent(itemcb, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                        .addComponent(quantityspi)))))
-                                        .addGap(0, 0, Short.MAX_VALUE))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(addbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(savevtb, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGap(18, 18, 18)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(editbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(deletebtn, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGap(67, 67, 67))))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(backbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(searchcb, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(searchbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(0, 0, Short.MAX_VALUE)))
-                        .addContainerGap())))
-            .addComponent(jSeparator2, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(10, 10, 10)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(searchbtn)
-                    .addComponent(searchcb, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                        .addGap(24, 24, 24)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(gotosupplierentrybtn)
-                            .addComponent(backbtn))
-                        .addGap(13, 13, 13))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel3)
-                            .addComponent(codetxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel4)
-                            .addComponent(itemcb, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel5)
-                            .addComponent(ppitxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel6)
-                            .addComponent(quantityspi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(43, 43, 43)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(addbtn)
-                            .addComponent(editbtn))
-                        .addGap(29, 29, 29)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(deletebtn)
-                            .addComponent(savevtb))
-                        .addContainerGap(109, Short.MAX_VALUE))))
+            .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    private void loadDataIntoTable() {
-        DefaultTableModel model = (DefaultTableModel) itementrytbl.getModel(); // Get the table model
 
-        // Read the data from the text file
-        try (BufferedReader br = new BufferedReader(new FileReader("ItemEntryRecord.txt"))) {
-            String line;
-            while ((line = br.readLine()) != null) {
-                if (line.trim().isEmpty()) {
-                    continue; // Skip empty lines
-                }
-                System.out.println("Read line: " + line); // Debugging statement
-                String[] data = line.split(";"); // Assuming data is semicolon-separated
-
-                // Check the data before adding to the model
-                if (data.length == 4) { // Ensure we have the expected number of columns
-                    model.addRow(data); // Add each row of data to the table
-                } else {
-                    System.out.println("Invalid data format: " + line);
-                }
-            }
-        } catch (IOException e) {
-            e.printStackTrace(); // Handle the exception
-        }
-    }
     private void backbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backbtnActionPerformed
         this.dispose();
         new HomeFormInventoryManager().setVisible(true);
     }//GEN-LAST:event_backbtnActionPerformed
 
-    private void gotosupplierentrybtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gotosupplierentrybtnActionPerformed
-        this.dispose();
-        new Supplier_Entry().setVisible(true);
-    }//GEN-LAST:event_gotosupplierentrybtnActionPerformed
-
     private void itemcbItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_itemcbItemStateChanged
         // TODO add your handling code here:
     }//GEN-LAST:event_itemcbItemStateChanged
 
-    private void editbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editbtnActionPerformed
-        // Get the selected row index
-        int selectedRow = itementrytbl.getSelectedRow();
+    private void itemcbActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemcbActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_itemcbActionPerformed
 
-        if (selectedRow >= 0) {
-            // Retrieve data from the selected row
-            String code = itementrytbl.getValueAt(selectedRow, 0).toString();
-            String item = itementrytbl.getValueAt(selectedRow, 1).toString();
-            String price = itementrytbl.getValueAt(selectedRow, 2).toString();
-            String quantity = itementrytbl.getValueAt(selectedRow, 3).toString();
-
-            // Populate the input fields with the selected row's data
-            codetxt.setText(code);
-            itemcb.setSelectedItem(item);
-            ppitxt.setText(price);
-            quantityspi.setValue(Integer.parseInt(quantity)); // Cast to int
-        } else {
-            javax.swing.JOptionPane.showMessageDialog(this, "Please select an item to edit.", "Selection Error", javax.swing.JOptionPane.ERROR_MESSAGE);
-        }
-    }//GEN-LAST:event_editbtnActionPerformed
-
-    private void addbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addbtnActionPerformed
-        // Get data from the input fields
-        String code = codetxt.getText().trim();
-        String item = (String) itemcb.getSelectedItem();
-        String pricePerItem = ppitxt.getText().trim();
-        int quantity = (Integer) quantityspi.getValue();
-
-        // Validate the ID (only allow between 1 and 4)
-        try {
-            int codeValue = Integer.parseInt(code);
-            if (codeValue < 1 || codeValue > 4) {
-                JOptionPane.showMessageDialog(this, "ID must be between 1 and 4.", "ID Error", JOptionPane.ERROR_MESSAGE);
-                return; // Stop the process if the ID is not in the allowed range
-            }
-
-            // Automatically assign item based on the ID
-            switch (codeValue) {
-                case 1:
-                    item = "Electrical Kettle";
-                    break;
-                case 2:
-                    item = "Toaster";
-                    break;
-                case 3:
-                    item = "Microwave Oven";
-                    break;
-                case 4:
-                    item = "Blender";
-                    break;
-                default:
-                    JOptionPane.showMessageDialog(this, "Invalid ID.", "ID Error", JOptionPane.ERROR_MESSAGE);
-                    return;
-            }
-
-            // Set the selected item in the combo box (if needed)
-            itemcb.setSelectedItem(item);
-
-        } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(this, "Invalid ID. Please enter a number between 1 and 4.", "ID Error", JOptionPane.ERROR_MESSAGE);
-            return; // Stop the process if the ID is not a valid number
-        }
-
-        // Validation for other fields
-        if (code.isEmpty() || pricePerItem.isEmpty() || quantity <= 0) {
-            javax.swing.JOptionPane.showMessageDialog(this, "Please fill out all fields and ensure values are valid.", "Input Error", javax.swing.JOptionPane.ERROR_MESSAGE);
-            return; // Stop if validation fails
-        }
-
-        // Check if the item already exists in the table
-        DefaultTableModel model = (DefaultTableModel) itementrytbl.getModel();
-        boolean itemExists = false;
-        int existingRowIndex = -1; // To store the index of the existing item
-
-        for (int i = 0; i < model.getRowCount(); i++) {
-            String existingItem = model.getValueAt(i, 1).toString(); // Get the item column
-            if (existingItem.equalsIgnoreCase(item)) { // Check if item already exists (case-insensitive)
-                itemExists = true;
-                existingRowIndex = i;
-                break;
-            }
-        }
-
-        if (itemExists) {
-            // Provide enhanced feedback: Suggest updating the item instead
-            String message = "The item '" + item + "' already exists in the system.\n"
-                    + "Would you like to update the existing item instead?\n"
-                    + "(Code: " + model.getValueAt(existingRowIndex, 0).toString() + ", "
-                    + "Price: " + model.getValueAt(existingRowIndex, 2).toString() + ", "
-                    + "Quantity: " + model.getValueAt(existingRowIndex, 3).toString() + ")";
-
-            int response = javax.swing.JOptionPane.showConfirmDialog(this, message, "Duplicate Item Found", javax.swing.JOptionPane.YES_NO_OPTION, javax.swing.JOptionPane.QUESTION_MESSAGE);
-
-            if (response == javax.swing.JOptionPane.YES_OPTION) {
-                // Optionally populate the fields for updating if the user chooses to update
-                codetxt.setText(model.getValueAt(existingRowIndex, 0).toString()); // Set the existing code
-                itemcb.setSelectedItem(item); // Set the existing item
-                ppitxt.setText(model.getValueAt(existingRowIndex, 2).toString()); // Set the existing price
-                quantityspi.setValue(Integer.parseInt(model.getValueAt(existingRowIndex, 3).toString())); // Set the existing quantity
-
-                // Auto-select the existing row in the table for the user
-                itementrytbl.setRowSelectionInterval(existingRowIndex, existingRowIndex); // Automatically select the row in the table
-            }
-            return; // Stop adding new item
-        }
-
-        try {
-            // Convert pricePerItem to a double to ensure it's valid
-            double price = Double.parseDouble(pricePerItem);
-
-            // Add the new row to the table
-            model.addRow(new Object[]{code, item, price, quantity});
-
-            // Create the file if it doesn't exist
-            java.io.File file = new java.io.File("ItemEntryRecord.txt");
-            if (!file.exists()) {
-                file.createNewFile(); // This will create the file if it doesn't exist
-            }
-
-            // Append the new item to the file
-            try (java.io.FileWriter writer = new java.io.FileWriter(file, true)) { // true means we are appending to the file
-                writer.write(code + ";" + item + ";" + price + ";" + quantity + System.lineSeparator());
-            }
-
-            // Clear the input fields after adding
-            codetxt.setText("");
-            itemcb.setSelectedIndex(-1);
-            ppitxt.setText("");
-            quantityspi.setValue(0);
-
-            // Optionally show a success message
-            javax.swing.JOptionPane.showMessageDialog(this, "Item added successfully.", "Success", javax.swing.JOptionPane.INFORMATION_MESSAGE);
-
-        } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(this, "Please enter a valid number for price.", "Input Error", JOptionPane.ERROR_MESSAGE);
-        } catch (IOException e) {
-            javax.swing.JOptionPane.showMessageDialog(this, "Error writing to file.", "File Error", javax.swing.JOptionPane.ERROR_MESSAGE);
-            e.printStackTrace();
-        }
-    }//GEN-LAST:event_addbtnActionPerformed
-
-    private void deletebtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deletebtnActionPerformed
-        // Get the selected row index
-        int selectedRow = itementrytbl.getSelectedRow();
-
-        if (selectedRow >= 0) {
-            // Remove the row from the table
-            DefaultTableModel model = (DefaultTableModel) itementrytbl.getModel();
-            model.removeRow(selectedRow);
-
-            // Update the text file with the remaining rows
-            try (FileWriter writer = new FileWriter("ItemEntryRecord.txt", false)) { // false means overwrite
-                for (int i = 0; i < model.getRowCount(); i++) {
-                    String code = model.getValueAt(i, 0).toString();
-                    String item = model.getValueAt(i, 1).toString();
-                    String price = model.getValueAt(i, 2).toString();
-                    String quantity = model.getValueAt(i, 3).toString();
-
-                    // Write the row data back to the file
-                    writer.write(code + ";" + item + ";" + price + ";" + quantity + System.lineSeparator());
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
-            // Optionally: show a confirmation message
-            javax.swing.JOptionPane.showMessageDialog(null, "Selected item deleted successfully.");
-        } else {
-            // Show an error message if no row is selected
-            javax.swing.JOptionPane.showMessageDialog(null, "Please select an item to delete.");
-        }
-    }//GEN-LAST:event_deletebtnActionPerformed
+    private void gotosupplierentrybtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gotosupplierentrybtnActionPerformed
+        this.dispose();
+        new Supplier_Entry().setVisible(true);
+    }//GEN-LAST:event_gotosupplierentrybtnActionPerformed
 
     private void searchbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchbtnActionPerformed
         String selectedItem = (String) searchcb.getSelectedItem(); // Get the selected item from the combo box
@@ -556,10 +375,202 @@ public class Item_Entry extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_savevtbActionPerformed
 
-    private void itemcbActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemcbActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_itemcbActionPerformed
+    private void addbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addbtnActionPerformed
+        // Get data from the input fields
+        String code = codetxt.getText().trim();
+        String item = (String) itemcb.getSelectedItem();
+        String pricePerItem = ppitxt.getText().trim();
+        int quantity = (Integer) quantityspi.getValue();
 
+        // Validate the ID (only allow between 1 and 4)
+        try {
+            int codeValue = Integer.parseInt(code);
+            if (codeValue < 1 || codeValue > 4) {
+                JOptionPane.showMessageDialog(this, "ID must be between 1 and 4.", "ID Error", JOptionPane.ERROR_MESSAGE);
+                return; // Stop the process if the ID is not in the allowed range
+            }
+
+            // Automatically assign item based on the ID
+            switch (codeValue) {
+                case 1:
+                item = "Electrical Kettle";
+                break;
+                case 2:
+                item = "Toaster";
+                break;
+                case 3:
+                item = "Microwave Oven";
+                break;
+                case 4:
+                item = "Blender";
+                break;
+                default:
+                JOptionPane.showMessageDialog(this, "Invalid ID.", "ID Error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+
+            // Set the selected item in the combo box (if needed)
+            itemcb.setSelectedItem(item);
+
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Invalid ID. Please enter a number between 1 and 4.", "ID Error", JOptionPane.ERROR_MESSAGE);
+            return; // Stop the process if the ID is not a valid number
+        }
+
+        // Validation for other fields
+        if (code.isEmpty() || pricePerItem.isEmpty() || quantity <= 0) {
+            javax.swing.JOptionPane.showMessageDialog(this, "Please fill out all fields and ensure values are valid.", "Input Error", javax.swing.JOptionPane.ERROR_MESSAGE);
+            return; // Stop if validation fails
+        }
+
+        // Check if the item already exists in the table
+        DefaultTableModel model = (DefaultTableModel) itementrytbl.getModel();
+        boolean itemExists = false;
+        int existingRowIndex = -1; // To store the index of the existing item
+
+        for (int i = 0; i < model.getRowCount(); i++) {
+            String existingItem = model.getValueAt(i, 1).toString(); // Get the item column
+            if (existingItem.equalsIgnoreCase(item)) { // Check if item already exists (case-insensitive)
+                itemExists = true;
+                existingRowIndex = i;
+                break;
+            }
+        }
+
+        if (itemExists) {
+            // Provide enhanced feedback: Suggest updating the item instead
+            String message = "The item '" + item + "' already exists in the system.\n"
+            + "Would you like to update the existing item instead?\n"
+            + "(Code: " + model.getValueAt(existingRowIndex, 0).toString() + ", "
+            + "Price: " + model.getValueAt(existingRowIndex, 2).toString() + ", "
+            + "Quantity: " + model.getValueAt(existingRowIndex, 3).toString() + ")";
+
+            int response = javax.swing.JOptionPane.showConfirmDialog(this, message, "Duplicate Item Found", javax.swing.JOptionPane.YES_NO_OPTION, javax.swing.JOptionPane.QUESTION_MESSAGE);
+
+            if (response == javax.swing.JOptionPane.YES_OPTION) {
+                // Optionally populate the fields for updating if the user chooses to update
+                codetxt.setText(model.getValueAt(existingRowIndex, 0).toString()); // Set the existing code
+                itemcb.setSelectedItem(item); // Set the existing item
+                ppitxt.setText(model.getValueAt(existingRowIndex, 2).toString()); // Set the existing price
+                quantityspi.setValue(Integer.parseInt(model.getValueAt(existingRowIndex, 3).toString())); // Set the existing quantity
+
+                // Auto-select the existing row in the table for the user
+                itementrytbl.setRowSelectionInterval(existingRowIndex, existingRowIndex); // Automatically select the row in the table
+            }
+            return; // Stop adding new item
+        }
+
+        try {
+            // Convert pricePerItem to a double to ensure it's valid
+            double price = Double.parseDouble(pricePerItem);
+
+            // Add the new row to the table
+            model.addRow(new Object[]{code, item, price, quantity});
+
+            // Create the file if it doesn't exist
+            java.io.File file = new java.io.File("ItemEntryRecord.txt");
+            if (!file.exists()) {
+                file.createNewFile(); // This will create the file if it doesn't exist
+            }
+
+            // Append the new item to the file
+            try (java.io.FileWriter writer = new java.io.FileWriter(file, true)) { // true means we are appending to the file
+                writer.write(code + ";" + item + ";" + price + ";" + quantity + System.lineSeparator());
+            }
+
+            // Clear the input fields after adding
+            codetxt.setText("");
+            itemcb.setSelectedIndex(-1);
+            ppitxt.setText("");
+            quantityspi.setValue(0);
+
+            // Optionally show a success message
+            javax.swing.JOptionPane.showMessageDialog(this, "Item added successfully.", "Success", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Please enter a valid number for price.", "Input Error", JOptionPane.ERROR_MESSAGE);
+        } catch (IOException e) {
+            javax.swing.JOptionPane.showMessageDialog(this, "Error writing to file.", "File Error", javax.swing.JOptionPane.ERROR_MESSAGE);
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_addbtnActionPerformed
+
+    private void editbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editbtnActionPerformed
+        // Get the selected row index
+        int selectedRow = itementrytbl.getSelectedRow();
+
+        if (selectedRow >= 0) {
+            // Retrieve data from the selected row
+            String code = itementrytbl.getValueAt(selectedRow, 0).toString();
+            String item = itementrytbl.getValueAt(selectedRow, 1).toString();
+            String price = itementrytbl.getValueAt(selectedRow, 2).toString();
+            String quantity = itementrytbl.getValueAt(selectedRow, 3).toString();
+
+            // Populate the input fields with the selected row's data
+            codetxt.setText(code);
+            itemcb.setSelectedItem(item);
+            ppitxt.setText(price);
+            quantityspi.setValue(Integer.parseInt(quantity)); // Cast to int
+        } else {
+            javax.swing.JOptionPane.showMessageDialog(this, "Please select an item to edit.", "Selection Error", javax.swing.JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_editbtnActionPerformed
+
+    private void deletebtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deletebtnActionPerformed
+        // Get the selected row index
+        int selectedRow = itementrytbl.getSelectedRow();
+
+        if (selectedRow >= 0) {
+            // Remove the row from the table
+            DefaultTableModel model = (DefaultTableModel) itementrytbl.getModel();
+            model.removeRow(selectedRow);
+
+            // Update the text file with the remaining rows
+            try (FileWriter writer = new FileWriter("ItemEntryRecord.txt", false)) { // false means overwrite
+                for (int i = 0; i < model.getRowCount(); i++) {
+                    String code = model.getValueAt(i, 0).toString();
+                    String item = model.getValueAt(i, 1).toString();
+                    String price = model.getValueAt(i, 2).toString();
+                    String quantity = model.getValueAt(i, 3).toString();
+
+                    // Write the row data back to the file
+                    writer.write(code + ";" + item + ";" + price + ";" + quantity + System.lineSeparator());
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            // Optionally: show a confirmation message
+            javax.swing.JOptionPane.showMessageDialog(null, "Selected item deleted successfully.");
+        } else {
+            // Show an error message if no row is selected
+            javax.swing.JOptionPane.showMessageDialog(null, "Please select an item to delete.");
+        }
+    }//GEN-LAST:event_deletebtnActionPerformed
+    private void loadDataIntoTable() {
+        DefaultTableModel model = (DefaultTableModel) itementrytbl.getModel(); // Get the table model
+
+        // Read the data from the text file
+        try (BufferedReader br = new BufferedReader(new FileReader("ItemEntryRecord.txt"))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                if (line.trim().isEmpty()) {
+                    continue; // Skip empty lines
+                }
+                System.out.println("Read line: " + line); // Debugging statement
+                String[] data = line.split(";"); // Assuming data is semicolon-separated
+
+                // Check the data before adding to the model
+                if (data.length == 4) { // Ensure we have the expected number of columns
+                    model.addRow(data); // Add each row of data to the table
+                } else {
+                    System.out.println("Invalid data format: " + line);
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace(); // Handle the exception
+        }
+    }
     /**
      * @param args the command line arguments
      */
@@ -610,6 +621,7 @@ public class Item_Entry extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JTextField ppitxt;

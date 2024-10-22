@@ -37,12 +37,21 @@ public class Supplier_Entry extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        phonetxt = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
+        jLabel9 = new javax.swing.JLabel();
+        nametxt = new javax.swing.JTextField();
         backbtn = new javax.swing.JButton();
+        savebtn = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         supplierentrytbl = new javax.swing.JTable();
+        jLabel11 = new javax.swing.JLabel();
+        addresstxt = new javax.swing.JTextField();
         gotoitementrybtn = new javax.swing.JButton();
+        searchcb = new javax.swing.JComboBox<>();
         quantityspi = new javax.swing.JSpinner();
         addbtn = new javax.swing.JButton();
         itemcb = new javax.swing.JComboBox<>();
@@ -57,25 +66,28 @@ public class Supplier_Entry extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         paymentcb = new javax.swing.JComboBox<>();
-        phonetxt = new javax.swing.JTextField();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        nametxt = new javax.swing.JTextField();
-        savebtn = new javax.swing.JButton();
-        jLabel11 = new javax.swing.JLabel();
-        addresstxt = new javax.swing.JTextField();
-        searchcb = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
+        jLabel8.setText("PAYMENT: ");
+
         jLabel2.setFont(new java.awt.Font("Segoe UI", 3, 36)); // NOI18N
         jLabel2.setText("SUPPLIER ENTRY");
 
-        backbtn.setText("Back");
+        jLabel9.setText("NAME: ");
+
+        backbtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/InventoryManager/Image/Back btn .png"))); // NOI18N
         backbtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 backbtnActionPerformed(evt);
+            }
+        });
+
+        savebtn.setText("Save");
+        savebtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                savebtnActionPerformed(evt);
             }
         });
 
@@ -89,12 +101,23 @@ public class Supplier_Entry extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(supplierentrytbl);
 
-        gotoitementrybtn.setText("Item Entry");
+        jLabel11.setText("ADDRESS: ");
+
+        addresstxt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addresstxtActionPerformed(evt);
+            }
+        });
+
+        gotoitementrybtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/InventoryManager/Image/Itembtn1.jpg"))); // NOI18N
         gotoitementrybtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 gotoitementrybtnActionPerformed(evt);
             }
         });
+
+        searchcb.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Electrical Kettle", "Toaster", "Microwave Oven", "Blender" }));
+        searchcb.setSelectedIndex(-1);
 
         addbtn.setText("Add");
         addbtn.addActionListener(new java.awt.event.ActionListener() {
@@ -131,7 +154,7 @@ public class Supplier_Entry extends javax.swing.JFrame {
 
         jLabel3.setText("ID: ");
 
-        searchbtn.setText("Search");
+        searchbtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/InventoryManager/Image/Searchbtn.jpg"))); // NOI18N
         searchbtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 searchbtnActionPerformed(evt);
@@ -150,398 +173,149 @@ public class Supplier_Entry extends javax.swing.JFrame {
             }
         });
 
-        jLabel8.setText("PAYMENT: ");
-
-        jLabel9.setText("NAME: ");
-
-        savebtn.setText("Save");
-        savebtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                savebtnActionPerformed(evt);
-            }
-        });
-
-        jLabel11.setText("ADDRESS: ");
-
-        searchcb.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Electrical Kettle", "Toaster", "Microwave Oven", "Blender" }));
-        searchcb.setSelectedIndex(-1);
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jSeparator2, javax.swing.GroupLayout.Alignment.TRAILING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(searchcb, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(searchbtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(541, 541, 541))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(searchcb, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(searchbtn)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 517, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(backbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2))
+                            .addComponent(jLabel2)
+                            .addComponent(backbtn))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                            .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGap(18, 18, 18)
-                                            .addComponent(nametxt))
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGap(18, 18, 18)
-                                            .addComponent(idtxt))
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(jLabel6)
-                                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                        .addComponent(jLabel7)
-                                                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                        .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                                .addComponent(jLabel11))
-                                            .addGap(18, 18, 18)
-                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                                .addComponent(addresstxt)
-                                                .addComponent(paymentcb, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addComponent(datetxt)
-                                                .addComponent(itemcb, 0, 1, Short.MAX_VALUE)
-                                                .addComponent(quantityspi)
-                                                .addComponent(phonetxt, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                            .addComponent(addbtn, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)
-                                            .addComponent(savebtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                        .addGap(58, 58, 58)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(editbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(deletebtn, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGap(10, 10, 10)))
-                                .addGap(28, 28, 28))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(gotoitementrybtn, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap())))))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(addbtn, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)
+                                    .addComponent(savebtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(59, 59, 59)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(editbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(deletebtn, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(37, 37, 37))
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(idtxt))
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                                    .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(nametxt))
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel6)
+                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(jLabel7)
+                                                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addComponent(jLabel11))
+                                    .addGap(18, 18, 18)
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(phonetxt)
+                                        .addComponent(datetxt)
+                                        .addComponent(quantityspi)
+                                        .addComponent(itemcb, 0, 149, Short.MAX_VALUE)
+                                        .addComponent(addresstxt)
+                                        .addComponent(paymentcb, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                .addComponent(gotoitementrybtn, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE))))))
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(10, 10, 10)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(searchbtn)
-                    .addComponent(searchcb, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(searchcb)
+                    .addComponent(searchbtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel3)
                             .addComponent(idtxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel9)
                             .addComponent(nametxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel11))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(6, 6, 6)
+                                .addComponent(addresstxt, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(addresstxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel11))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(itemcb, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel4))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel6)
                             .addComponent(quantityspi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(datetxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel7))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(phonetxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel5))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(paymentcb, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel8))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(addbtn)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(savebtn))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(editbtn)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(deletebtn))))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(addbtn)
+                            .addComponent(editbtn))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(savebtn)
+                            .addComponent(deletebtn)))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                .addGap(41, 41, 41)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(backbtn)
-                    .addComponent(gotoitementrybtn))
-                .addGap(8, 8, 8))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(gotoitementrybtn, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(backbtn))
+                .addGap(25, 25, 25))
+        );
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    private void loadDataIntoTable() {
-        DefaultTableModel model = (DefaultTableModel) supplierentrytbl.getModel(); // Get the table model
-        model.setRowCount(0); // Clear existing data in the table
 
-        // Read the data from the text file
-        try (BufferedReader br = new BufferedReader(new FileReader("SupplierEntryRecord.txt"))) {
-            String line;
-            while ((line = br.readLine()) != null) {
-                if (line.trim().isEmpty()) {
-                    continue; // Skip empty lines
-                }
-                System.out.println("Read line: " + line); // Debugging statement
-                String[] data = line.split(";"); // Assuming data is semicolon-separated
-
-                // Check the data before adding to the model
-                if (data.length == 8) { // Ensure we have the expected number of columns
-                    // Assuming the quantity is in index 4 (adjust based on your file format)
-                    try {
-                        Integer quantity = Integer.parseInt(data[4].trim()); // Adjust the index based on your file format
-                        // Create an array for adding data
-                        Object[] rowData = new Object[]{
-                            data[0].trim(), // First column (e.g., ID)
-                            data[1].trim(), // Second column (e.g., Name)
-                            data[2].trim(), // Third column (e.g., Address)
-                            data[3].trim(), // Fourth column (e.g., Date)
-                            quantity, // Fifth column (Quantity)
-                            data[5].trim(), // Sixth column (e.g., Item)
-                            data[6].trim(), // Seventh column (e.g., Payment)
-                            data[7].trim() // Eighth column (e.g., Additional Info)
-                        };
-                        model.addRow(rowData); // Add each row of data to the table
-                    } catch (NumberFormatException e) {
-                        System.out.println("Error parsing quantity: " + e.getMessage());
-                    }
-                } else {
-                    System.out.println("Invalid data format: " + line);
-                }
-            }
-        } catch (IOException e) {
-            e.printStackTrace(); // Handle the exception
-        }
-    }
     private void backbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backbtnActionPerformed
         this.dispose();
         new HomeFormInventoryManager().setVisible(true);
     }//GEN-LAST:event_backbtnActionPerformed
-
-    private void gotoitementrybtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gotoitementrybtnActionPerformed
-        this.dispose();
-        new Item_Entry().setVisible(true);
-    }//GEN-LAST:event_gotoitementrybtnActionPerformed
-
-    private void itemcbItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_itemcbItemStateChanged
-        // TODO add your handling code here:
-    }//GEN-LAST:event_itemcbItemStateChanged
-
-    private void paymentcbItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_paymentcbItemStateChanged
-        // TODO add your handling code here:
-    }//GEN-LAST:event_paymentcbItemStateChanged
-
-    private void searchbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchbtnActionPerformed
-        String selectedItem = (String) searchcb.getSelectedItem(); // Get the selected item from the combo box
-        DefaultTableModel model = (DefaultTableModel) supplierentrytbl.getModel(); // Get the table model
-
-        // Clear any previous search results
-        TableRowSorter<DefaultTableModel> sorter = new TableRowSorter<>(model);
-        supplierentrytbl.setRowSorter(sorter);
-
-        if (selectedItem == null || selectedItem.isEmpty()) {
-            // If no item is selected, show all rows
-            sorter.setRowFilter(null);
-        } else {
-            // Use a RowFilter to filter the table based on the selected item
-            sorter.setRowFilter(RowFilter.regexFilter("(?i)" + selectedItem)); // Case-insensitive search
-        }
-
-        // Clear the JComboBox selection
-        searchcb.setSelectedItem(null); // Clear the selection
-
-    }//GEN-LAST:event_searchbtnActionPerformed
-
-    private void addbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addbtnActionPerformed
-        // Get data from the input fields
-        String id = idtxt.getText().trim();
-        String name = nametxt.getText().trim();
-        String address = addresstxt.getText().trim();
-        String item = (String) itemcb.getSelectedItem();
-        int quantity = (Integer) quantityspi.getValue();
-        String date = datetxt.getText().trim();
-        String phone = phonetxt.getText().trim();
-        String payment = (String) paymentcb.getSelectedItem();
-
-        // Validate the ID (only allow between 1 and 4)
-        try {
-            int idValue = Integer.parseInt(id);
-            if (idValue < 1 || idValue > 4) {
-                JOptionPane.showMessageDialog(this, "ID must be between 1 and 4.", "ID Error", JOptionPane.ERROR_MESSAGE);
-                return; // Stop the process if the ID is not in the allowed range
-            }
-
-            // Automatically assign item based on the ID
-            switch (idValue) {
-                case 1:
-                    item = "Electrical Kettle";
-                    break;
-                case 2:
-                    item = "Toaster";
-                    break;
-                case 3:
-                    item = "Microwave Oven";
-                    break;
-                case 4:
-                    item = "Blender";
-                    break;
-                default:
-                    JOptionPane.showMessageDialog(this, "Invalid ID.", "ID Error", JOptionPane.ERROR_MESSAGE);
-                    return;
-            }
-
-            // Set the selected item in the combo box (if needed)
-            itemcb.setSelectedItem(item);
-
-        } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(this, "Invalid ID. Please enter a number between 1 and 4.", "ID Error", JOptionPane.ERROR_MESSAGE);
-            return; // Stop the process if the ID is not a valid number
-        }
-
-        // Validation for other fields
-        if (name.isEmpty() || address.isEmpty() || item == null || quantity <= 0 || date.isEmpty() || phone.isEmpty() || payment == null) {
-            JOptionPane.showMessageDialog(this, "Please fill out all fields and ensure values are valid.", "Input Error", JOptionPane.ERROR_MESSAGE);
-            return; // Stop if validation fails
-        }
-
-        // Check for duplicate name and item
-        DefaultTableModel model = (DefaultTableModel) supplierentrytbl.getModel();
-        for (int i = 0; i < model.getRowCount(); i++) {
-            String existingID = model.getValueAt(i, 0).toString(); //ID column
-            String existingName = model.getValueAt(i, 1).toString(); // Name column
-            String existingItem = model.getValueAt(i, 3).toString(); // Item column
-            if (existingID.equals(id) && existingName.equals(name) && existingItem.equals(item)) {
-                javax.swing.JOptionPane.showMessageDialog(this, "This id, name and item already exists.", "Duplicate Entry", javax.swing.JOptionPane.ERROR_MESSAGE);
-                return; // Stop if a duplicate is found
-            }
-        }
-
-        try {
-            // Add the new row to the table
-            model.addRow(new Object[]{id, name, address, item, quantity, date, phone, payment});
-
-            // Create the file if it doesn't exist
-            java.io.File file = new java.io.File("SupplierEntryRecord.txt");
-            if (!file.exists()) {
-                file.createNewFile(); // This will create the file if it doesn't exist
-            }
-
-            // Append the new entry to the file
-            try (java.io.FileWriter writer = new java.io.FileWriter(file, true)) { // true means we are appending to the file
-                writer.write(id + ";" + name + ";" + address + ";" + item + ";" + quantity + ";" + date + ";" + phone + ";" + payment + System.lineSeparator());
-            }
-
-            // Optionally clear the input fields after adding
-            idtxt.setText("");
-            nametxt.setText("");
-            addresstxt.setText("");
-            itemcb.setSelectedIndex(-1);
-            quantityspi.setValue(0);
-            datetxt.setText("");
-            phonetxt.setText("");
-            paymentcb.setSelectedIndex(-1);
-
-            // Optionally show a success message
-            javax.swing.JOptionPane.showMessageDialog(this, "Entry added successfully.", "Success", javax.swing.JOptionPane.INFORMATION_MESSAGE);
-
-        } catch (IOException e) {
-            javax.swing.JOptionPane.showMessageDialog(this, "Error writing to file.", "File Error", javax.swing.JOptionPane.ERROR_MESSAGE);
-            e.printStackTrace();
-        }
-    }//GEN-LAST:event_addbtnActionPerformed
-
-    private void deletebtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deletebtnActionPerformed
-        // Get the selected row index
-        int selectedRow = supplierentrytbl.getSelectedRow();
-
-        if (selectedRow >= 0) {
-            // Remove the row from the table
-            DefaultTableModel model = (DefaultTableModel) supplierentrytbl.getModel();
-            model.removeRow(selectedRow);
-
-            // Update the text file with the remaining rows
-            try (FileWriter writer = new FileWriter("SupplierEntryRecord.txt", false)) { // false means overwrite
-                for (int i = 0; i < model.getRowCount(); i++) {
-                    String id = model.getValueAt(i, 0).toString();
-                    String name = model.getValueAt(i, 1).toString();
-                    String address = model.getValueAt(i, 2).toString();
-                    String item = model.getValueAt(i, 3).toString();
-                    String quantity = model.getValueAt(i, 4).toString();
-                    String date = model.getValueAt(i, 5).toString();
-                    String phone = model.getValueAt(i, 6).toString();
-                    String payment = model.getValueAt(i, 7).toString();
-
-                    // Write the row data back to the file
-                    writer.write(id + ";" + name + ";" + address + ";" + item + ";" + quantity + ";" + date + ";"
-                            + phone + ";" + payment + ";" + System.lineSeparator());
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
-            // Optionally: show a confirmation message
-            javax.swing.JOptionPane.showMessageDialog(null, "Selected item deleted successfully.");
-        } else {
-            // Show an error message if no row is selected
-            javax.swing.JOptionPane.showMessageDialog(null, "Please select an item to delete.");
-        }
-    }//GEN-LAST:event_deletebtnActionPerformed
-
-    private void editbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editbtnActionPerformed
-        int selectedRow = supplierentrytbl.getSelectedRow(); // Get the selected row index
-        if (selectedRow != -1) { // Check if a row is selected
-            try {
-                // Assuming you have 8 columns in your table model
-                String id = supplierentrytbl.getValueAt(selectedRow, 0).toString();
-                String name = supplierentrytbl.getValueAt(selectedRow, 1).toString();
-                String address = supplierentrytbl.getValueAt(selectedRow, 2).toString();
-                String item = supplierentrytbl.getValueAt(selectedRow, 3).toString();
-                int quantity = Integer.parseInt(supplierentrytbl.getValueAt(selectedRow, 4).toString());
-                String date = supplierentrytbl.getValueAt(selectedRow, 5).toString();
-                String phone = supplierentrytbl.getValueAt(selectedRow, 6).toString();
-                String payment = supplierentrytbl.getValueAt(selectedRow, 7).toString();
-
-                // Populate your fields
-                idtxt.setText(id);
-                nametxt.setText(name);
-                addresstxt.setText(address);
-                itemcb.setSelectedItem(item);
-                quantityspi.setValue(quantity);
-                datetxt.setText(date);
-                phonetxt.setText(phone);
-                paymentcb.setSelectedItem(payment);
-            } catch (NumberFormatException ex) {
-                System.out.println("Error parsing quantity: " + ex.getMessage());
-            } catch (ArrayIndexOutOfBoundsException ex) {
-                System.out.println("Selected row index is out of bounds: " + ex.getMessage());
-            }
-        } else {
-            javax.swing.JOptionPane.showMessageDialog(this, "Please select a supplier to edit.", "Selection Error", javax.swing.JOptionPane.ERROR_MESSAGE);
-        }
-    }//GEN-LAST:event_editbtnActionPerformed
 
     private void savebtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_savebtnActionPerformed
         int selectedRow = supplierentrytbl.getSelectedRow(); // Get the selected row index
@@ -627,6 +401,252 @@ public class Supplier_Entry extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_savebtnActionPerformed
 
+    private void addresstxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addresstxtActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_addresstxtActionPerformed
+
+    private void gotoitementrybtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gotoitementrybtnActionPerformed
+        this.dispose();
+        new Item_Entry().setVisible(true);
+    }//GEN-LAST:event_gotoitementrybtnActionPerformed
+
+    private void addbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addbtnActionPerformed
+        // Get data from the input fields
+        String id = idtxt.getText().trim();
+        String name = nametxt.getText().trim();
+        String address = addresstxt.getText().trim();
+        String item = (String) itemcb.getSelectedItem();
+        int quantity = (Integer) quantityspi.getValue();
+        String date = datetxt.getText().trim();
+        String phone = phonetxt.getText().trim();
+        String payment = (String) paymentcb.getSelectedItem();
+
+        // Validate the ID (only allow between 1 and 4)
+        try {
+            int idValue = Integer.parseInt(id);
+            if (idValue < 1 || idValue > 4) {
+                JOptionPane.showMessageDialog(this, "ID must be between 1 and 4.", "ID Error", JOptionPane.ERROR_MESSAGE);
+                return; // Stop the process if the ID is not in the allowed range
+            }
+
+            // Automatically assign item based on the ID
+            switch (idValue) {
+                case 1:
+                item = "Electrical Kettle";
+                break;
+                case 2:
+                item = "Toaster";
+                break;
+                case 3:
+                item = "Microwave Oven";
+                break;
+                case 4:
+                item = "Blender";
+                break;
+                default:
+                JOptionPane.showMessageDialog(this, "Invalid ID.", "ID Error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+
+            // Set the selected item in the combo box (if needed)
+            itemcb.setSelectedItem(item);
+
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Invalid ID. Please enter a number between 1 and 4.", "ID Error", JOptionPane.ERROR_MESSAGE);
+            return; // Stop the process if the ID is not a valid number
+        }
+
+        // Validation for other fields
+        if (name.isEmpty() || address.isEmpty() || item == null || quantity <= 0 || date.isEmpty() || phone.isEmpty() || payment == null) {
+            JOptionPane.showMessageDialog(this, "Please fill out all fields and ensure values are valid.", "Input Error", JOptionPane.ERROR_MESSAGE);
+            return; // Stop if validation fails
+        }
+
+        // Check for duplicate name and item
+        DefaultTableModel model = (DefaultTableModel) supplierentrytbl.getModel();
+        for (int i = 0; i < model.getRowCount(); i++) {
+            String existingID = model.getValueAt(i, 0).toString(); //ID column
+            String existingName = model.getValueAt(i, 1).toString(); // Name column
+            String existingItem = model.getValueAt(i, 3).toString(); // Item column
+            if (existingID.equals(id) && existingName.equals(name) && existingItem.equals(item)) {
+                javax.swing.JOptionPane.showMessageDialog(this, "This id, name and item already exists.", "Duplicate Entry", javax.swing.JOptionPane.ERROR_MESSAGE);
+                return; // Stop if a duplicate is found
+            }
+        }
+
+        try {
+            // Add the new row to the table
+            model.addRow(new Object[]{id, name, address, item, quantity, date, phone, payment});
+
+            // Create the file if it doesn't exist
+            java.io.File file = new java.io.File("SupplierEntryRecord.txt");
+            if (!file.exists()) {
+                file.createNewFile(); // This will create the file if it doesn't exist
+            }
+
+            // Append the new entry to the file
+            try (java.io.FileWriter writer = new java.io.FileWriter(file, true)) { // true means we are appending to the file
+                writer.write(id + ";" + name + ";" + address + ";" + item + ";" + quantity + ";" + date + ";" + phone + ";" + payment + System.lineSeparator());
+            }
+
+            // Optionally clear the input fields after adding
+            idtxt.setText("");
+            nametxt.setText("");
+            addresstxt.setText("");
+            itemcb.setSelectedIndex(-1);
+            quantityspi.setValue(0);
+            datetxt.setText("");
+            phonetxt.setText("");
+            paymentcb.setSelectedIndex(-1);
+
+            // Optionally show a success message
+            javax.swing.JOptionPane.showMessageDialog(this, "Entry added successfully.", "Success", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+
+        } catch (IOException e) {
+            javax.swing.JOptionPane.showMessageDialog(this, "Error writing to file.", "File Error", javax.swing.JOptionPane.ERROR_MESSAGE);
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_addbtnActionPerformed
+
+    private void itemcbItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_itemcbItemStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_itemcbItemStateChanged
+
+    private void editbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editbtnActionPerformed
+        int selectedRow = supplierentrytbl.getSelectedRow(); // Get the selected row index
+        if (selectedRow != -1) { // Check if a row is selected
+            try {
+                // Assuming you have 8 columns in your table model
+                String id = supplierentrytbl.getValueAt(selectedRow, 0).toString();
+                String name = supplierentrytbl.getValueAt(selectedRow, 1).toString();
+                String address = supplierentrytbl.getValueAt(selectedRow, 2).toString();
+                String item = supplierentrytbl.getValueAt(selectedRow, 3).toString();
+                int quantity = Integer.parseInt(supplierentrytbl.getValueAt(selectedRow, 4).toString());
+                String date = supplierentrytbl.getValueAt(selectedRow, 5).toString();
+                String phone = supplierentrytbl.getValueAt(selectedRow, 6).toString();
+                String payment = supplierentrytbl.getValueAt(selectedRow, 7).toString();
+
+                // Populate your fields
+                idtxt.setText(id);
+                nametxt.setText(name);
+                addresstxt.setText(address);
+                itemcb.setSelectedItem(item);
+                quantityspi.setValue(quantity);
+                datetxt.setText(date);
+                phonetxt.setText(phone);
+                paymentcb.setSelectedItem(payment);
+            } catch (NumberFormatException ex) {
+                System.out.println("Error parsing quantity: " + ex.getMessage());
+            } catch (ArrayIndexOutOfBoundsException ex) {
+                System.out.println("Selected row index is out of bounds: " + ex.getMessage());
+            }
+        } else {
+            javax.swing.JOptionPane.showMessageDialog(this, "Please select a supplier to edit.", "Selection Error", javax.swing.JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_editbtnActionPerformed
+
+    private void deletebtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deletebtnActionPerformed
+        // Get the selected row index
+        int selectedRow = supplierentrytbl.getSelectedRow();
+
+        if (selectedRow >= 0) {
+            // Remove the row from the table
+            DefaultTableModel model = (DefaultTableModel) supplierentrytbl.getModel();
+            model.removeRow(selectedRow);
+
+            // Update the text file with the remaining rows
+            try (FileWriter writer = new FileWriter("SupplierEntryRecord.txt", false)) { // false means overwrite
+                for (int i = 0; i < model.getRowCount(); i++) {
+                    String id = model.getValueAt(i, 0).toString();
+                    String name = model.getValueAt(i, 1).toString();
+                    String address = model.getValueAt(i, 2).toString();
+                    String item = model.getValueAt(i, 3).toString();
+                    String quantity = model.getValueAt(i, 4).toString();
+                    String date = model.getValueAt(i, 5).toString();
+                    String phone = model.getValueAt(i, 6).toString();
+                    String payment = model.getValueAt(i, 7).toString();
+
+                    // Write the row data back to the file
+                    writer.write(id + ";" + name + ";" + address + ";" + item + ";" + quantity + ";" + date + ";"
+                        + phone + ";" + payment + ";" + System.lineSeparator());
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            // Optionally: show a confirmation message
+            javax.swing.JOptionPane.showMessageDialog(null, "Selected item deleted successfully.");
+        } else {
+            // Show an error message if no row is selected
+            javax.swing.JOptionPane.showMessageDialog(null, "Please select an item to delete.");
+        }
+    }//GEN-LAST:event_deletebtnActionPerformed
+
+    private void searchbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchbtnActionPerformed
+        String selectedItem = (String) searchcb.getSelectedItem(); // Get the selected item from the combo box
+        DefaultTableModel model = (DefaultTableModel) supplierentrytbl.getModel(); // Get the table model
+
+        // Clear any previous search results
+        TableRowSorter<DefaultTableModel> sorter = new TableRowSorter<>(model);
+        supplierentrytbl.setRowSorter(sorter);
+
+        if (selectedItem == null || selectedItem.isEmpty()) {
+            // If no item is selected, show all rows
+            sorter.setRowFilter(null);
+        } else {
+            // Use a RowFilter to filter the table based on the selected item
+            sorter.setRowFilter(RowFilter.regexFilter("(?i)" + selectedItem)); // Case-insensitive search
+        }
+
+        // Clear the JComboBox selection
+        searchcb.setSelectedItem(null); // Clear the selection
+    }//GEN-LAST:event_searchbtnActionPerformed
+
+    private void paymentcbItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_paymentcbItemStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_paymentcbItemStateChanged
+    private void loadDataIntoTable() {
+        DefaultTableModel model = (DefaultTableModel) supplierentrytbl.getModel(); // Get the table model
+        model.setRowCount(0); // Clear existing data in the table
+
+        // Read the data from the text file
+        try (BufferedReader br = new BufferedReader(new FileReader("SupplierEntryRecord.txt"))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                if (line.trim().isEmpty()) {
+                    continue; // Skip empty lines
+                }
+                System.out.println("Read line: " + line); // Debugging statement
+                String[] data = line.split(";"); // Assuming data is semicolon-separated
+
+                // Check the data before adding to the model
+                if (data.length == 8) { // Ensure we have the expected number of columns
+                    // Assuming the quantity is in index 4 (adjust based on your file format)
+                    try {
+                        Integer quantity = Integer.parseInt(data[4].trim()); // Adjust the index based on your file format
+                        // Create an array for adding data
+                        Object[] rowData = new Object[]{
+                            data[0].trim(), // First column (e.g., ID)
+                            data[1].trim(), // Second column (e.g., Name)
+                            data[2].trim(), // Third column (e.g., Address)
+                            data[3].trim(), // Fourth column (e.g., Date)
+                            quantity, // Fifth column (Quantity)
+                            data[5].trim(), // Sixth column (e.g., Item)
+                            data[6].trim(), // Seventh column (e.g., Payment)
+                            data[7].trim() // Eighth column (e.g., Additional Info)
+                        };
+                        model.addRow(rowData); // Add each row of data to the table
+                    } catch (NumberFormatException e) {
+                        System.out.println("Error parsing quantity: " + e.getMessage());
+                    }
+                } else {
+                    System.out.println("Invalid data format: " + line);
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace(); // Handle the exception
+        }
+    }
     /**
      * @param args the command line arguments
      */
@@ -682,6 +702,7 @@ public class Supplier_Entry extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JTextField nametxt;
