@@ -42,6 +42,7 @@ public class HomeFormInventoryManager extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -89,6 +90,9 @@ public class HomeFormInventoryManager extends javax.swing.JFrame {
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("Item Entry");
 
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/InventoryManager/Image/moshayu.jpg"))); // NOI18N
+        jLabel6.setPreferredSize(new java.awt.Dimension(800, 500));
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -119,6 +123,8 @@ public class HomeFormInventoryManager extends javax.swing.JFrame {
                     .addComponent(logoutbtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(82, 82, 82))
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 800, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -146,6 +152,8 @@ public class HomeFormInventoryManager extends javax.swing.JFrame {
                     .addComponent(jLabel4)
                     .addComponent(jLabel5))
                 .addGap(103, 103, 103))
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 500, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -162,21 +170,21 @@ public class HomeFormInventoryManager extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void itementrybtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itementrybtnActionPerformed
+    private void logoutbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutbtnActionPerformed
+        JOptionPane.showMessageDialog(null, "Logout Successfull");
         this.dispose();
-        new Item_Entry().setVisible(true);//To go to Item_Entry
-    }//GEN-LAST:event_itementrybtnActionPerformed
+        new LoginForm().setVisible(true);//To go to LoginForm
+    }//GEN-LAST:event_logoutbtnActionPerformed
 
     private void supplierentrybtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_supplierentrybtnActionPerformed
         this.dispose();
         new Supplier_Entry().setVisible(true);//To go to Supplier_Entry
     }//GEN-LAST:event_supplierentrybtnActionPerformed
 
-    private void logoutbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutbtnActionPerformed
-        JOptionPane.showMessageDialog(null, "Logout Successfull");
+    private void itementrybtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itementrybtnActionPerformed
         this.dispose();
-        new LoginForm().setVisible(true);//To go to LoginForm
-    }//GEN-LAST:event_logoutbtnActionPerformed
+        new Item_Entry().setVisible(true);//To go to Item_Entry
+    }//GEN-LAST:event_itementrybtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -223,6 +231,7 @@ public class HomeFormInventoryManager extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JButton logoutbtn;

@@ -58,6 +58,7 @@ public class Item_Entry extends javax.swing.JFrame {
         deletebtn = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
+        jLabel7 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -149,6 +150,9 @@ public class Item_Entry extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Segoe UI", 3, 36)); // NOI18N
         jLabel2.setText("ITEM ENTRY");
 
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/InventoryManager/Image/moyu.jpg"))); // NOI18N
+        jLabel7.setPreferredSize(new java.awt.Dimension(800, 500));
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -182,7 +186,7 @@ public class Item_Entry extends javax.swing.JFrame {
                                                 .addComponent(itemcb, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                                 .addComponent(quantityspi)))
                                         .addComponent(gotosupplierentrybtn, javax.swing.GroupLayout.Alignment.TRAILING))
-                                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addContainerGap(32, Short.MAX_VALUE))
                                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -199,6 +203,10 @@ public class Item_Entry extends javax.swing.JFrame {
                             .addComponent(searchbtn)
                             .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
             .addComponent(jSeparator2, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 812, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -243,11 +251,15 @@ public class Item_Entry extends javax.swing.JFrame {
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(deletebtn)
                                     .addComponent(savevtb))
-                                .addGap(29, 66, Short.MAX_VALUE))
+                                .addGap(29, 77, Short.MAX_VALUE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(gotosupplierentrybtn)))))
                 .addGap(25, 25, 25))
+            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel2Layout.createSequentialGroup()
+                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 511, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -258,122 +270,40 @@ public class Item_Entry extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void backbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backbtnActionPerformed
-        this.dispose();
-        new HomeFormInventoryManager().setVisible(true);
-    }//GEN-LAST:event_backbtnActionPerformed
+    private void itemcbActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemcbActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_itemcbActionPerformed
 
     private void itemcbItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_itemcbItemStateChanged
         // TODO add your handling code here:
     }//GEN-LAST:event_itemcbItemStateChanged
 
-    private void itemcbActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemcbActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_itemcbActionPerformed
-
-    private void gotosupplierentrybtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gotosupplierentrybtnActionPerformed
-        this.dispose();
-        new Supplier_Entry().setVisible(true);
-    }//GEN-LAST:event_gotosupplierentrybtnActionPerformed
-
-    private void searchbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchbtnActionPerformed
-        String selectedItem = (String) searchcb.getSelectedItem(); // Get the selected item from the combo box
-        DefaultTableModel model = (DefaultTableModel) itementrytbl.getModel(); // Get the table model
-
-        // Clear any previous search results
-        TableRowSorter<DefaultTableModel> sorter = new TableRowSorter<>(model);
-        itementrytbl.setRowSorter(sorter);
-
-        if (selectedItem == null || selectedItem.isEmpty()) {
-            // If no item is selected, show all rows
-            sorter.setRowFilter(null);
-        } else {
-            // Use a RowFilter to filter the table based on the selected item
-            sorter.setRowFilter(RowFilter.regexFilter("(?i)" + selectedItem)); // Case-insensitive search
-        }
-
-        // Clear the JComboBox selection
-        searchcb.setSelectedItem(null); // Clear the selection
-    }//GEN-LAST:event_searchbtnActionPerformed
-
-    private void savevtbActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_savevtbActionPerformed
+    private void editbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editbtnActionPerformed
         // Get the selected row index
         int selectedRow = itementrytbl.getSelectedRow();
 
         if (selectedRow >= 0) {
-            // Get updated data from the input fields
-            String code = codetxt.getText().trim(); // Text field for Code
-            String item = (String) itemcb.getSelectedItem(); // ComboBox for Item
-            String pricePerItem = ppitxt.getText().trim(); // Text field for Price per Item
-            int quantity = (Integer) quantityspi.getValue(); // Spinner for Quantity
+            // Retrieve data from the selected row
+            String code = itementrytbl.getValueAt(selectedRow, 0).toString();
+            String item = itementrytbl.getValueAt(selectedRow, 1).toString();
+            String price = itementrytbl.getValueAt(selectedRow, 2).toString();
+            String quantity = itementrytbl.getValueAt(selectedRow, 3).toString();
 
-            // Validation
-            if (code.isEmpty() || item == null || pricePerItem.isEmpty() || quantity <= 0) {
-                javax.swing.JOptionPane.showMessageDialog(this, "Please fill out all fields and ensure values are valid.", "Input Error", javax.swing.JOptionPane.ERROR_MESSAGE);
-                return; // Stop if validation fails
-            }
-
-            // Check for duplicate entry before updating
-            DefaultTableModel model = (DefaultTableModel) itementrytbl.getModel();
-            for (int i = 0; i < model.getRowCount(); i++) {
-                if (i != selectedRow) { // Skip the current selected row
-                    String existingCode = model.getValueAt(i, 0).toString(); // Code column
-                    String existingItem = model.getValueAt(i, 1).toString(); // Item column
-                    if (existingCode.equals(code) && existingItem.equals(item)) {
-                        javax.swing.JOptionPane.showMessageDialog(this, "This code and item combination already exists.", "Duplicate Entry", javax.swing.JOptionPane.ERROR_MESSAGE);
-                        return; // Stop if a duplicate is found
-                    }
-                }
-            }
-
-            try {
-                // Convert pricePerItem to a double to ensure it's valid
-                double price = Double.parseDouble(pricePerItem);
-
-                // Update the table
-                model.setValueAt(code, selectedRow, 0);    // Update the code
-                model.setValueAt(item, selectedRow, 1);    // Update the item
-                model.setValueAt(price, selectedRow, 2);   // Update the price per item
-                model.setValueAt(quantity, selectedRow, 3); // Update the quantity
-
-                // Update the text file
-                try (FileWriter writer = new FileWriter("ItemEntryRecord.txt", false)) { // false means overwrite
-                    for (int i = 0; i < model.getRowCount(); i++) {
-                        String codeValue = model.getValueAt(i, 0).toString();
-                        String itemValue = model.getValueAt(i, 1).toString();
-                        String priceValue = model.getValueAt(i, 2).toString();
-                        String quantityValue = model.getValueAt(i, 3).toString();
-
-                        // Write the row data back to the file
-                        writer.write(codeValue + ";" + itemValue + ";" + priceValue + ";" + quantityValue + System.lineSeparator());
-                    }
-                }
-
-                // Clear input fields after saving
-                codetxt.setText("");
-                itemcb.setSelectedIndex(-1);
-                ppitxt.setText("");
-                quantityspi.setValue(0);
-
-                // Show a success message
-                javax.swing.JOptionPane.showMessageDialog(this, "Item updated successfully.", "Success", javax.swing.JOptionPane.INFORMATION_MESSAGE);
-
-            } catch (NumberFormatException e) {
-                javax.swing.JOptionPane.showMessageDialog(this, "Please enter a valid number for price.", "Input Error", javax.swing.JOptionPane.ERROR_MESSAGE);
-            } catch (IOException e) {
-                javax.swing.JOptionPane.showMessageDialog(this, "Error writing to file.", "File Error", javax.swing.JOptionPane.ERROR_MESSAGE);
-                e.printStackTrace();
-            }
+            // Populate the input fields with the selected row's data
+            codetxt.setText(code);
+            itemcb.setSelectedItem(item);
+            ppitxt.setText(price);
+            quantityspi.setValue(Integer.parseInt(quantity)); // Cast to int
         } else {
-            javax.swing.JOptionPane.showMessageDialog(this, "Please select an item to save changes.", "Selection Error", javax.swing.JOptionPane.ERROR_MESSAGE);
+            javax.swing.JOptionPane.showMessageDialog(this, "Please select an item to edit.", "Selection Error", javax.swing.JOptionPane.ERROR_MESSAGE);
         }
-    }//GEN-LAST:event_savevtbActionPerformed
+    }//GEN-LAST:event_editbtnActionPerformed
 
     private void addbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addbtnActionPerformed
         // Get data from the input fields
@@ -495,26 +425,78 @@ public class Item_Entry extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_addbtnActionPerformed
 
-    private void editbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editbtnActionPerformed
+    private void savevtbActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_savevtbActionPerformed
         // Get the selected row index
         int selectedRow = itementrytbl.getSelectedRow();
 
         if (selectedRow >= 0) {
-            // Retrieve data from the selected row
-            String code = itementrytbl.getValueAt(selectedRow, 0).toString();
-            String item = itementrytbl.getValueAt(selectedRow, 1).toString();
-            String price = itementrytbl.getValueAt(selectedRow, 2).toString();
-            String quantity = itementrytbl.getValueAt(selectedRow, 3).toString();
+            // Get updated data from the input fields
+            String code = codetxt.getText().trim(); // Text field for Code
+            String item = (String) itemcb.getSelectedItem(); // ComboBox for Item
+            String pricePerItem = ppitxt.getText().trim(); // Text field for Price per Item
+            int quantity = (Integer) quantityspi.getValue(); // Spinner for Quantity
 
-            // Populate the input fields with the selected row's data
-            codetxt.setText(code);
-            itemcb.setSelectedItem(item);
-            ppitxt.setText(price);
-            quantityspi.setValue(Integer.parseInt(quantity)); // Cast to int
+            // Validation
+            if (code.isEmpty() || item == null || pricePerItem.isEmpty() || quantity <= 0) {
+                javax.swing.JOptionPane.showMessageDialog(this, "Please fill out all fields and ensure values are valid.", "Input Error", javax.swing.JOptionPane.ERROR_MESSAGE);
+                return; // Stop if validation fails
+            }
+
+            // Check for duplicate entry before updating
+            DefaultTableModel model = (DefaultTableModel) itementrytbl.getModel();
+            for (int i = 0; i < model.getRowCount(); i++) {
+                if (i != selectedRow) { // Skip the current selected row
+                    String existingCode = model.getValueAt(i, 0).toString(); // Code column
+                    String existingItem = model.getValueAt(i, 1).toString(); // Item column
+                    if (existingCode.equals(code) && existingItem.equals(item)) {
+                        javax.swing.JOptionPane.showMessageDialog(this, "This code and item combination already exists.", "Duplicate Entry", javax.swing.JOptionPane.ERROR_MESSAGE);
+                        return; // Stop if a duplicate is found
+                    }
+                }
+            }
+
+            try {
+                // Convert pricePerItem to a double to ensure it's valid
+                double price = Double.parseDouble(pricePerItem);
+
+                // Update the table
+                model.setValueAt(code, selectedRow, 0);    // Update the code
+                model.setValueAt(item, selectedRow, 1);    // Update the item
+                model.setValueAt(price, selectedRow, 2);   // Update the price per item
+                model.setValueAt(quantity, selectedRow, 3); // Update the quantity
+
+                // Update the text file
+                try (FileWriter writer = new FileWriter("ItemEntryRecord.txt", false)) { // false means overwrite
+                    for (int i = 0; i < model.getRowCount(); i++) {
+                        String codeValue = model.getValueAt(i, 0).toString();
+                        String itemValue = model.getValueAt(i, 1).toString();
+                        String priceValue = model.getValueAt(i, 2).toString();
+                        String quantityValue = model.getValueAt(i, 3).toString();
+
+                        // Write the row data back to the file
+                        writer.write(codeValue + ";" + itemValue + ";" + priceValue + ";" + quantityValue + System.lineSeparator());
+                    }
+                }
+
+                // Clear input fields after saving
+                codetxt.setText("");
+                itemcb.setSelectedIndex(-1);
+                ppitxt.setText("");
+                quantityspi.setValue(0);
+
+                // Show a success message
+                javax.swing.JOptionPane.showMessageDialog(this, "Item updated successfully.", "Success", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+
+            } catch (NumberFormatException e) {
+                javax.swing.JOptionPane.showMessageDialog(this, "Please enter a valid number for price.", "Input Error", javax.swing.JOptionPane.ERROR_MESSAGE);
+            } catch (IOException e) {
+                javax.swing.JOptionPane.showMessageDialog(this, "Error writing to file.", "File Error", javax.swing.JOptionPane.ERROR_MESSAGE);
+                e.printStackTrace();
+            }
         } else {
-            javax.swing.JOptionPane.showMessageDialog(this, "Please select an item to edit.", "Selection Error", javax.swing.JOptionPane.ERROR_MESSAGE);
+            javax.swing.JOptionPane.showMessageDialog(this, "Please select an item to save changes.", "Selection Error", javax.swing.JOptionPane.ERROR_MESSAGE);
         }
-    }//GEN-LAST:event_editbtnActionPerformed
+    }//GEN-LAST:event_savevtbActionPerformed
 
     private void deletebtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deletebtnActionPerformed
         // Get the selected row index
@@ -547,6 +529,36 @@ public class Item_Entry extends javax.swing.JFrame {
             javax.swing.JOptionPane.showMessageDialog(null, "Please select an item to delete.");
         }
     }//GEN-LAST:event_deletebtnActionPerformed
+
+    private void gotosupplierentrybtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gotosupplierentrybtnActionPerformed
+        this.dispose();
+        new Supplier_Entry().setVisible(true);
+    }//GEN-LAST:event_gotosupplierentrybtnActionPerformed
+
+    private void backbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backbtnActionPerformed
+        this.dispose();
+        new HomeFormInventoryManager().setVisible(true);
+    }//GEN-LAST:event_backbtnActionPerformed
+
+    private void searchbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchbtnActionPerformed
+        String selectedItem = (String) searchcb.getSelectedItem(); // Get the selected item from the combo box
+        DefaultTableModel model = (DefaultTableModel) itementrytbl.getModel(); // Get the table model
+
+        // Clear any previous search results
+        TableRowSorter<DefaultTableModel> sorter = new TableRowSorter<>(model);
+        itementrytbl.setRowSorter(sorter);
+
+        if (selectedItem == null || selectedItem.isEmpty()) {
+            // If no item is selected, show all rows
+            sorter.setRowFilter(null);
+        } else {
+            // Use a RowFilter to filter the table based on the selected item
+            sorter.setRowFilter(RowFilter.regexFilter("(?i)" + selectedItem)); // Case-insensitive search
+        }
+
+        // Clear the JComboBox selection
+        searchcb.setSelectedItem(null); // Clear the selection
+    }//GEN-LAST:event_searchbtnActionPerformed
     private void loadDataIntoTable() {
         DefaultTableModel model = (DefaultTableModel) itementrytbl.getModel(); // Get the table model
 
@@ -621,6 +633,7 @@ public class Item_Entry extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator2;
