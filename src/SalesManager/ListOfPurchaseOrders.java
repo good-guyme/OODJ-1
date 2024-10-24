@@ -9,9 +9,9 @@ import javax.swing.table.DefaultTableModel;
 public class ListOfPurchaseOrders extends javax.swing.JFrame {
 
     public ListOfPurchaseOrders() {
-      initComponents();
+        initComponents();
         loadData();
-        
+
     }
 
     @SuppressWarnings("unchecked")
@@ -54,6 +54,11 @@ public class ListOfPurchaseOrders extends javax.swing.JFrame {
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 10, -1, -1));
 
         B1.setText("Back");
+        B1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                B1ActionPerformed(evt);
+            }
+        });
         jPanel1.add(B1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 100, 30));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 50));
@@ -63,8 +68,12 @@ public class ListOfPurchaseOrders extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-   
-    
+
+    private void B1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B1ActionPerformed
+        this.dispose();
+        new HomeFormSalesManager().setVisible(true);// TODO add your handling code here:
+    }//GEN-LAST:event_B1ActionPerformed
+
     private void loadData() {
         DefaultTableModel model = (DefaultTableModel) tbl1.getModel(); //  Created to add / delete or load data in table model
         model.setRowCount(0); // Clear existing data in the table to load data.
@@ -92,15 +101,6 @@ public class ListOfPurchaseOrders extends javax.swing.JFrame {
         } catch (IOException e) {
             JOptionPane.showMessageDialog(null, "Unable to load data!"); // Handle the exception
         }
-    }
-
-   
-
-    private void B2ActionPerformed(java.awt.event.ActionEvent evt) {
-        this.dispose();
-        new HomeFormSalesManager().setVisible(true);
-
-        // TODO add your handling code here:
     }
 
     public static void main(String args[]) {
