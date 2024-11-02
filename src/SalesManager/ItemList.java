@@ -143,7 +143,7 @@ public class ItemList extends javax.swing.JFrame {
 
     private void B1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B1ActionPerformed
 
-        String selectedItem = (String) txt1.getText(); // Get the selected item from the combo box
+        String selectedItem = (String) txt1.getText().trim(); // Get the selected item from the combo box
         DefaultTableModel model = (DefaultTableModel) tbl1.getModel(); // Get the table model
 
         // Clear any previous search results
@@ -161,7 +161,9 @@ public class ItemList extends javax.swing.JFrame {
         if (tbl1.getRowCount() == 0) {
             JOptionPane.showMessageDialog(null, "Item not found!"); // Show message if no items match
             sorter.setRowFilter(null); //show back all datas
+         
         }
+       
 
 // TODO add your handling code here:
     }//GEN-LAST:event_B1ActionPerformed
