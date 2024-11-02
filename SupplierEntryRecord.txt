@@ -1,4 +1,6 @@
-1;1;1;Electrical Kettle;10;1;1;COD;
-2;2;2;Toaster;20;2;2;Net 15;
-3;3;3;Microwave Oven;30;3;3;Net 30;
-4;4;4;Blender;40;4;4;Net 60
+1;Ali;Puchong;Electrical Kettle;10;5/10/2024;1;COD
+2;Abu;Puchong;Toaster;20;6/10/2024;2;Net 15
+3;Ahmad;Kajang;Microwave Oven;30;7/10/2024;3;Net 30
+4;Carrot;Kuala Lumpur;Blender;40;8/10/2024;4;Net 60
+1;Abu;Puchong;Electrical Kettle;10;9/10/2024;5;COD
+2;Potato;Johor;Toaster;60;10/10/2024;6;Net 15
