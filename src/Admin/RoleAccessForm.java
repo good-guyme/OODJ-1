@@ -4,6 +4,11 @@
  */
 package Admin;
 
+import FinanceManager.HomeFormFinanceManager;
+import InventoryManager.HomeFormInventoryManager;
+import PurchaseManager.HomeFormPurchaseManager;
+import SalesManager.HomeFormSalesManager;
+
 /**
  *
  * @author yihan
@@ -26,21 +31,133 @@ public class RoleAccessForm extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        btnback = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        btnfinance = new javax.swing.JButton();
+        btnsales = new javax.swing.JButton();
+        btninventrory = new javax.swing.JButton();
+        btnpurchase = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(800, 500));
+        setSize(new java.awt.Dimension(800, 500));
+
+        btnback.setText("Back");
+        btnback.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnbackActionPerformed(evt);
+            }
+        });
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 3, 36)); // NOI18N
+        jLabel2.setText("ROLE ACCESS");
+
+        btnfinance.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btnfinance.setText("Finance Manager");
+        btnfinance.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnfinanceActionPerformed(evt);
+            }
+        });
+
+        btnsales.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btnsales.setText("Sales Manager");
+        btnsales.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnsalesActionPerformed(evt);
+            }
+        });
+
+        btninventrory.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btninventrory.setText("Inventory Manager");
+        btninventrory.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btninventroryActionPerformed(evt);
+            }
+        });
+
+        btnpurchase.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btnpurchase.setText("Purchase Manager");
+        btnpurchase.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnpurchaseActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(177, 177, 177)
+                        .addComponent(btnpurchase, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addContainerGap()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(btnback)
+                                .addComponent(jLabel2)))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(177, 177, 177)
+                            .addComponent(btnfinance, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnsales, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btninventrory, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(192, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(90, 90, 90)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnfinance, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btninventrory, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnsales, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnpurchase, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 176, Short.MAX_VALUE)
+                .addComponent(btnback)
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnfinanceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnfinanceActionPerformed
+        // TODO add your handling code here:
+        this.dispose();//to close the current form
+        new HomeFormFinanceManager().setVisible(true);
+    }//GEN-LAST:event_btnfinanceActionPerformed
+
+    private void btnbackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnbackActionPerformed
+        // TODO add your handling code here:
+        this.dispose();//to close the current form
+        new HomeFormAdmin().setVisible(true);
+    }//GEN-LAST:event_btnbackActionPerformed
+
+    private void btninventroryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btninventroryActionPerformed
+        // TODO add your handling code here:
+        this.dispose();//to close the current form
+        new HomeFormInventoryManager().setVisible(true);
+    }//GEN-LAST:event_btninventroryActionPerformed
+
+    private void btnpurchaseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnpurchaseActionPerformed
+        // TODO add your handling code here:
+        this.dispose();//to close the current form
+        new HomeFormPurchaseManager().setVisible(true);
+    }//GEN-LAST:event_btnpurchaseActionPerformed
+
+    private void btnsalesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsalesActionPerformed
+        // TODO add your handling code here:
+        this.dispose();//to close the current form
+        new HomeFormSalesManager().setVisible(true);
+    }//GEN-LAST:event_btnsalesActionPerformed
 
     /**
      * @param args the command line arguments
@@ -78,5 +195,11 @@ public class RoleAccessForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnback;
+    private javax.swing.JButton btnfinance;
+    private javax.swing.JButton btninventrory;
+    private javax.swing.JButton btnpurchase;
+    private javax.swing.JButton btnsales;
+    private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables
 }
