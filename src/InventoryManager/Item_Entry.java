@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package InventoryManager;
 
 import java.io.BufferedReader;
@@ -323,20 +319,20 @@ public class Item_Entry extends javax.swing.JFrame {
             // Automatically assign item based on the ID
             switch (codeValue) {
                 case 1:
-                item = "Electrical Kettle";
-                break;
+                    item = "Electrical Kettle";
+                    break;
                 case 2:
-                item = "Toaster";
-                break;
+                    item = "Toaster";
+                    break;
                 case 3:
-                item = "Microwave Oven";
-                break;
+                    item = "Microwave Oven";
+                    break;
                 case 4:
-                item = "Blender";
-                break;
+                    item = "Blender";
+                    break;
                 default:
-                JOptionPane.showMessageDialog(this, "Invalid ID.", "ID Error", JOptionPane.ERROR_MESSAGE);
-                return;
+                    JOptionPane.showMessageDialog(this, "Invalid ID.", "ID Error", JOptionPane.ERROR_MESSAGE);
+                    return;
             }
 
             // Set the selected item in the combo box (if needed)
@@ -370,10 +366,10 @@ public class Item_Entry extends javax.swing.JFrame {
         if (itemExists) {
             // Provide enhanced feedback: Suggest updating the item instead
             String message = "The item '" + item + "' already exists in the system.\n"
-            + "Would you like to update the existing item instead?\n"
-            + "(Code: " + model.getValueAt(existingRowIndex, 0).toString() + ", "
-            + "Price: " + model.getValueAt(existingRowIndex, 2).toString() + ", "
-            + "Quantity: " + model.getValueAt(existingRowIndex, 3).toString() + ")";
+                    + "Would you like to update the existing item instead?\n"
+                    + "(Code: " + model.getValueAt(existingRowIndex, 0).toString() + ", "
+                    + "Price: " + model.getValueAt(existingRowIndex, 2).toString() + ", "
+                    + "Quantity: " + model.getValueAt(existingRowIndex, 3).toString() + ")";
 
             int response = javax.swing.JOptionPane.showConfirmDialog(this, message, "Duplicate Item Found", javax.swing.JOptionPane.YES_NO_OPTION, javax.swing.JOptionPane.QUESTION_MESSAGE);
 
@@ -583,6 +579,7 @@ public class Item_Entry extends javax.swing.JFrame {
             e.printStackTrace(); // Handle the exception
         }
     }
+
     /**
      * @param args the command line arguments
      */
@@ -608,6 +605,8 @@ public class Item_Entry extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(Item_Entry.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 

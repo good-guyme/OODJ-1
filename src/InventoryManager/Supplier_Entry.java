@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package InventoryManager;
 
 import java.io.BufferedReader;
@@ -406,7 +402,7 @@ public class Supplier_Entry extends javax.swing.JFrame {
 
         // Check for duplicate ID unless it matches the same Supplier Name
         DefaultTableModel model = (DefaultTableModel) supplierentrytbl.getModel();
-        for (int i = 0; i < model.getRowCount(); i++) {            
+        for (int i = 0; i < model.getRowCount(); i++) {
             String existingSupplierName = model.getValueAt(i, 1).toString(); // Supplier Name column
             String existingItem = model.getValueAt(i, 3).toString(); // Item column
 
@@ -663,6 +659,8 @@ public class Supplier_Entry extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(Supplier_Entry.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
