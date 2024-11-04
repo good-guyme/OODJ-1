@@ -1,4 +1,4 @@
-1;Apple;Puchong;Electrical Kettle;10;1/11/2024;123456789;COD;
-2;Banana;Puchong;Toaster;20;2/11/2024;0123456789;Net 15;
-3;Carrot;Kajang;Microwave Oven;30;3/11/2024;9876543210;Net 30;
-4;Durian;Kajang;Blender;40;4/11/2024;0987654321;Net 60;
+1;Apple;Puchong;Electrical Kettle;10;1/11/2024;123456789;COD
+2;Banana;Puchong;Toaster;20;2/11/2024;0123456789;Net 15
+3;Carrot;Kajang;Microwave Oven;30;3/11/2024;9876543210;Net 30
+4;Durian;Kajang;Blender;40;4/11/2024;0987654321;Net 60
