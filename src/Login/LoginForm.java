@@ -143,6 +143,8 @@ public class LoginForm extends javax.swing.JFrame {
     private void clearbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearbtnActionPerformed
         usernametxt.setText("");
         passwordtxt.setText("");
+        showpasswordcb.setSelected(false);
+        passwordtxt.setEchoChar('•'); // Reset to encrypted state
     }//GEN-LAST:event_clearbtnActionPerformed
 
     private void showpasswordcbActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showpasswordcbActionPerformed
@@ -200,8 +202,7 @@ public class LoginForm extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(null, "Login Successful");
                     this.dispose(); // Close the current form
                     new HomeFormPurchaseManager().setVisible(true); // Open the Purchase Manager home form
-                }
-                else if (role.equals("SM")) {
+                } else if (role.equals("SM")) {
                     JOptionPane.showMessageDialog(null, "Login Successful");
                     this.dispose(); // Close the current form
                     new HomeFormSalesManager().setVisible(true); // Open the Sales Manager home form
