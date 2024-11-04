@@ -392,39 +392,10 @@ public class Supplier_Entry extends javax.swing.JFrame {
         String phone = phonetxt.getText().trim();
         String payment = (String) paymentcb.getSelectedItem();
 
-        // Validate the ID (only allow between 1 and 4)
-        try {
-            int idValue = Integer.parseInt(id);
-            if (idValue < 1 || idValue > 4) {
-                JOptionPane.showMessageDialog(this, "ID must be between 1 and 4.", "ID Error", JOptionPane.ERROR_MESSAGE);
-                return; // Stop the process if the ID is not in the allowed range
-            }
-
-            // Automatically assign item based on the ID
-            switch (idValue) {
-                case 1:
-                item = "Electrical Kettle";
-                break;
-                case 2:
-                item = "Toaster";
-                break;
-                case 3:
-                item = "Microwave Oven";
-                break;
-                case 4:
-                item = "Blender";
-                break;
-                default:
-                JOptionPane.showMessageDialog(this, "Invalid ID.", "ID Error", JOptionPane.ERROR_MESSAGE);
-                return;
-            }
-
-            // Set the selected item in the combo box (if needed)
-            itemcb.setSelectedItem(item);
-
-        } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(this, "Invalid ID. Please enter a number between 1 and 4.", "ID Error", JOptionPane.ERROR_MESSAGE);
-            return; // Stop the process if the ID is not a valid number
+        // Validate the ID (it must be a number)
+        if (id.isEmpty() || !id.matches("\\d+")) {
+            JOptionPane.showMessageDialog(this, "Invalid ID. Please enter a valid number.", "ID Error", JOptionPane.ERROR_MESSAGE);
+            return; // Stop the process if the ID is not valid
         }
 
         // Validation for other fields
@@ -433,15 +404,35 @@ public class Supplier_Entry extends javax.swing.JFrame {
             return; // Stop if validation fails
         }
 
-        // Check for duplicate name and item
+        // Check for duplicate ID unless it matches the same Supplier Name
         DefaultTableModel model = (DefaultTableModel) supplierentrytbl.getModel();
-        for (int i = 0; i < model.getRowCount(); i++) {
-            String existingID = model.getValueAt(i, 0).toString(); //ID column
-            String existingName = model.getValueAt(i, 1).toString(); // Name column
+        for (int i = 0; i < model.getRowCount(); i++) {            
+            String existingSupplierName = model.getValueAt(i, 1).toString(); // Supplier Name column
             String existingItem = model.getValueAt(i, 3).toString(); // Item column
-            if (existingID.equals(id) && existingName.equals(name) && existingItem.equals(item)) {
-                javax.swing.JOptionPane.showMessageDialog(this, "This id, name and item already exists.", "Duplicate Entry", javax.swing.JOptionPane.ERROR_MESSAGE);
-                return; // Stop if a duplicate is found
+
+            // Check for duplicates based on ID, Supplier Name, and Item
+            if (existingSupplierName.equals(name) && existingItem.equals(item)) {
+                int confirmEdit = JOptionPane.showConfirmDialog(this,
+                        "This entry already exists. Would you like to update the existing entry?",
+                        "Duplicate Entry",
+                        JOptionPane.YES_NO_OPTION,
+                        JOptionPane.QUESTION_MESSAGE);
+
+                if (confirmEdit == JOptionPane.YES_OPTION) {
+                    // Populate fields for editing
+                    idtxt.setText(model.getValueAt(i, 0).toString()); //Set existing ID
+                    nametxt.setText(existingSupplierName);
+                    addresstxt.setText(model.getValueAt(i, 2).toString()); // Address
+                    itemcb.setSelectedItem(existingItem);
+                    quantityspi.setValue(Integer.parseInt(model.getValueAt(i, 4).toString())); // Quantity
+                    datetxt.setText(model.getValueAt(i, 5).toString()); // Date
+                    phonetxt.setText(model.getValueAt(i, 6).toString()); // Phone
+                    paymentcb.setSelectedItem(model.getValueAt(i, 7).toString()); // Payment
+
+                    // Auto-select the existing row in the table for the user
+                    supplierentrytbl.setRowSelectionInterval(i, i); // Automatically select the row in the table
+                }
+                return; // Stop adding new item
             }
         }
 
@@ -460,7 +451,7 @@ public class Supplier_Entry extends javax.swing.JFrame {
                 writer.write(id + ";" + name + ";" + address + ";" + item + ";" + quantity + ";" + date + ";" + phone + ";" + payment + System.lineSeparator());
             }
 
-            // Optionally clear the input fields after adding
+            // Clear the input fields after adding
             idtxt.setText("");
             nametxt.setText("");
             addresstxt.setText("");
@@ -470,11 +461,11 @@ public class Supplier_Entry extends javax.swing.JFrame {
             phonetxt.setText("");
             paymentcb.setSelectedIndex(-1);
 
-            // Optionally show a success message
-            javax.swing.JOptionPane.showMessageDialog(this, "Entry added successfully.", "Success", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            // Show a success message
+            JOptionPane.showMessageDialog(this, "Entry added successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
 
         } catch (IOException e) {
-            javax.swing.JOptionPane.showMessageDialog(this, "Error writing to file.", "File Error", javax.swing.JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Error writing to file.", "File Error", JOptionPane.ERROR_MESSAGE);
             e.printStackTrace();
         }
     }//GEN-LAST:event_addbtnActionPerformed
@@ -586,7 +577,7 @@ public class Supplier_Entry extends javax.swing.JFrame {
 
                     // Write the row data back to the file
                     writer.write(id + ";" + name + ";" + address + ";" + item + ";" + quantity + ";" + date + ";"
-                        + phone + ";" + payment + ";" + System.lineSeparator());
+                            + phone + ";" + payment + ";" + System.lineSeparator());
                 }
             } catch (IOException e) {
                 e.printStackTrace();
@@ -646,6 +637,7 @@ public class Supplier_Entry extends javax.swing.JFrame {
             e.printStackTrace(); // Handle the exception
         }
     }
+
     /**
      * @param args the command line arguments
      */
