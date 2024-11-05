@@ -1,9 +1,13 @@
 package InventoryManager;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
@@ -189,9 +193,7 @@ public class Supplier_Entry extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 517, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel2)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(6, 6, 6)
-                                .addComponent(backbtn)))
+                            .addComponent(backbtn))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -296,9 +298,9 @@ public class Supplier_Entry extends javax.swing.JFrame {
                             .addComponent(deletebtn)))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(gotoitementrybtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(backbtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(gotoitementrybtn, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(backbtn))
                 .addGap(18, 18, 18))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
@@ -356,7 +358,7 @@ public class Supplier_Entry extends javax.swing.JFrame {
                 String name = supplierentrytbl.getValueAt(selectedRow, 1).toString();
                 String address = supplierentrytbl.getValueAt(selectedRow, 2).toString();
                 String item = supplierentrytbl.getValueAt(selectedRow, 3).toString();
-                int quantity = Integer.parseInt(supplierentrytbl.getValueAt(selectedRow, 4).toString());
+                int currentQuantity = Integer.parseInt(supplierentrytbl.getValueAt(selectedRow, 4).toString());
                 String date = supplierentrytbl.getValueAt(selectedRow, 5).toString();
                 String phone = supplierentrytbl.getValueAt(selectedRow, 6).toString();
                 String payment = supplierentrytbl.getValueAt(selectedRow, 7).toString();
@@ -366,7 +368,7 @@ public class Supplier_Entry extends javax.swing.JFrame {
                 nametxt.setText(name);
                 addresstxt.setText(address);
                 itemcb.setSelectedItem(item);
-                quantityspi.setValue(quantity);
+                quantityspi.setValue(0); // Set to 0 for adding new quantity increment
                 datetxt.setText(date);
                 phonetxt.setText(phone);
                 paymentcb.setSelectedItem(payment);
@@ -379,7 +381,51 @@ public class Supplier_Entry extends javax.swing.JFrame {
             javax.swing.JOptionPane.showMessageDialog(this, "Please select a supplier to edit.", "Selection Error", javax.swing.JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_editbtnActionPerformed
+    private void updateSupplierEntryRecord(String code, int newQuantity) {
+        File file = new File("SupplierEntryRecord.txt");
+        List<String> lines = new ArrayList<>();
+        boolean found = false;
 
+        if (!file.exists()) {
+            javax.swing.JOptionPane.showMessageDialog(this, "The file does not exist.", "File Not Found", javax.swing.JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
+            String line;
+
+            // Read each line and store it in a list, updating the quantity for the matching code
+            while ((line = reader.readLine()) != null) {
+                String[] parts = line.split(";");
+                if (parts.length == 8 && parts[0].equals(code)) { // Assuming 8 fields per line
+                    // Update quantity
+                    parts[4] = String.valueOf(newQuantity); // Assuming quantity is at index 4
+                    line = String.join(";", parts); // Join with the correct separator
+                    found = true;
+                }
+                lines.add(line);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+            javax.swing.JOptionPane.showMessageDialog(this, "Error reading the file.", "File Error", javax.swing.JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        // If the code was found, overwrite the file with updated content
+        if (found) {
+            try (BufferedWriter writer = new BufferedWriter(new FileWriter(file))) {
+                for (String updatedLine : lines) {
+                    writer.write(updatedLine);
+                    writer.newLine();
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+                javax.swing.JOptionPane.showMessageDialog(this, "Error writing to the file.", "File Error", javax.swing.JOptionPane.ERROR_MESSAGE);
+            }
+        } else {
+            javax.swing.JOptionPane.showMessageDialog(this, "Item code not found in the file.", "Update Error", javax.swing.JOptionPane.ERROR_MESSAGE);
+        }
+    }
     private void addbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addbtnActionPerformed
         // Get data from the input fields
         String id = idtxt.getText().trim();
@@ -475,63 +521,55 @@ public class Supplier_Entry extends javax.swing.JFrame {
         if (selectedRow >= 0) { // Check if a row is selected
             // Get updated data from the input fields
             String id = idtxt.getText().trim(); // idtxt for ID
-            String name = nametxt.getText().trim(); //  nametxt for Name
+            String name = nametxt.getText().trim(); // nametxt for Name
             String address = addresstxt.getText().trim(); // addresstxt for Address
             String item = (String) itemcb.getSelectedItem(); // ComboBox for Item
-            int quantity = (Integer) quantityspi.getValue(); // Spinner for Quantity
             String date = datetxt.getText().trim(); // datetxt for Date
             String phone = phonetxt.getText().trim(); // phonetxt for Phone
             String payment = (String) paymentcb.getSelectedItem(); // ComboBox for Payment
 
             // Validation
-            if (id.isEmpty() || name.isEmpty() || address.isEmpty() || item == null || quantity <= 0 || date.isEmpty() || phone.isEmpty() || payment == null) {
+            if (id.isEmpty() || name.isEmpty() || address.isEmpty() || item == null || date.isEmpty() || phone.isEmpty() || payment == null) {
                 javax.swing.JOptionPane.showMessageDialog(this, "Please fill out all fields and ensure values are valid.", "Input Error", javax.swing.JOptionPane.ERROR_MESSAGE);
-                return; // Stop if validation fails
+                return;
             }
 
-            // Check for duplicate name and item
-            DefaultTableModel model = (DefaultTableModel) supplierentrytbl.getModel(); // Use the same model variable
+            // Check for duplicate ID, name, and item
+            DefaultTableModel model = (DefaultTableModel) supplierentrytbl.getModel();
             for (int i = 0; i < model.getRowCount(); i++) {
                 if (i != selectedRow) { // Avoid checking the selected row
-                    String existingID = model.getValueAt(i, 0).toString(); //ID column
-                    String existingName = model.getValueAt(i, 1).toString(); // Name column
-                    String existingItem = model.getValueAt(i, 3).toString(); // Item column
+                    String existingID = model.getValueAt(i, 0).toString();
+                    String existingName = model.getValueAt(i, 1).toString();
+                    String existingItem = model.getValueAt(i, 3).toString();
                     if (existingID.equals(id) && existingName.equals(name) && existingItem.equals(item)) {
-                        javax.swing.JOptionPane.showMessageDialog(this, "This id, name and item combination already exists.", "Duplicate Entry", javax.swing.JOptionPane.ERROR_MESSAGE);
-                        return; // Stop if a duplicate is found
+                        javax.swing.JOptionPane.showMessageDialog(this, "This ID, name, and item combination already exists.", "Duplicate Entry", javax.swing.JOptionPane.ERROR_MESSAGE);
+                        return;
                     }
                 }
             }
 
             try {
-                // Update the table (reuse the existing model variable)
-                model.setValueAt(id, selectedRow, 0);         // ID
-                model.setValueAt(name, selectedRow, 1);       // Name
-                model.setValueAt(address, selectedRow, 2);    // Address
-                model.setValueAt(item, selectedRow, 3);        // Item
-                model.setValueAt(quantity, selectedRow, 4);    // Quantity
-                model.setValueAt(date, selectedRow, 5);       // Date
-                model.setValueAt(phone, selectedRow, 6);      // Phone
-                model.setValueAt(payment, selectedRow, 7);     // Payment
+                // Parse current quantity and handle possible exceptions
+                int currentQuantity = Integer.parseInt(supplierentrytbl.getValueAt(selectedRow, 4).toString());
 
-                // Update the text file
-                try (FileWriter writer = new FileWriter("SupplierEntryRecord.txt", false)) { // false means overwrite
-                    for (int i = 0; i < model.getRowCount(); i++) {
-                        String idValue = model.getValueAt(i, 0).toString();
-                        String nameValue = model.getValueAt(i, 1).toString();
-                        String addressValue = model.getValueAt(i, 2).toString();
-                        String itemValue = model.getValueAt(i, 3).toString();
-                        String quantityValue = model.getValueAt(i, 4).toString();
-                        String dateValue = model.getValueAt(i, 5).toString();
-                        String phoneValue = model.getValueAt(i, 6).toString();
-                        String paymentValue = model.getValueAt(i, 7).toString();
+                // Update the table with input values
+                model.setValueAt(id, selectedRow, 0);
+                model.setValueAt(name, selectedRow, 1);
+                model.setValueAt(address, selectedRow, 2);
+                model.setValueAt(item, selectedRow, 3);
+                model.setValueAt(date, selectedRow, 5);
+                model.setValueAt(phone, selectedRow, 6);
+                model.setValueAt(payment, selectedRow, 7);
 
-                        // Write the row data back to the file
-                        writer.write(idValue + ";" + nameValue + ";" + addressValue + ";" + itemValue + ";" + quantityValue + ";" + dateValue + ";" + phoneValue + ";" + paymentValue + System.lineSeparator());
-                    }
-                }
+                // Handle quantity adjustment
+                int quantityAdjustment = (Integer) quantityspi.getValue();
+                int newQuantity = currentQuantity + quantityAdjustment;
+                model.setValueAt(newQuantity, selectedRow, 4); // Update quantity in the model
 
-                // Optionally clear the input fields after saving
+                // Update the file with new quantity
+                updateSupplierEntryRecord(id, newQuantity); // Update only once
+
+                // Clear the input fields after successful update
                 idtxt.setText("");
                 nametxt.setText("");
                 addresstxt.setText("");
@@ -541,18 +579,16 @@ public class Supplier_Entry extends javax.swing.JFrame {
                 phonetxt.setText("");
                 paymentcb.setSelectedIndex(-1);
 
-                // Optionally show a success message
+                // Show a success message
                 javax.swing.JOptionPane.showMessageDialog(this, "Supplier Entry updated successfully.", "Success", javax.swing.JOptionPane.INFORMATION_MESSAGE);
 
-            } catch (IOException e) {
-                javax.swing.JOptionPane.showMessageDialog(this, "Error writing to file.", "File Error", javax.swing.JOptionPane.ERROR_MESSAGE);
-                e.printStackTrace();
+            } catch (NumberFormatException e) {
+                javax.swing.JOptionPane.showMessageDialog(this, "Invalid quantity format.", "Input Error", javax.swing.JOptionPane.ERROR_MESSAGE);
+            } catch (Exception e) {
+                javax.swing.JOptionPane.showMessageDialog(this, "An unexpected error occurred: " + e.getMessage(), "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
             }
-        } else {
-            javax.swing.JOptionPane.showMessageDialog(this, "Please select a supplier to save changes.", "Selection Error", javax.swing.JOptionPane.ERROR_MESSAGE);
-        }
     }//GEN-LAST:event_savebtnActionPerformed
-
+    }
     private void deletebtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deletebtnActionPerformed
         // Get the selected row index
         int selectedRow = supplierentrytbl.getSelectedRow();
@@ -662,10 +698,6 @@ public class Supplier_Entry extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(Supplier_Entry.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>

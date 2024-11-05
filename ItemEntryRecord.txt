@@ -1,4 +1,6 @@
-1;Electrical Kettle;1.0;10
-2;Toaster;2.0;20
-3;Microwave Oven;3.0;30
-4;Blender;4.0;40
+1;Electrical Kettle;1.0;10;1
+2;Toaster;2.0;20;2
+3;Microwave Oven;3.0;30;3
+4;Blender;4.0;40;4
+1;Electrical Kettle;5.0;50;5
+2;Toaster;6.0;60;6
