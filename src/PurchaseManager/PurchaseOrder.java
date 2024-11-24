@@ -378,7 +378,9 @@ private void populateFormFromTableSelection() {
             JOptionPane.showMessageDialog(null, "successfully deleted a record");
         } catch (IOException e) {
             JOptionPane.showMessageDialog(null, "Successfully deleted Item");
-        }
+        } catch (ArrayIndexOutOfBoundsException e){
+            System.out.println("Error ||  No record Selected");
+    }
     }//GEN-LAST:event_deleteBtnActionPerformed
 
     private void refreshbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshbtnActionPerformed
