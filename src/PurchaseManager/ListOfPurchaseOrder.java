@@ -78,7 +78,7 @@ public class ListOfPurchaseOrder extends javax.swing.JFrame {
         }
     } catch (IOException e) {
         JOptionPane.showMessageDialog(null, "Unable to load data!"); // Handle the exception
-    }
+    } 
     }
     
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents

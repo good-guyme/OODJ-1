@@ -198,7 +198,8 @@ public class HomeFormPurchaseManager extends javax.swing.JFrame {
     }//GEN-LAST:event_supplierListActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        this.dispose();
+        new LoginForm().setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void reqFormButtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reqFormButtActionPerformed
