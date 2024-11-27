@@ -6,7 +6,10 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.RowFilter;
@@ -53,7 +56,6 @@ public class Supplier_Entry extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         phonetxt = new javax.swing.JTextField();
-        datetxt = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         quantityspi = new javax.swing.JSpinner();
@@ -66,6 +68,7 @@ public class Supplier_Entry extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         idtxt = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
+        datetxt = new com.toedter.calendar.JDateChooser();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -174,7 +177,7 @@ public class Supplier_Entry extends javax.swing.JFrame {
 
         jLabel3.setText("ID: ");
 
-        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/InventoryManager/Image/pufferfish.jpg"))); // NOI18N
+        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/InventoryManager/pufferfish.jpg"))); // NOI18N
         jLabel10.setPreferredSize(new java.awt.Dimension(800, 500));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -198,7 +201,7 @@ public class Supplier_Entry extends javax.swing.JFrame {
                                 .addComponent(backbtn)
                                 .addGap(18, 18, 18)
                                 .addComponent(gotoitementrybtn)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 115, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
@@ -231,17 +234,14 @@ public class Supplier_Entry extends javax.swing.JFrame {
                                     .addGap(18, 18, 18)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                         .addComponent(phonetxt)
-                                        .addComponent(datetxt)
                                         .addComponent(quantityspi)
                                         .addComponent(itemcb, 0, 149, Short.MAX_VALUE)
                                         .addComponent(addresstxt)
-                                        .addComponent(paymentcb, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))))
+                                        .addComponent(paymentcb, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(datetxt, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))))
                 .addContainerGap())
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+                .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 900, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -260,7 +260,7 @@ public class Supplier_Entry extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel3)
                             .addComponent(idtxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel9)
                             .addComponent(nametxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -280,9 +280,9 @@ public class Supplier_Entry extends javax.swing.JFrame {
                             .addComponent(jLabel6)
                             .addComponent(quantityspi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(datetxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel7))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel7)
+                            .addComponent(datetxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(phonetxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -306,10 +306,7 @@ public class Supplier_Entry extends javax.swing.JFrame {
                     .addComponent(gotoitementrybtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 512, Short.MAX_VALUE))
         );
 
         pack();
@@ -372,13 +369,18 @@ public class Supplier_Entry extends javax.swing.JFrame {
                 addresstxt.setText(address);
                 itemcb.setSelectedItem(item);
                 quantityspi.setValue(0); // Set to 0 for adding new quantity increment
-                datetxt.setText(date);
+                // Parse the date string into a java.util.Date object
+                java.text.SimpleDateFormat dateFormat = new java.text.SimpleDateFormat("dd MMM yyyy"); // Adjust format as needed
+                java.util.Date parsedDate = dateFormat.parse(date);
+                datetxt.setDate(parsedDate); // Set the date in JDateChooser
                 phonetxt.setText(phone);
                 paymentcb.setSelectedItem(payment);
             } catch (NumberFormatException ex) {
                 System.out.println("Error parsing quantity: " + ex.getMessage());
             } catch (ArrayIndexOutOfBoundsException ex) {
                 System.out.println("Selected row index is out of bounds: " + ex.getMessage());
+            } catch (java.text.ParseException ex) {
+                System.out.println("Error parsing date: " + ex.getMessage());
             }
         } else {
             javax.swing.JOptionPane.showMessageDialog(this, "Please select a supplier to edit.", "Selection Error", javax.swing.JOptionPane.ERROR_MESSAGE);
@@ -436,7 +438,7 @@ public class Supplier_Entry extends javax.swing.JFrame {
         String address = addresstxt.getText().trim();
         String item = (String) itemcb.getSelectedItem();
         int quantity = (Integer) quantityspi.getValue();
-        String date = datetxt.getText().trim();
+        Date selectedDate = datetxt.getDate();
         String phone = phonetxt.getText().trim();
         String payment = (String) paymentcb.getSelectedItem();
 
@@ -446,11 +448,21 @@ public class Supplier_Entry extends javax.swing.JFrame {
             return; // Stop the process if the ID is not valid
         }
 
+        // Ensure a valid date is selected
+        if (selectedDate == null) {
+            JOptionPane.showMessageDialog(this, "Please select a valid date.", "Date Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
         // Validation for other fields
-        if (name.isEmpty() || address.isEmpty() || item == null || quantity <= 0 || date.isEmpty() || phone.isEmpty() || payment == null) {
+        if (name.isEmpty() || address.isEmpty() || item == null || quantity <= 0 || phone.isEmpty() || payment == null) {
             JOptionPane.showMessageDialog(this, "Please fill out all fields and ensure values are valid.", "Input Error", JOptionPane.ERROR_MESSAGE);
             return; // Stop if validation fails
         }
+
+        // Format the date for storage
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd MMM yyyy"); // Customize format as needed
+        String date = dateFormat.format(selectedDate);
 
         // Check for duplicate ID unless it matches the same Supplier Name
         DefaultTableModel model = (DefaultTableModel) supplierentrytbl.getModel();
@@ -473,7 +485,14 @@ public class Supplier_Entry extends javax.swing.JFrame {
                     addresstxt.setText(model.getValueAt(i, 2).toString()); // Address
                     itemcb.setSelectedItem(existingItem);
                     quantityspi.setValue(Integer.parseInt(model.getValueAt(i, 4).toString())); // Quantity
-                    datetxt.setText(model.getValueAt(i, 5).toString()); // Date
+                    // Parse the date from the table and set it in JDateChooser
+                    String dateString = model.getValueAt(i, 5).toString(); // Date as a String
+                    try {
+                        Date parsedDate = dateFormat.parse(dateString); // Convert String to Date
+                        datetxt.setDate(parsedDate); // Set the Date in JDateChooser
+                    } catch (ParseException e) {
+                        JOptionPane.showMessageDialog(this, "Error parsing date: " + e.getMessage(), "Date Error", JOptionPane.ERROR_MESSAGE);
+                    }
                     phonetxt.setText(model.getValueAt(i, 6).toString()); // Phone
                     paymentcb.setSelectedItem(model.getValueAt(i, 7).toString()); // Payment
 
@@ -505,7 +524,7 @@ public class Supplier_Entry extends javax.swing.JFrame {
             addresstxt.setText("");
             itemcb.setSelectedIndex(-1);
             quantityspi.setValue(0);
-            datetxt.setText("");
+            datetxt.setDate(null);
             phonetxt.setText("");
             paymentcb.setSelectedIndex(-1);
 
@@ -527,16 +546,25 @@ public class Supplier_Entry extends javax.swing.JFrame {
             String name = nametxt.getText().trim(); // nametxt for Name
             String address = addresstxt.getText().trim(); // addresstxt for Address
             String item = (String) itemcb.getSelectedItem(); // ComboBox for Item
-            String date = datetxt.getText().trim(); // datetxt for Date
+            Date selectedDate = datetxt.getDate(); // datetxt for Date
             String phone = phonetxt.getText().trim(); // phonetxt for Phone
             String payment = (String) paymentcb.getSelectedItem(); // ComboBox for Payment
 
-            // Validation
-            if (id.isEmpty() || name.isEmpty() || address.isEmpty() || item == null || date.isEmpty() || phone.isEmpty() || payment == null) {
-                javax.swing.JOptionPane.showMessageDialog(this, "Please fill out all fields and ensure values are valid.", "Input Error", javax.swing.JOptionPane.ERROR_MESSAGE);
+            // Validate that a valid date is selected
+            if (selectedDate == null) {
+                javax.swing.JOptionPane.showMessageDialog(this, "Please select a valid date.", "Date Error", javax.swing.JOptionPane.ERROR_MESSAGE);
                 return;
             }
 
+            // Format the selected date for display/storage
+            SimpleDateFormat dateFormat = new SimpleDateFormat("dd MMM yyyy"); // Customize the format as needed
+            String date = dateFormat.format(selectedDate);
+
+            // Validation
+            if (id.isEmpty() || name.isEmpty() || address.isEmpty() || item == null || phone.isEmpty() || payment == null) {
+                javax.swing.JOptionPane.showMessageDialog(this, "Please fill out all fields and ensure values are valid.", "Input Error", javax.swing.JOptionPane.ERROR_MESSAGE);
+                return;
+            }
             // Check for duplicate ID, name, and item
             DefaultTableModel model = (DefaultTableModel) supplierentrytbl.getModel();
             for (int i = 0; i < model.getRowCount(); i++) {
@@ -578,7 +606,7 @@ public class Supplier_Entry extends javax.swing.JFrame {
                 addresstxt.setText("");
                 itemcb.setSelectedIndex(-1);
                 quantityspi.setValue(0);
-                datetxt.setText("");
+                datetxt.setDate(null);
                 phonetxt.setText("");
                 paymentcb.setSelectedIndex(-1);
 
@@ -590,42 +618,59 @@ public class Supplier_Entry extends javax.swing.JFrame {
             } catch (Exception e) {
                 javax.swing.JOptionPane.showMessageDialog(this, "An unexpected error occurred: " + e.getMessage(), "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
             }
+        } else {
+            javax.swing.JOptionPane.showMessageDialog(this, "No row selected. Please select a row to update.", "Selection Error", javax.swing.JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_savebtnActionPerformed
-    }
+
     private void deletebtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deletebtnActionPerformed
         // Get the selected row index
         int selectedRow = supplierentrytbl.getSelectedRow();
 
         if (selectedRow >= 0) {
-            // Remove the row from the table
-            DefaultTableModel model = (DefaultTableModel) supplierentrytbl.getModel();
-            model.removeRow(selectedRow);
+            // Show confirmation dialog before deletion
+            int confirm = javax.swing.JOptionPane.showConfirmDialog(this,
+                    "Are you sure you want to delete the selected item?",
+                    "Delete Confirmation",
+                    javax.swing.JOptionPane.YES_NO_OPTION);
 
-            // Update the text file with the remaining rows
-            try (FileWriter writer = new FileWriter("SupplierEntryRecord.txt", false)) { // false means overwrite
-                for (int i = 0; i < model.getRowCount(); i++) {
-                    String id = model.getValueAt(i, 0).toString();
-                    String name = model.getValueAt(i, 1).toString();
-                    String address = model.getValueAt(i, 2).toString();
-                    String item = model.getValueAt(i, 3).toString();
-                    String quantity = model.getValueAt(i, 4).toString();
-                    String date = model.getValueAt(i, 5).toString();
-                    String phone = model.getValueAt(i, 6).toString();
-                    String payment = model.getValueAt(i, 7).toString();
+            if (confirm == javax.swing.JOptionPane.YES_OPTION) {
+                // Remove the row from the table
+                DefaultTableModel model = (DefaultTableModel) supplierentrytbl.getModel();
+                model.removeRow(selectedRow);
 
-                    // Write the row data back to the file
-                    writer.write(id + ";" + name + ";" + address + ";" + item + ";" + quantity + ";" + date + ";"
-                            + phone + ";" + payment + ";" + System.lineSeparator());
+                // Update the text file with the remaining rows
+                try (FileWriter writer = new FileWriter("SupplierEntryRecord.txt", false)) { // false means overwrite
+                    for (int i = 0; i < model.getRowCount(); i++) {
+                        String id = model.getValueAt(i, 0).toString();
+                        String name = model.getValueAt(i, 1).toString();
+                        String address = model.getValueAt(i, 2).toString();
+                        String item = model.getValueAt(i, 3).toString();
+                        String quantity = model.getValueAt(i, 4).toString();
+                        String date = model.getValueAt(i, 5).toString();
+                        String phone = model.getValueAt(i, 6).toString();
+                        String payment = model.getValueAt(i, 7).toString();
+
+                        // Write the row data back to the file
+                        writer.write(id + ";" + name + ";" + address + ";" + item + ";" + quantity + ";" + date + ";"
+                                + phone + ";" + payment + ";" + System.lineSeparator());
+                    }
+                } catch (IOException e) {
+                    javax.swing.JOptionPane.showMessageDialog(this,
+                            "An error occurred while updating the file: " + e.getMessage(),
+                            "File Error",
+                            javax.swing.JOptionPane.ERROR_MESSAGE);
+                    e.printStackTrace();
                 }
-            } catch (IOException e) {
-                e.printStackTrace();
+                // Show a success message
+                javax.swing.JOptionPane.showMessageDialog(this, "Selected item deleted successfully.");
+            } else {
+                // If the user cancels the deletion, show a message
+                javax.swing.JOptionPane.showMessageDialog(this, "Deletion canceled.");
             }
-
-            // Optionally: show a confirmation message
-            javax.swing.JOptionPane.showMessageDialog(null, "Selected item deleted successfully.");
         } else {
             // Show an error message if no row is selected
-            javax.swing.JOptionPane.showMessageDialog(null, "Please select an item to delete.");
+            javax.swing.JOptionPane.showMessageDialog(this, "Please select an item to delete.");
         }
     }//GEN-LAST:event_deletebtnActionPerformed
 
@@ -718,7 +763,7 @@ public class Supplier_Entry extends javax.swing.JFrame {
     private javax.swing.JButton addbtn;
     private javax.swing.JTextField addresstxt;
     private javax.swing.JButton backbtn;
-    private javax.swing.JTextField datetxt;
+    private com.toedter.calendar.JDateChooser datetxt;
     private javax.swing.JButton deletebtn;
     private javax.swing.JButton editbtn;
     private javax.swing.JButton gotoitementrybtn;
