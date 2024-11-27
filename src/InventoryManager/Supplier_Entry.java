@@ -194,14 +194,14 @@ public class Supplier_Entry extends javax.swing.JFrame {
                         .addComponent(searchbtn))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 517, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel2)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(6, 6, 6)
                                 .addComponent(backbtn)
                                 .addGap(18, 18, 18)
-                                .addComponent(gotoitementrybtn)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 115, Short.MAX_VALUE)
+                                .addComponent(gotoitementrybtn))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 626, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
@@ -672,6 +672,15 @@ public class Supplier_Entry extends javax.swing.JFrame {
             // Show an error message if no row is selected
             javax.swing.JOptionPane.showMessageDialog(this, "Please select an item to delete.");
         }
+        // Clear the input fields after adding
+        idtxt.setText("");
+        nametxt.setText("");
+        addresstxt.setText("");
+        itemcb.setSelectedIndex(-1);
+        quantityspi.setValue(0);
+        datetxt.setDate(null);
+        phonetxt.setText("");
+        paymentcb.setSelectedIndex(-1);
     }//GEN-LAST:event_deletebtnActionPerformed
 
     private void gotoitementrybtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gotoitementrybtnActionPerformed

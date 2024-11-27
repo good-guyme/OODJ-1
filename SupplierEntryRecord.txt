@@ -4,5 +4,5 @@
 4;Potato;Kajang;Blender;40;04 Nov 2024;0987654321;Net 60;
 5;Orange;Kelantan;Electrical Kettle;50;05 Nov 2024;234565432;COD;
 6;Lemon;Kelantan;Toaster;60;06 Nov 2024;345678765432;Net 15;
-7;Lemon;Kelantan;Microwave Oven;70;07 Nov 2024;567467864356;Net 30;
-8;Lemon;Kelantan;Blender;80;08 Nov 2024;345678765432;Net 15
+7;Avocado;Banting;Microwave Oven;70;07 Nov 2024;567467864356;Net 30;
+8;Pear;Banting;Blender;80;08 Nov 2024;345678765432;Net 15;
