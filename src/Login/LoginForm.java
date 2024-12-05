@@ -146,6 +146,7 @@ public class LoginForm extends javax.swing.JFrame {
         passwordtxt.setText("");
         showpasswordcb.setSelected(false);
         passwordtxt.setEchoChar('•'); // Reset to encrypted state
+        usernametxt.requestFocus(); // Set focus back to the username text field
     }//GEN-LAST:event_clearbtnActionPerformed
 
     private void showpasswordcbActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showpasswordcbActionPerformed
