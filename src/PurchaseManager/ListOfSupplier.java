@@ -275,7 +275,7 @@ public class ListOfSupplier extends javax.swing.JFrame {
             sorter.setRowFilter(null);
         } else {
             // Use a RowFilter to filter the table based on the selected item
-            sorter.setRowFilter(RowFilter.regexFilter("(?i)" + selectedItem)); // Case-insensitive search
+            sorter.setRowFilter(RowFilter.regexFilter("(?i)" + selectedItem,0)); // Case-insensitive search
         }
 
         if (supplierListTable.getRowCount() == 0) {

@@ -47,28 +47,19 @@ public class ListOfPurchaseOrder extends javax.swing.JFrame {
             if (line.trim().isEmpty()) {
                 continue; // Skip empty lines
             }
-            System.out.println("Read line: " + line); // Debugging statement
+            System.out.println("Read line: " + line); // for internal checking
             String[] data = line.split(";");
 
             // Check the data before adding to the model
-            System.out.println("Data length: " + data.length); // Debugging statement
+            System.out.println("Data length: " + data.length); // for internal checking
             for (int i = 0; i < data.length; i++) {
                 System.out.println("Data[" + i + "]: " + data[i]); // Print each piece of data
             }
 
             // Adjust this check to ensure you have the expected number of columns
-            if (data.length == 6) {
+            if (data.length == 5) {
                 try {
-                    
-                    // Create an array for adding data
-                    Object[] rowData = new Object[]{
-                        data[0].trim(), // ID
-                        data[1].trim(), // Name
-                        data[2].trim(), // Quantity
-                        data[3].trim(), // Date
-                        data[4].trim()  // Purchaser
-                    };
-                    model.addRow(rowData); // Add each row of data to the table
+                    model.addRow(data); // Add each row of data to the table
                 } catch (NumberFormatException e) {
                     System.out.println("Error parsing quantity: " + e.getMessage());
                 }
@@ -235,7 +226,7 @@ public class ListOfPurchaseOrder extends javax.swing.JFrame {
             sorter.setRowFilter(null);
         } else {
             // Use a RowFilter to filter the table based on the selected item
-            sorter.setRowFilter(RowFilter.regexFilter("(?i)" + selectedItem)); // Case-insensitive search
+            sorter.setRowFilter(RowFilter.regexFilter("(?i)" + selectedItem , 0)); // Case-insensitive search
         }
 
         if (orderListTable.getRowCount() == 0) {

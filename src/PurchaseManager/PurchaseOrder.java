@@ -4,15 +4,18 @@
  */
 package PurchaseManager;
 
-
 import java.io.FileWriter;
 import java.io.IOException;
 import javax.swing.JOptionPane;
 import Login.LoginForm;
 import java.io.BufferedReader;
 import java.io.FileReader;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author gorde
@@ -21,42 +24,18 @@ public class PurchaseOrder extends javax.swing.JFrame {
 
     /**
      * Creates new form TEST
-    */
+     */
     LoginForm lf = new LoginForm();
+
     public PurchaseOrder() {
         initComponents();
         LoginForm lf = new LoginForm();
         usernametxt1.setText(lf.getUsername());
-        usernametxt2.setText(lf.getUsername());
-        orderTable.getSelectionModel().addListSelectionListener(new javax.swing.event.ListSelectionListener() {
-            @Override
-            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
-                if (!evt.getValueIsAdjusting()) { // Ensure the event only fires once when the selection is final
-                    populateFormFromTableSelection();
-                }
-            }
-        
-        });
+
+        loadDataIntoTable();
+
     }
-private void populateFormFromTableSelection() {
-        int selectedRow = orderTable.getSelectedRow();
-        
-        if (selectedRow != -1) { // Ensure a row is selected
-            String itemID = (String) orderTable.getValueAt(selectedRow, 0);
-            String itemName = (String) orderTable.getValueAt(selectedRow, 1);
-            String Quantity = (String) orderTable.getValueAt(selectedRow, 2);
-            String purchaseDate = (String) orderTable.getValueAt(selectedRow, 3);
-            String Purchaser = (String) orderTable.getValueAt(selectedRow, 4);
-            
-            idtxt.setText(itemID);
-            nametxt.setText(itemName);
-            amounttxt.setText(Quantity);
-            datetxt.setText(purchaseDate);
-            usernametxt2.setText(Purchaser);
-            
-           
-        }
-    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -79,7 +58,6 @@ private void populateFormFromTableSelection() {
         idtxt = new javax.swing.JTextField();
         amounttxt = new javax.swing.JTextField();
         nametxt = new javax.swing.JTextField();
-        datetxt = new javax.swing.JTextField();
         editBtn = new javax.swing.JButton();
         deleteBtn = new javax.swing.JButton();
         addBtn = new javax.swing.JButton();
@@ -89,6 +67,7 @@ private void populateFormFromTableSelection() {
         orderTable = new javax.swing.JTable();
         refreshbtn = new javax.swing.JButton();
         returnButton = new javax.swing.JButton();
+        datetxt = new com.toedter.calendar.JDateChooser();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -224,7 +203,7 @@ private void populateFormFromTableSelection() {
                                 .addComponent(returnButton, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(69, 69, 69)
                                 .addComponent(refreshbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
                                 .addComponent(deleteBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -236,11 +215,11 @@ private void populateFormFromTableSelection() {
                                     .addComponent(jLabel5))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(datetxt, javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(amounttxt, javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(nametxt, javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(idtxt, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(usernametxt2, javax.swing.GroupLayout.PREFERRED_SIZE, 652, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addComponent(usernametxt2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 652, Short.MAX_VALUE)
+                                    .addComponent(datetxt, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                         .addGap(0, 10, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -261,7 +240,7 @@ private void populateFormFromTableSelection() {
                     .addComponent(amounttxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel6)
                     .addComponent(datetxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(9, 9, 9)
@@ -282,33 +261,84 @@ private void populateFormFromTableSelection() {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+    private void loadDataIntoTable() {
+        DefaultTableModel model = (DefaultTableModel) orderTable.getModel(); // Get the table model
+        model.setRowCount(0); // Clear existing data in the table
+
+        // Read the data from the text file
+        try (BufferedReader br = new BufferedReader(new FileReader("order.txt"))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                if (line.trim().isEmpty()) {
+                    continue; // Skip empty lines
+                }
+                System.out.println("Read line: " + line); // for internal checking purpose on output
+                String[] data = line.split(";");
+
+                // Check the data before adding to the model
+                System.out.println("Data length: " + data.length); // for internal checking purpose on output
+                for (int i = 0; i < data.length; i++) {
+                    System.out.println("Data[" + i + "]: " + data[i]); // Print each piece of data
+                }
+
+                // Adjust this check to ensure you have the expected number of columns
+                if (data.length == 5) {
+
+                    model.addRow(data); // Add each row of data to the table
+
+                } else {
+                    System.out.println("Invalid data format: " + line);
+                }
+            }
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(null, "Unable to load data!"); // Handle the exception
+        }
+    }
 
     private void addBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBtnActionPerformed
-        try{
-            LoginForm lf = new LoginForm();
+        // Validate the ID (it must be a number)
+        String ID = idtxt.getText();
+        String Name = nametxt.getText();
+        String Amount = amounttxt.getText();
+        Date InputDate = datetxt.getDate();
+        if (ID.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Invalid ID. Please enter a valid number.", "ID Error", JOptionPane.INFORMATION_MESSAGE);
+            return; // Stop the process if the ID is empty
+        }
+        if (Name.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Invalid Name. Please enter a valid name.", "Name input Error", JOptionPane.INFORMATION_MESSAGE);
+            return; // Stop the process if the Name is empty
+        }
+        if (Amount.isEmpty() || !Amount.matches("\\d+")) {
+            JOptionPane.showMessageDialog(this, "Invalid ID. Please enter a valid number for quantity(ONLY NUMBERS).", "Quantity Error", JOptionPane.ERROR_MESSAGE);
+            return; // Stop the process if the amount is empty or not number
+        }
+
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd MMM yyyy"); // Customize format as needed
+        String date = dateFormat.format(InputDate);
+
+        try {
+
             String filename = "order.txt";
-            FileWriter fw = new FileWriter(filename, true);
-            
-            
-            fw.write(idtxt.getText()+";"
-                    +nametxt.getText()+";"
-                    +amounttxt.getText()+";"
-                    +datetxt.getText()+";"
-                    +usernametxt2.getText() + "; \n");
-                    
+            FileWriter fw = new FileWriter(filename);
+
+            fw.write(idtxt.getText() + ";"
+                    + nametxt.getText() + ";"
+                    + amounttxt.getText() + ";"
+                    + date + ";"
+                    + usernametxt2.getText() + "; \n");
+
             fw.close();
-                    JOptionPane.showMessageDialog(null,"Successfully added item!");
-                    this.refreshData();
-            
-            
-        }catch(IOException e){
-            JOptionPane.showMessageDialog(null,e.getMessage());
-            
+            JOptionPane.showMessageDialog(this, "Successfully added item!", "Saved!!", JOptionPane.INFORMATION_MESSAGE);
+            this.refreshData();
+
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
+
         }
     }//GEN-LAST:event_addBtnActionPerformed
-    
-    
-     public void refreshData() {
+
+    public void refreshData() {
         try {
             LoginForm lf = new LoginForm();
             DefaultTableModel model = (DefaultTableModel) orderTable.getModel();
@@ -317,23 +347,23 @@ private void populateFormFromTableSelection() {
             BufferedReader br = new BufferedReader(fr);
             String read;
             while ((read = br.readLine()) != null) {
-                if (read.split(";")[4].equals(lf.getUsername())) {
-                    String itemID = read.split(";")[0];
-                    String itemName = read.split(";")[1];
-                    String Quantity = read.split(";")[2];
-                    String purchaseDate = read.split(";")[3];
-                    String Purchaser = read.split(";")[4];
-                    
-                    model.addRow(
-                            new Object[]{itemID, itemName, Quantity, purchaseDate, Purchaser});
-                }
+
+                String itemID = read.split(";")[0];
+                String itemName = read.split(";")[1];
+                String Quantity = read.split(";")[2];
+                String purchaseDate = read.split(";")[3];
+                String Purchaser = read.split(";")[4];
+
+                model.addRow(
+                        new Object[]{itemID, itemName, Quantity, purchaseDate, Purchaser});
+
             }
-        }catch (IOException e) {
-            
+        } catch (IOException e) {
+
             JOptionPane.showMessageDialog(null, e.getMessage());
         }
-     }
-     
+    }
+
     private void deleteBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteBtnActionPerformed
         try {
             //get selected row of data
@@ -351,7 +381,7 @@ private void populateFormFromTableSelection() {
                 record.add(read.split(";")[2]);
                 record.add(read.split(";")[3]);
                 record.add(read.split(";")[4]);
-                
+
                 orderList.add(record);
             }
             for (int row = 0; row < orderList.size(); row++) {
@@ -371,21 +401,21 @@ private void populateFormFromTableSelection() {
                 fw.write(orderList.get(i).get(2) + ";");
                 fw.write(orderList.get(i).get(3) + ";");
                 fw.write(orderList.get(i).get(4) + ";\n");
-                
+
             }
 
             fw.close();
             JOptionPane.showMessageDialog(null, "successfully deleted a record");
         } catch (IOException e) {
             JOptionPane.showMessageDialog(null, "Successfully deleted Item");
-        } catch (ArrayIndexOutOfBoundsException e){
+        } catch (ArrayIndexOutOfBoundsException e) {
             System.out.println("Error ||  No record Selected");
-    }
+        }
     }//GEN-LAST:event_deleteBtnActionPerformed
 
     private void refreshbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshbtnActionPerformed
         refreshData();
-        populateFormFromTableSelection();
+        loadDataIntoTable();
     }//GEN-LAST:event_refreshbtnActionPerformed
 
     private void editBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editBtnActionPerformed
@@ -401,18 +431,21 @@ private void populateFormFromTableSelection() {
 
             // Get the ID of the current record being edited
             String orderToUpdate = idtxt.getText();
+            Date InputDate = datetxt.getDate();
 
             // Rewrite file with updated record
             FileWriter fw = new FileWriter("order.txt");
             for (String orderLine : Lines) {
                 String[] orderData = orderLine.split(";");
                 if (orderData[0].equals(orderToUpdate)) { // If ID matches, update record
+                    SimpleDateFormat dateFormat = new SimpleDateFormat("dd MMM yyyy"); // Customize format as needed
+                    String date = dateFormat.format(InputDate);
                     fw.write(
                             idtxt.getText() + ";"
                             + nametxt.getText() + ";"
                             + amounttxt.getText() + ";"
-                            + datetxt.getText() + ";"
-                            + lf.getUsername() + ";\n"
+                            + date + ";"
+                            + usernametxt2.getText() + ";\n"
                     );
                 } else { // Keep the record as it is
                     fw.write(orderLine + "\n");
@@ -424,8 +457,10 @@ private void populateFormFromTableSelection() {
             this.refreshData(); // Refresh table data
         } catch (IOException e) {
             JOptionPane.showMessageDialog(null, "Error updating record: " + e.getMessage());
+        } catch (ArrayIndexOutOfBoundsException e) {
+            JOptionPane.showMessageDialog(null, "Error updating record: " + e.getMessage());
         }
-                   
+
     }//GEN-LAST:event_editBtnActionPerformed
 
     private void idtxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idtxtActionPerformed
@@ -477,7 +512,7 @@ private void populateFormFromTableSelection() {
     private javax.swing.JButton addBtn;
     private javax.swing.JTextField amounttxt;
     private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.JTextField datetxt;
+    private com.toedter.calendar.JDateChooser datetxt;
     private javax.swing.JButton deleteBtn;
     private javax.swing.JButton editBtn;
     private javax.swing.JTextField idtxt;
