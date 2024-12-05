@@ -224,11 +224,11 @@ public class ListOfItems extends javax.swing.JFrame {
                 if (line.trim().isEmpty()) {
                     continue; // Skip empty lines
                 }
-                System.out.println("Read line: " + line); // Debugging statement
+                System.out.println("Read line: " + line); // for internal checking purpose on output
                 String[] data = line.split(";");
 
                 // Check the data before adding to the model
-                System.out.println("Data length: " + data.length); // Debugging statement
+                System.out.println("Data length: " + data.length); // for internal checking purpose on output
                 for (int i = 0; i < data.length; i++) {
                     System.out.println("Data[" + i + "]: " + data[i]); // Print each piece of data
                 }
@@ -269,7 +269,7 @@ public class ListOfItems extends javax.swing.JFrame {
             sorter.setRowFilter(null);
         } else {
             // Use a RowFilter to filter the table based on the selected item
-            sorter.setRowFilter(RowFilter.regexFilter("(?i)" + selectedItem)); // Case-insensitive search
+            sorter.setRowFilter(RowFilter.regexFilter("(?i)" + selectedItem,0)); // Case-insensitive search
         }
 
         if (itemListTable.getRowCount() == 0) {

@@ -9,7 +9,9 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -23,41 +25,47 @@ public class RequisitionForm extends javax.swing.JFrame {
      * Creates new form RequisitionForm
      */
     LoginForm lf = new LoginForm();
+
     public RequisitionForm() {
         initComponents();
         usernametxt1.setText(lf.getUsername());
-        usernametxt2.setText(lf.getUsername());
-        reqTable.getSelectionModel().addListSelectionListener(new javax.swing.event.ListSelectionListener() {
-            @Override
-            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
-                if (!evt.getValueIsAdjusting()) { // Ensure the event only fires once when the selection is final
-                    populateFormFromTableSelection();
+
+    }
+
+    private void loadDataIntoTable() {
+        DefaultTableModel model = (DefaultTableModel) reqTable.getModel(); // Get the table model
+        model.setRowCount(0); // Clear existing data in the table
+
+        // Read the data from the text file
+        try (BufferedReader br = new BufferedReader(new FileReader("reqForm.txt"))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                if (line.trim().isEmpty()) {
+                    continue; // Skip empty lines
+                }
+                System.out.println("Read line: " + line); // for internal checking purpose on output
+                String[] data = line.split(";");
+
+                // Check the data before adding to the model
+                System.out.println("Data length: " + data.length); // for internal checking purpose on output
+                for (int i = 0; i < data.length; i++) {
+                    System.out.println("Data[" + i + "]: " + data[i]); // Print each piece of data
+                }
+
+                // Adjust this check to ensure you have the expected number of columns
+                if (data.length == 5) {
+
+                    model.addRow(data); // Add each row of data to the table
+
+                } else {
+                    System.out.println("Invalid data format: " + line);
                 }
             }
-        
-        });
-    }
-    
-    private void populateFormFromTableSelection() {
-        int selectedRow = reqTable.getSelectedRow();
-        
-        if (selectedRow != -1) { // Ensure a row is selected
-            String itemID = (String) reqTable.getValueAt(selectedRow, 0);
-            String itemName = (String) reqTable.getValueAt(selectedRow, 1);
-            String Quantity = (String) reqTable.getValueAt(selectedRow, 2);
-            String requestDate = (String) reqTable.getValueAt(selectedRow, 3);
-            String requestBy = (String) reqTable.getValueAt(selectedRow, 4);
-            
-            idtxt.setText(itemID);
-            nametxt.setText(itemName);
-            amounttxt.setText(Quantity);
-            datetxt.setText(requestDate);
-            usernametxt2.setText(requestBy);
-            
-           
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(null, "Unable to load data!"); // Handle the exception
         }
     }
-    
+
     public void refreshData() {
         try {
             LoginForm lf = new LoginForm();
@@ -67,22 +75,22 @@ public class RequisitionForm extends javax.swing.JFrame {
             BufferedReader br = new BufferedReader(fr);
             String read;
             while ((read = br.readLine()) != null) {
-                if (read.split(";")[4].equals(lf.getUsername())) {
-                    String itemID = read.split(";")[0];
-                    String itemName = read.split(";")[1];
-                    String Quantity = read.split(";")[2];
-                    String reqDate = read.split(";")[3];
-                    String requestBy = read.split(";")[4];
-                    
-                    model.addRow(
-                            new Object[]{itemID, itemName, Quantity, reqDate, requestBy});
-                }
+
+                String itemID = read.split(";")[0];
+                String itemName = read.split(";")[1];
+                String Quantity = read.split(";")[2];
+                String reqDate = read.split(";")[3];
+                String requestBy = read.split(";")[4];
+
+                model.addRow(
+                        new Object[]{itemID, itemName, Quantity, reqDate, requestBy});
+
             }
-        }catch (IOException e) {
-            
+        } catch (IOException e) {
+
             JOptionPane.showMessageDialog(null, e.getMessage());
         }
-     }
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -102,7 +110,6 @@ public class RequisitionForm extends javax.swing.JFrame {
         usernametxt1 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         nametxt = new javax.swing.JTextField();
-        datetxt = new javax.swing.JTextField();
         editBtn = new javax.swing.JButton();
         deleteBtn = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
@@ -115,6 +122,7 @@ public class RequisitionForm extends javax.swing.JFrame {
         reqTable = new javax.swing.JTable();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
+        datetxt = new com.toedter.calendar.JDateChooser();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -261,11 +269,11 @@ public class RequisitionForm extends javax.swing.JFrame {
                                     .addComponent(jLabel5))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(datetxt, javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(amounttxt, javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(nametxt, javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(idtxt, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(usernametxt2, javax.swing.GroupLayout.PREFERRED_SIZE, 652, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addComponent(usernametxt2, javax.swing.GroupLayout.PREFERRED_SIZE, 652, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(datetxt, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -286,10 +294,10 @@ public class RequisitionForm extends javax.swing.JFrame {
                     .addComponent(amounttxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel6)
                     .addComponent(datetxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(9, 9, 9)
+                .addGap(11, 11, 11)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
                     .addComponent(usernametxt2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -314,7 +322,7 @@ public class RequisitionForm extends javax.swing.JFrame {
 
     private void refreshbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshbtnActionPerformed
         refreshData();
-        populateFormFromTableSelection();
+        loadDataIntoTable();
     }//GEN-LAST:event_refreshbtnActionPerformed
 
     private void returnButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_returnButtonActionPerformed
@@ -335,18 +343,20 @@ public class RequisitionForm extends javax.swing.JFrame {
 
             // Get the ID of the current record being edited
             String orderToUpdate = idtxt.getText();
-
+            Date InputDate = datetxt.getDate();
             // Rewrite file with updated record
             FileWriter fw = new FileWriter("reqForm.txt");
             for (String orderLine : Lines) {
                 String[] orderData = orderLine.split(";");
                 if (orderData[0].equals(orderToUpdate)) { // If ID matches, update record
+                    SimpleDateFormat dateFormat = new SimpleDateFormat("dd MMM yyyy"); // Customize format as needed
+                    String date = dateFormat.format(InputDate);
                     fw.write(
-                        idtxt.getText() + ";"
-                        + nametxt.getText() + ";"
-                        + amounttxt.getText() + ";"
-                        + datetxt.getText() + ";"
-                        + lf.getUsername() + ";\n"
+                            idtxt.getText() + ";"
+                            + nametxt.getText() + ";"
+                            + amounttxt.getText() + ";"
+                            + date + ";"
+                            + lf.getUsername() + ";\n"
                     );
                 } else { // Keep the record as it is
                     fw.write(orderLine + "\n");
@@ -403,31 +413,49 @@ public class RequisitionForm extends javax.swing.JFrame {
 
             fw.close();
             JOptionPane.showMessageDialog(null, "Successfully deleted a record !! ");
-            this.populateFormFromTableSelection();
+            this.refreshData();
         } catch (IOException e) {
             JOptionPane.showMessageDialog(null, "Successfully deleted Request Record !! ");
         }
     }//GEN-LAST:event_deleteBtnActionPerformed
 
     private void addBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBtnActionPerformed
-        try{
-            LoginForm lf = new LoginForm();
+        try {
+            String ID = idtxt.getText();
+            String Name = nametxt.getText();
+            String Amount = amounttxt.getText();
+            Date InputDate = datetxt.getDate();
+            if (ID.isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Invalid ID. Please enter a valid number.", "ID Error", JOptionPane.INFORMATION_MESSAGE);
+                return; // Stop the process if the ID is empty
+            }
+            if (Name.isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Invalid Name. Please enter a valid name.", "Name input Error", JOptionPane.INFORMATION_MESSAGE);
+                return; // Stop the process if the Name is empty
+            }
+            if (Amount.isEmpty() || !Amount.matches("\\d+")) {
+                JOptionPane.showMessageDialog(this, "Invalid ID. Please enter a valid number for quantity(ONLY NUMBERS).", "Quantity Error", JOptionPane.ERROR_MESSAGE);
+                return; // Stop the process if the amount is empty or not number
+            }
+            
+            SimpleDateFormat dateFormat = new SimpleDateFormat("dd MMM yyyy"); // Customize format as needed
+            String date = dateFormat.format(InputDate);
+
             String filename = "reqForm.txt";
             FileWriter fw = new FileWriter(filename, true);
 
-            fw.write(idtxt.getText()+";"
-                +nametxt.getText()+";"
-                +amounttxt.getText()+";"
-                +datetxt.getText()+";"
-                +usernametxt2.getText() + "; \n");
+            fw.write(idtxt.getText() + ";"
+                    + nametxt.getText() + ";"
+                    + amounttxt.getText() + ";"
+                    + date + ";"
+                    + usernametxt2.getText() + "; \n");
 
             fw.close();
-            JOptionPane.showMessageDialog(null,"Successfully added request ! !");
+            JOptionPane.showMessageDialog(null, "Successfully added request ! !");
             this.refreshData();
-            this.populateFormFromTableSelection();
 
-        }catch(IOException e){
-            JOptionPane.showMessageDialog(null,e.getMessage());
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
 
         }
     }//GEN-LAST:event_addBtnActionPerformed
@@ -470,7 +498,7 @@ public class RequisitionForm extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addBtn;
     private javax.swing.JTextField amounttxt;
-    private javax.swing.JTextField datetxt;
+    private com.toedter.calendar.JDateChooser datetxt;
     private javax.swing.JButton deleteBtn;
     private javax.swing.JButton editBtn;
     private javax.swing.JTextField idtxt;
