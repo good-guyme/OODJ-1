@@ -69,6 +69,7 @@ public class Item_Entry extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Segoe UI", 3, 36)); // NOI18N
         jLabel2.setText("ITEM ENTRY");
 
+        editbtn.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         editbtn.setText("Edit");
         editbtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -76,8 +77,10 @@ public class Item_Entry extends javax.swing.JFrame {
             }
         });
 
+        jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         jLabel8.setText("SUPPLIER ID : ");
 
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         jLabel3.setText("CODE :");
 
         itementrytbl.setModel(new javax.swing.table.DefaultTableModel(
@@ -105,6 +108,7 @@ public class Item_Entry extends javax.swing.JFrame {
             }
         });
 
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         jLabel4.setText("ITEMS :");
 
         backbtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/InventoryManager/Image/Back btn .png"))); // NOI18N
@@ -114,6 +118,7 @@ public class Item_Entry extends javax.swing.JFrame {
             }
         });
 
+        savevtb.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         savevtb.setText("Save");
         savevtb.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -134,6 +139,7 @@ public class Item_Entry extends javax.swing.JFrame {
             }
         });
 
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         jLabel5.setText("PRICE PER ITEM(RM) :");
 
         gotosupplierentrybtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/InventoryManager/Image/Supplierbtn1.png"))); // NOI18N
@@ -146,6 +152,7 @@ public class Item_Entry extends javax.swing.JFrame {
         searchcb.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Electrical Kettle", "Toaster", "Microwave Oven", "Blender" }));
         searchcb.setSelectedIndex(-1);
 
+        deletebtn.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         deletebtn.setText("Delete");
         deletebtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -153,8 +160,10 @@ public class Item_Entry extends javax.swing.JFrame {
             }
         });
 
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         jLabel6.setText("QUANTITY :");
 
+        addbtn.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         addbtn.setText("Add");
         addbtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -214,8 +223,9 @@ public class Item_Entry extends javax.swing.JFrame {
                         .addComponent(searchbtn))))
             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel2Layout.createSequentialGroup()
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 806, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 4, Short.MAX_VALUE)))
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jLabel1)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -263,9 +273,12 @@ public class Item_Entry extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(backbtn)
                     .addComponent(gotosupplierentrybtn))
-                .addContainerGap(48, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 500, Short.MAX_VALUE))
+                .addGroup(jPanel2Layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jLabel1)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

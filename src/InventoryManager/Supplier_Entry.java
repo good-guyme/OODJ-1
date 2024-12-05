@@ -111,6 +111,7 @@ public class Supplier_Entry extends javax.swing.JFrame {
             }
         });
 
+        deletebtn.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         deletebtn.setText("Delete");
         deletebtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -118,6 +119,7 @@ public class Supplier_Entry extends javax.swing.JFrame {
             }
         });
 
+        editbtn.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         editbtn.setText("Edit");
         editbtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -125,6 +127,7 @@ public class Supplier_Entry extends javax.swing.JFrame {
             }
         });
 
+        addbtn.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         addbtn.setText("Add");
         addbtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -132,6 +135,7 @@ public class Supplier_Entry extends javax.swing.JFrame {
             }
         });
 
+        savebtn.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         savebtn.setText("Save");
         savebtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -147,12 +151,16 @@ public class Supplier_Entry extends javax.swing.JFrame {
             }
         });
 
+        jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         jLabel8.setText("PAYMENT: ");
 
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         jLabel5.setText("PHONE :");
 
+        jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         jLabel7.setText("DATE : ");
 
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         jLabel6.setText("QUANTITY :");
 
         itemcb.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Electrical Kettle", "Toaster", "Microwave Oven", "Blender" }));
@@ -163,8 +171,10 @@ public class Supplier_Entry extends javax.swing.JFrame {
             }
         });
 
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         jLabel4.setText("ITEM :");
 
+        jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         jLabel11.setText("ADDRESS: ");
 
         addresstxt.addActionListener(new java.awt.event.ActionListener() {
@@ -173,8 +183,10 @@ public class Supplier_Entry extends javax.swing.JFrame {
             }
         });
 
+        jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         jLabel9.setText("NAME: ");
 
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         jLabel3.setText("ID: ");
 
         jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/InventoryManager/Image/pufferfish.jpg"))); // NOI18N
@@ -240,7 +252,7 @@ public class Supplier_Entry extends javax.swing.JFrame {
                                                 .addComponent(addresstxt)
                                                 .addComponent(paymentcb, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                                 .addComponent(datetxt, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
-                        .addGap(0, 19, Short.MAX_VALUE)))
+                        .addGap(0, 18, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, 900, Short.MAX_VALUE))
