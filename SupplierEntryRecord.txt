@@ -1,6 +1,6 @@
-1;Apple;Puchong;Electrical Kettle;10;01 Nov 2024;123456789;COD;
-2;Banana;Puchong;Toaster;20;02 Nov 2024;0123456789;Net 15;
-3;Carrot;Kajang;Microwave Oven;30;03 Nov 2024;9876543210;Net 30;
-4;Potato;Kajang;Blender;40;04 Nov 2024;0987654321;Net 60;
-5;Orange;Kelantan;Electrical Kettle;50;05 Nov 2024;234565432;COD;
-6;Lemon;Kelantan;Toaster;60;06 Nov 2024;345678765432;Net 15;
+1;Apple;Puchong;Toaster;10;01 Nov 2024;0123456789;COD;
+2;Banana;Puchong;Toaster;20;02 Nov 2024;1123456789;COD;
+3;Carrot;Kajang;Microwave Oven;30;03 Nov 2024;2123456789;Net 15;
+4;Potato;Kajang;Blender;40;04 Nov 2024;3123456789;Net 15;
+5;Orange;Kelantan;Electrical Kettle;50;05 Nov 2024;4123456789;Net 30;
+6;Lemon;Kelantan;Toaster;60;06 Nov 2024;5123456789;Net 60;
