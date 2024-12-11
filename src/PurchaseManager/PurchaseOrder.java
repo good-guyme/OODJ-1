@@ -67,7 +67,6 @@ public class PurchaseOrder extends javax.swing.JFrame {
         orderTable = new javax.swing.JTable();
         refreshbtn = new javax.swing.JButton();
         returnButton = new javax.swing.JButton();
-        datetxt = new com.toedter.calendar.JDateChooser();
         jLabel8 = new javax.swing.JLabel();
 
         jLabel2.setText("jLabel2");
@@ -205,7 +204,6 @@ public class PurchaseOrder extends javax.swing.JFrame {
             }
         });
         getContentPane().add(returnButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(347, 301, 91, -1));
-        getContentPane().add(datetxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(132, 228, 652, -1));
 
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/PurchaseManager/Image/background.png"))); // NOI18N
         getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 500));
@@ -463,7 +461,6 @@ public class PurchaseOrder extends javax.swing.JFrame {
     private javax.swing.JButton addBtn;
     private javax.swing.JTextField amounttxt;
     private javax.swing.ButtonGroup buttonGroup1;
-    private com.toedter.calendar.JDateChooser datetxt;
     private javax.swing.JButton deleteBtn;
     private javax.swing.JButton editBtn;
     private javax.swing.JTextField idtxt;

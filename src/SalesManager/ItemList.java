@@ -22,7 +22,7 @@ public class ItemList extends javax.swing.JFrame {
         model.setRowCount(0); // Clear existing data in the table to load data.
 
         // Read the data from the text file
-        try (BufferedReader br = new BufferedReader(new FileReader("sales.txt"))) {
+        try (BufferedReader br = new BufferedReader(new FileReader("item.txt"))) {
             String line;
             while ((line = br.readLine()) != null) {
                 if (line.trim().isEmpty()) {
