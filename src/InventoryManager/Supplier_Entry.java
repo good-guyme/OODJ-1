@@ -42,6 +42,7 @@ public class Supplier_Entry extends javax.swing.JFrame {
 
         jSeparator2 = new javax.swing.JSeparator();
         jLabel2 = new javax.swing.JLabel();
+        searchcb = new javax.swing.JComboBox<>();
         searchbtn = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         supplierentrytbl = new javax.swing.JTable();
@@ -66,8 +67,8 @@ public class Supplier_Entry extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         idtxt = new javax.swing.JTextField();
-        searchtxt = new javax.swing.JTextField();
-        searchtxt1 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        datetxt = new com.toedter.calendar.JDateChooser();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -76,7 +77,9 @@ public class Supplier_Entry extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("SUPPLIER ENTRY");
 
-        searchbtn.setBackground(new java.awt.Color(242, 242, 242));
+        searchcb.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Electrical Kettle", "Toaster", "Microwave Oven", "Blender" }));
+        searchcb.setSelectedIndex(-1);
+
         searchbtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/InventoryManager/Image/Searchbtn.jpg"))); // NOI18N
         searchbtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -94,7 +97,6 @@ public class Supplier_Entry extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(supplierentrytbl);
 
-        backbtn.setBackground(new java.awt.Color(242, 242, 242));
         backbtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/InventoryManager/Image/Back btn .png"))); // NOI18N
         backbtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -102,7 +104,6 @@ public class Supplier_Entry extends javax.swing.JFrame {
             }
         });
 
-        gotoitementrybtn.setBackground(new java.awt.Color(242, 242, 242));
         gotoitementrybtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/InventoryManager/Image/Itembtn1.jpg"))); // NOI18N
         gotoitementrybtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -110,8 +111,6 @@ public class Supplier_Entry extends javax.swing.JFrame {
             }
         });
 
-        deletebtn.setBackground(new java.awt.Color(255, 204, 204));
-        deletebtn.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         deletebtn.setText("Delete");
         deletebtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -119,8 +118,6 @@ public class Supplier_Entry extends javax.swing.JFrame {
             }
         });
 
-        editbtn.setBackground(new java.awt.Color(255, 255, 204));
-        editbtn.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         editbtn.setText("Edit");
         editbtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -128,8 +125,6 @@ public class Supplier_Entry extends javax.swing.JFrame {
             }
         });
 
-        addbtn.setBackground(new java.awt.Color(204, 255, 255));
-        addbtn.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         addbtn.setText("Add");
         addbtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -137,8 +132,6 @@ public class Supplier_Entry extends javax.swing.JFrame {
             }
         });
 
-        savebtn.setBackground(new java.awt.Color(204, 255, 204));
-        savebtn.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         savebtn.setText("Save");
         savebtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -146,7 +139,6 @@ public class Supplier_Entry extends javax.swing.JFrame {
             }
         });
 
-        paymentcb.setBackground(new java.awt.Color(242, 242, 242));
         paymentcb.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "COD", "Net 15", "Net 30", "Net 60" }));
         paymentcb.setSelectedIndex(-1);
         paymentcb.addItemListener(new java.awt.event.ItemListener() {
@@ -155,19 +147,14 @@ public class Supplier_Entry extends javax.swing.JFrame {
             }
         });
 
-        jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         jLabel8.setText("PAYMENT: ");
 
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         jLabel5.setText("PHONE :");
 
-        jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         jLabel7.setText("DATE : ");
 
-        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         jLabel6.setText("QUANTITY :");
 
-        itemcb.setBackground(new java.awt.Color(242, 242, 242));
         itemcb.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Electrical Kettle", "Toaster", "Microwave Oven", "Blender" }));
         itemcb.setSelectedIndex(-1);
         itemcb.addItemListener(new java.awt.event.ItemListener() {
@@ -176,10 +163,8 @@ public class Supplier_Entry extends javax.swing.JFrame {
             }
         });
 
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         jLabel4.setText("ITEM :");
 
-        jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         jLabel11.setText("ADDRESS: ");
 
         addresstxt.addActionListener(new java.awt.event.ActionListener() {
@@ -188,16 +173,12 @@ public class Supplier_Entry extends javax.swing.JFrame {
             }
         });
 
-        jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         jLabel9.setText("NAME: ");
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         jLabel3.setText("ID: ");
 
-        searchtxt.setBackground(new java.awt.Color(242, 242, 242));
-
-        searchtxt1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/InventoryManager/Image/pufferfish.jpg"))); // NOI18N
-        searchtxt1.setPreferredSize(new java.awt.Dimension(800, 500));
+        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/InventoryManager/Image/pufferfish.jpg"))); // NOI18N
+        jLabel10.setPreferredSize(new java.awt.Dimension(800, 500));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -210,8 +191,8 @@ public class Supplier_Entry extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(searchtxt, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
+                                .addComponent(searchcb, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(searchbtn))
                             .addComponent(jLabel2)
                             .addGroup(layout.createSequentialGroup()
@@ -255,13 +236,14 @@ public class Supplier_Entry extends javax.swing.JFrame {
                                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                                 .addComponent(phonetxt)
                                                 .addComponent(quantityspi)
-                                                .addComponent(itemcb, 0, 149, Short.MAX_VALUE)
+                                                .addComponent(itemcb, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                                 .addComponent(addresstxt)
-                                                .addComponent(paymentcb, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))))
-                        .addGap(0, 18, Short.MAX_VALUE)))
+                                                .addComponent(paymentcb, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(datetxt, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
+                        .addGap(0, 19, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(searchtxt1, javax.swing.GroupLayout.DEFAULT_SIZE, 900, Short.MAX_VALUE))
+                .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, 900, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -272,8 +254,8 @@ public class Supplier_Entry extends javax.swing.JFrame {
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(searchbtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(searchtxt))
+                    .addComponent(searchcb)
+                    .addComponent(searchbtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
@@ -301,7 +283,9 @@ public class Supplier_Entry extends javax.swing.JFrame {
                             .addComponent(jLabel6)
                             .addComponent(quantityspi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel7)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel7)
+                            .addComponent(datetxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(phonetxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -325,7 +309,7 @@ public class Supplier_Entry extends javax.swing.JFrame {
                     .addComponent(gotoitementrybtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(searchtxt1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 600, Short.MAX_VALUE))
+                .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, 600, Short.MAX_VALUE))
         );
 
         pack();
@@ -341,28 +325,23 @@ public class Supplier_Entry extends javax.swing.JFrame {
     }//GEN-LAST:event_paymentcbItemStateChanged
 
     private void searchbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchbtnActionPerformed
-        String searchText = searchtxt.getText().trim(); // Get the text from the text field
+        String selectedItem = (String) searchcb.getSelectedItem(); // Get the selected item from the combo box
         DefaultTableModel model = (DefaultTableModel) supplierentrytbl.getModel(); // Get the table model
 
-        // Set up the table row sorter
+        // Clear any previous search results
         TableRowSorter<DefaultTableModel> sorter = new TableRowSorter<>(model);
         supplierentrytbl.setRowSorter(sorter);
 
-        if (searchText.isEmpty()) {
-            // If no input, show all rows
+        if (selectedItem == null || selectedItem.isEmpty()) {
+            // If no item is selected, show all rows
             sorter.setRowFilter(null);
         } else {
-            // If searching for an ID (numeric), ensure it's searched in the first column (ID column)
-            if (searchText.matches("\\d+")) { // Check if the search text is a number (ID)
-                sorter.setRowFilter(RowFilter.regexFilter("^" + searchText + "$", 0)); // Search in the first column (ID column)
-            } else {
-                // Otherwise, perform a general search across all columns
-                sorter.setRowFilter(RowFilter.regexFilter("^" + searchText)); // Search in the 2nd column
-            }
+            // Use a RowFilter to filter the table based on the selected item
+            sorter.setRowFilter(RowFilter.regexFilter("(?i)" + selectedItem)); // Case-insensitive search
         }
 
-        // Clear the search text field after searching
-        searchtxt.setText("");
+        // Clear the JComboBox selection
+        searchcb.setSelectedItem(null); // Clear the selection
     }//GEN-LAST:event_searchbtnActionPerformed
 
     private void addresstxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addresstxtActionPerformed
@@ -796,11 +775,13 @@ public class Supplier_Entry extends javax.swing.JFrame {
     private javax.swing.JButton addbtn;
     private javax.swing.JTextField addresstxt;
     private javax.swing.JButton backbtn;
+    private com.toedter.calendar.JDateChooser datetxt;
     private javax.swing.JButton deletebtn;
     private javax.swing.JButton editbtn;
     private javax.swing.JButton gotoitementrybtn;
     private javax.swing.JTextField idtxt;
     private javax.swing.JComboBox<String> itemcb;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -818,8 +799,7 @@ public class Supplier_Entry extends javax.swing.JFrame {
     private javax.swing.JSpinner quantityspi;
     private javax.swing.JButton savebtn;
     private javax.swing.JButton searchbtn;
-    private javax.swing.JTextField searchtxt;
-    private javax.swing.JLabel searchtxt1;
+    private javax.swing.JComboBox<String> searchcb;
     private javax.swing.JTable supplierentrytbl;
     // End of variables declaration//GEN-END:variables
 }

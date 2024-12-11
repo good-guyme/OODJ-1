@@ -50,13 +50,11 @@ public class HomeFormInventoryManager extends javax.swing.JFrame {
         jLabel1.setText("Welcome,");
 
         usernamelbl.setFont(new java.awt.Font("Segoe UI", 3, 36)); // NOI18N
-        usernamelbl.setForeground(new java.awt.Color(255, 204, 204));
         usernamelbl.setText("jLabel2");
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 3, 36)); // NOI18N
         jLabel2.setText("DASHBOARD");
 
-        itementrybtn.setBackground(new java.awt.Color(242, 242, 242));
         itementrybtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/InventoryManager/Image/Item btn .jpg"))); // NOI18N
         itementrybtn.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         itementrybtn.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -66,7 +64,6 @@ public class HomeFormInventoryManager extends javax.swing.JFrame {
             }
         });
 
-        supplierentrybtn.setBackground(new java.awt.Color(242, 242, 242));
         supplierentrybtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/InventoryManager/Image/Supplierbtn.png"))); // NOI18N
         supplierentrybtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -74,7 +71,6 @@ public class HomeFormInventoryManager extends javax.swing.JFrame {
             }
         });
 
-        logoutbtn.setBackground(new java.awt.Color(242, 242, 242));
         logoutbtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/InventoryManager/Image/Logoutbtn.jpg"))); // NOI18N
         logoutbtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -128,10 +124,7 @@ public class HomeFormInventoryManager extends javax.swing.JFrame {
                     .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(82, 82, 82))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel1Layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+                .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 800, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -163,10 +156,7 @@ public class HomeFormInventoryManager extends javax.swing.JFrame {
                                 .addComponent(jLabel4)))))
                 .addGap(103, 103, 103))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel1Layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+                .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 500, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
