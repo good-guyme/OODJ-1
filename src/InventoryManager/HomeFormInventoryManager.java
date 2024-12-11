@@ -53,6 +53,7 @@ public class HomeFormInventoryManager extends javax.swing.JFrame {
         jLabel1.setText("Welcome,");
 
         usernamelbl.setFont(new java.awt.Font("Segoe UI", 3, 36)); // NOI18N
+        usernamelbl.setForeground(new java.awt.Color(255, 204, 204));
         usernamelbl.setText("jLabel2");
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 3, 36)); // NOI18N
