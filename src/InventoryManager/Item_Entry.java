@@ -670,9 +670,7 @@ public class Item_Entry extends javax.swing.JFrame {
                 e.printStackTrace();
                 javax.swing.JOptionPane.showMessageDialog(this, "Error writing to the file.", "File Error", javax.swing.JOptionPane.ERROR_MESSAGE);
             }
-//        } else {
-//            javax.swing.JOptionPane.showMessageDialog(this, "Item code not found in the file.", "Update Error", javax.swing.JOptionPane.ERROR_MESSAGE);
-       }
+        }
     }
 
     private void loadDataIntoTable() {
