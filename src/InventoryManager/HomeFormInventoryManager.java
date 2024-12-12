@@ -56,7 +56,6 @@ public class HomeFormInventoryManager extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Segoe UI", 3, 36)); // NOI18N
         jLabel2.setText("DASHBOARD");
 
-        itementrybtn.setBackground(new java.awt.Color(242, 242, 242));
         itementrybtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/InventoryManager/Image/Item btn .jpg"))); // NOI18N
         itementrybtn.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         itementrybtn.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -66,7 +65,6 @@ public class HomeFormInventoryManager extends javax.swing.JFrame {
             }
         });
 
-        supplierentrybtn.setBackground(new java.awt.Color(242, 242, 242));
         supplierentrybtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/InventoryManager/Image/Supplierbtn.png"))); // NOI18N
         supplierentrybtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -74,7 +72,6 @@ public class HomeFormInventoryManager extends javax.swing.JFrame {
             }
         });
 
-        logoutbtn.setBackground(new java.awt.Color(242, 242, 242));
         logoutbtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/InventoryManager/Image/Logoutbtn.jpg"))); // NOI18N
         logoutbtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -224,6 +221,10 @@ public class HomeFormInventoryManager extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(HomeFormInventoryManager.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>

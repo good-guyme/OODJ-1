@@ -40,6 +40,7 @@ public class Supplier_Entry extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel10 = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
         jLabel2 = new javax.swing.JLabel();
         searchbtn = new javax.swing.JButton();
@@ -66,8 +67,12 @@ public class Supplier_Entry extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         idtxt = new javax.swing.JTextField();
+        datetxt = new com.toedter.calendar.JDateChooser();
         searchtxt = new javax.swing.JTextField();
-        searchtxt1 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+
+        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/InventoryManager/Image/pufferfish.jpg"))); // NOI18N
+        jLabel10.setPreferredSize(new java.awt.Dimension(800, 500));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -94,7 +99,6 @@ public class Supplier_Entry extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(supplierentrytbl);
 
-        backbtn.setBackground(new java.awt.Color(242, 242, 242));
         backbtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/InventoryManager/Image/Back btn .png"))); // NOI18N
         backbtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -102,7 +106,6 @@ public class Supplier_Entry extends javax.swing.JFrame {
             }
         });
 
-        gotoitementrybtn.setBackground(new java.awt.Color(242, 242, 242));
         gotoitementrybtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/InventoryManager/Image/Itembtn1.jpg"))); // NOI18N
         gotoitementrybtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -146,7 +149,6 @@ public class Supplier_Entry extends javax.swing.JFrame {
             }
         });
 
-        paymentcb.setBackground(new java.awt.Color(242, 242, 242));
         paymentcb.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "COD", "Net 15", "Net 30", "Net 60" }));
         paymentcb.setSelectedIndex(-1);
         paymentcb.addItemListener(new java.awt.event.ItemListener() {
@@ -167,7 +169,6 @@ public class Supplier_Entry extends javax.swing.JFrame {
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         jLabel6.setText("QUANTITY :");
 
-        itemcb.setBackground(new java.awt.Color(242, 242, 242));
         itemcb.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Electrical Kettle", "Toaster", "Microwave Oven", "Blender" }));
         itemcb.setSelectedIndex(-1);
         itemcb.addItemListener(new java.awt.event.ItemListener() {
@@ -196,8 +197,8 @@ public class Supplier_Entry extends javax.swing.JFrame {
 
         searchtxt.setBackground(new java.awt.Color(242, 242, 242));
 
-        searchtxt1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/InventoryManager/Image/pufferfish.jpg"))); // NOI18N
-        searchtxt1.setPreferredSize(new java.awt.Dimension(800, 500));
+        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/InventoryManager/Image/pufferfish.jpg"))); // NOI18N
+        jLabel12.setPreferredSize(new java.awt.Dimension(800, 500));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -206,19 +207,19 @@ public class Supplier_Entry extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jSeparator2, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jSeparator2)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(searchtxt, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(searchbtn))
                             .addComponent(jLabel2)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(6, 6, 6)
                                 .addComponent(backbtn)
                                 .addGap(18, 18, 18)
                                 .addComponent(gotoitementrybtn))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(searchtxt, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(searchbtn))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 626, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -255,13 +256,16 @@ public class Supplier_Entry extends javax.swing.JFrame {
                                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                                 .addComponent(phonetxt)
                                                 .addComponent(quantityspi)
-                                                .addComponent(itemcb, 0, 149, Short.MAX_VALUE)
+                                                .addComponent(itemcb, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                                 .addComponent(addresstxt)
-                                                .addComponent(paymentcb, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))))
-                        .addGap(0, 18, Short.MAX_VALUE)))
+                                                .addComponent(paymentcb, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(datetxt, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
+                        .addGap(0, 15, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(searchtxt1, javax.swing.GroupLayout.DEFAULT_SIZE, 900, Short.MAX_VALUE))
+                .addGroup(layout.createSequentialGroup()
+                    .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 897, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -276,7 +280,7 @@ public class Supplier_Entry extends javax.swing.JFrame {
                     .addComponent(searchtxt))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 418, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel3)
@@ -301,7 +305,9 @@ public class Supplier_Entry extends javax.swing.JFrame {
                             .addComponent(jLabel6)
                             .addComponent(quantityspi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel7)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel7)
+                            .addComponent(datetxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(phonetxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -323,9 +329,11 @@ public class Supplier_Entry extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(backbtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(gotoitementrybtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(18, 18, 18))
+                .addContainerGap())
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(searchtxt1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 600, Short.MAX_VALUE))
+                .addGroup(layout.createSequentialGroup()
+                    .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, 600, Short.MAX_VALUE)
+                    .addContainerGap()))
         );
 
         pack();
@@ -341,28 +349,30 @@ public class Supplier_Entry extends javax.swing.JFrame {
     }//GEN-LAST:event_paymentcbItemStateChanged
 
     private void searchbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchbtnActionPerformed
-        String searchText = searchtxt.getText().trim(); // Get the text from the text field
+        String selectedItem = (String) searchtxt.getText().trim(); // Get the selected item 
         DefaultTableModel model = (DefaultTableModel) supplierentrytbl.getModel(); // Get the table model
 
-        // Set up the table row sorter
+        // Clear any previous search results
         TableRowSorter<DefaultTableModel> sorter = new TableRowSorter<>(model);
         supplierentrytbl.setRowSorter(sorter);
 
-        if (searchText.isEmpty()) {
-            // If no input, show all rows
+        if (selectedItem == null || selectedItem.isEmpty()) {
+            // If no item is selected, show all rows
             sorter.setRowFilter(null);
         } else {
-            // If searching for an ID (numeric), ensure it's searched in the first column (ID column)
-            if (searchText.matches("\\d+")) { // Check if the search text is a number (ID)
-                sorter.setRowFilter(RowFilter.regexFilter("^" + searchText + "$", 0)); // Search in the first column (ID column)
-            } else {
-                // Otherwise, perform a general search across all columns
-                sorter.setRowFilter(RowFilter.regexFilter("^" + searchText)); // Search in the 2nd column
+            try {
+                // Check if the search key is a numeric value (for ID)
+                Integer.parseInt(selectedItem);
+                // Search for rows where any column matches the numeric ID
+                sorter.setRowFilter(RowFilter.regexFilter("^" + selectedItem + "$", 0)); // Assume ID is in column 0
+            } catch (NumberFormatException e) {
+                // If not a number, perform a case-insensitive search for text
+                sorter.setRowFilter(RowFilter.regexFilter("(?i)" + selectedItem));
             }
         }
 
-        // Clear the search text field after searching
-        searchtxt.setText("");
+        // Clear the JTextField selection
+        searchtxt.setText(""); // Clear the selection
     }//GEN-LAST:event_searchbtnActionPerformed
 
     private void addresstxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addresstxtActionPerformed
@@ -796,12 +806,15 @@ public class Supplier_Entry extends javax.swing.JFrame {
     private javax.swing.JButton addbtn;
     private javax.swing.JTextField addresstxt;
     private javax.swing.JButton backbtn;
+    private com.toedter.calendar.JDateChooser datetxt;
     private javax.swing.JButton deletebtn;
     private javax.swing.JButton editbtn;
     private javax.swing.JButton gotoitementrybtn;
     private javax.swing.JTextField idtxt;
     private javax.swing.JComboBox<String> itemcb;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -819,7 +832,6 @@ public class Supplier_Entry extends javax.swing.JFrame {
     private javax.swing.JButton savebtn;
     private javax.swing.JButton searchbtn;
     private javax.swing.JTextField searchtxt;
-    private javax.swing.JLabel searchtxt1;
     private javax.swing.JTable supplierentrytbl;
     // End of variables declaration//GEN-END:variables
 }

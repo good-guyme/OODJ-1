@@ -42,11 +42,9 @@ public class HomeFormPurchaseManager extends javax.swing.JFrame {
         supplierList = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         reqFormButt = new javax.swing.JButton();
-        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(255, 204, 204));
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
@@ -78,11 +76,8 @@ public class HomeFormPurchaseManager extends javax.swing.JFrame {
                 .addGap(16, 16, 16))
         );
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 0, 790, -1));
-
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/PurchaseManager/Image/menu.png"))); // NOI18N
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 100, 370, 240));
 
         ListButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/PurchaseManager/Image/list.png"))); // NOI18N
         ListButton.setText("ITEM LIST");
@@ -91,7 +86,6 @@ public class HomeFormPurchaseManager extends javax.swing.JFrame {
                 ListButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(ListButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 330, -1, 74));
 
         PurchaseOrderButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/PurchaseManager/Image/purchase.png"))); // NOI18N
         PurchaseOrderButton.setText("PURCHASE ORDER");
@@ -100,7 +94,6 @@ public class HomeFormPurchaseManager extends javax.swing.JFrame {
                 PurchaseOrderButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(PurchaseOrderButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 330, -1, -1));
 
         PurchaseListButt.setIcon(new javax.swing.ImageIcon(getClass().getResource("/PurchaseManager/Image/purcaseorder.png"))); // NOI18N
         PurchaseListButt.setText("PURCHASE ORDER LIST");
@@ -109,7 +102,6 @@ public class HomeFormPurchaseManager extends javax.swing.JFrame {
                 PurchaseListButtActionPerformed(evt);
             }
         });
-        getContentPane().add(PurchaseListButt, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 330, -1, 74));
 
         supplierList.setIcon(new javax.swing.ImageIcon(getClass().getResource("/PurchaseManager/Image/supplier.png"))); // NOI18N
         supplierList.setText("SUPPLIER LIST");
@@ -118,7 +110,6 @@ public class HomeFormPurchaseManager extends javax.swing.JFrame {
                 supplierListActionPerformed(evt);
             }
         });
-        getContentPane().add(supplierList, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 330, -1, 74));
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/PurchaseManager/Image/return.png"))); // NOI18N
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -126,7 +117,6 @@ public class HomeFormPurchaseManager extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 110, -1, -1));
 
         reqFormButt.setIcon(new javax.swing.ImageIcon(getClass().getResource("/PurchaseManager/Image/reqform.png"))); // NOI18N
         reqFormButt.setText("REQUISITION FORM");
@@ -135,11 +125,56 @@ public class HomeFormPurchaseManager extends javax.swing.JFrame {
                 reqFormButtActionPerformed(evt);
             }
         });
-        getContentPane().add(reqFormButt, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 420, 234, 77));
 
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/PurchaseManager/background.png"))); // NOI18N
-        jLabel4.setPreferredSize(new java.awt.Dimension(800, 500));
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(-40, 0, 840, 500));
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(36, Short.MAX_VALUE)
+                .addComponent(ListButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(PurchaseOrderButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(PurchaseListButt)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(supplierList)
+                .addGap(27, 27, 27))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(256, 256, 256)
+                .addComponent(reqFormButt, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 369, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(145, 145, 145)
+                        .addComponent(jButton1)
+                        .addGap(14, 14, 14))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap())))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton1)
+                    .addComponent(jLabel2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(PurchaseOrderButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(ListButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(PurchaseListButt, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(supplierList, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(reqFormButt, javax.swing.GroupLayout.PREFERRED_SIZE, 77, Short.MAX_VALUE)
+                .addContainerGap())
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -219,7 +254,6 @@ public class HomeFormPurchaseManager extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JButton reqFormButt;
     private javax.swing.JButton supplierList;
