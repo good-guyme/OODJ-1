@@ -4,7 +4,6 @@
  */
 package Admin;
 
-
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -70,6 +69,7 @@ public class UserRegistrationForm extends javax.swing.JFrame {
         jLabel4.setText("Role");
 
         conboboxrole.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "AD", "FM", "IM", "PM", "SM" }));
+        conboboxrole.setSelectedIndex(-1);
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel5.setText("Comfirm Password");
@@ -152,36 +152,41 @@ public class UserRegistrationForm extends javax.swing.JFrame {
         String role = (String) conboboxrole.getSelectedItem();
         String password = new String(txtpassword.getPassword());
         String confirmPassword = new String(txtconfirmpassword.getPassword());
-        
-        if (!password.equals(confirmPassword)) {
-                    JOptionPane.showMessageDialog(null, "Invalid password!", "error!", JOptionPane.ERROR_MESSAGE);
-                } else {
-                   
-                    int userId = 1;  // 初期ID
 
-                    // ファイルの行数をカウントしてIDを決定
-                    try (BufferedReader reader = new BufferedReader(new FileReader("admin.txt"))) {
-                        while (reader.readLine() != null) {
-                            userId++;  // 各行ごとにIDをインクリメント
-                        }
-                    } catch (FileNotFoundException fnfe) {
-                        // ファイルがない場合は初めてのユーザーなのでIDは1のまま
-                    } catch (IOException ioException) {
-                        ioException.printStackTrace();
-                    }
+        if (username == null || username.trim().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Username cannot be empty!", "Error", JOptionPane.ERROR_MESSAGE);
+        } else if (password == null || password.trim().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Password cannot be empty!", "Error", JOptionPane.ERROR_MESSAGE);
+        } else if (!password.equals(confirmPassword)) {
+            JOptionPane.showMessageDialog(null, "Invalid password!", "Error", JOptionPane.ERROR_MESSAGE);
+        } else {
+            int userId = 1;  // 初期ID
 
-                    // admin.txtに書き込み
-                    try (FileWriter writer = new FileWriter("admin.txt", true)) {
-                        writer.write("USID" + userId + ";" + username + ";" + password + ";" + role + ";" + "\n");
-                        JOptionPane.showMessageDialog(null, "success!", "", JOptionPane.INFORMATION_MESSAGE);
-                    } catch (IOException ioException) {
-                        ioException.printStackTrace();
-                    }
+            // ファイルの行数をカウントしてIDを決定
+            try (BufferedReader reader = new BufferedReader(new FileReader("admin.txt"))) {
+                while (reader.readLine() != null) {
+                    userId++;  // 各行ごとにIDをインクリメント
                 }
-            
-        
+            } catch (FileNotFoundException fnfe) {
+                // ファイルがない場合は初めてのユーザーなのでIDは1のまま
+            } catch (IOException ioException) {
+                ioException.printStackTrace();
+            }
 
-        
+            // admin.txtに書き込み
+            try (FileWriter writer = new FileWriter("admin.txt", true)) {
+                writer.write("USID" + userId + ";" + username + ";" + password + ";" + role + ";" + "\n");
+                JOptionPane.showMessageDialog(null, "Success!", "", JOptionPane.INFORMATION_MESSAGE);
+            } catch (IOException ioException) {
+                ioException.printStackTrace();
+            }
+        }
+        txtusername.setText("");
+        txtpassword.setText("");
+        txtconfirmpassword.setText("");
+        conboboxrole.setSelectedIndex(-1);
+
+
     }//GEN-LAST:event_btnregisterActionPerformed
 
     /**
