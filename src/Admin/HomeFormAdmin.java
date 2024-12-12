@@ -5,7 +5,6 @@
 package Admin;
 
 import Login.LoginForm;
-        
 
 /**
  *
@@ -140,11 +139,13 @@ public class HomeFormAdmin extends javax.swing.JFrame {
 
     private void usermanagementbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usermanagementbtnActionPerformed
         // TODO add your handling code here:
+        this.dispose();
         new UserManagementAccessForm().setVisible(true);
     }//GEN-LAST:event_usermanagementbtnActionPerformed
 
     private void accessbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_accessbtnActionPerformed
         // TODO add your handling code here:
+        this.dispose();
         new RoleAccessForm().setVisible(true);
     }//GEN-LAST:event_accessbtnActionPerformed
 
