@@ -3,3 +3,5 @@ USID2;SalesManager;1234;SM;
 USID3;PurchaseManager;1234;PM;
 USID4;InventoryManager;1234;IM;
 USID5;FinanceManager;1234;FM;
+USID6;Eiji ;1234;AD;
+USID7;Test;1234;AD;
