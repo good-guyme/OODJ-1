@@ -38,8 +38,8 @@ public class ListOfItems extends javax.swing.JFrame {
         itemListTable = new javax.swing.JTable();
         idtxt = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        backButton = new javax.swing.JButton();
-        searchButton = new javax.swing.JButton();
+        returnBtn = new javax.swing.JButton();
+        searchBtn = new javax.swing.JButton();
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         jLabel4.setText("WELCOME,");
@@ -156,19 +156,19 @@ public class ListOfItems extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel2.setText("ITEM ID :");
 
-        backButton.setBackground(new java.awt.Color(255, 102, 102));
-        backButton.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        backButton.setText("BACK");
-        backButton.addActionListener(new java.awt.event.ActionListener() {
+        returnBtn.setBackground(new java.awt.Color(255, 102, 102));
+        returnBtn.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        returnBtn.setText("BACK");
+        returnBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                backButtonActionPerformed(evt);
+                returnBtnActionPerformed(evt);
             }
         });
 
-        searchButton.setText("SEARCH");
-        searchButton.addActionListener(new java.awt.event.ActionListener() {
+        searchBtn.setText("SEARCH");
+        searchBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                searchButtonActionPerformed(evt);
+                searchBtnActionPerformed(evt);
             }
         });
 
@@ -187,9 +187,9 @@ public class ListOfItems extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(idtxt, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(searchButton)
+                        .addComponent(searchBtn)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(backButton)
+                        .addComponent(returnBtn)
                         .addGap(15, 15, 15))))
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -204,8 +204,8 @@ public class ListOfItems extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(idtxt, javax.swing.GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE)
-                    .addComponent(searchButton)
-                    .addComponent(backButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(searchBtn)
+                    .addComponent(returnBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 346, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -251,12 +251,12 @@ public class ListOfItems extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_idtxtActionPerformed
 
-    private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
+    private void returnBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_returnBtnActionPerformed
         this.dispose();
         new HomeFormPurchaseManager().setVisible(true);
-    }//GEN-LAST:event_backButtonActionPerformed
+    }//GEN-LAST:event_returnBtnActionPerformed
 
-    private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed
+    private void searchBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBtnActionPerformed
         String selectedItem = (String) idtxt.getText(); // Get the selected item from the search bar
         DefaultTableModel model = (DefaultTableModel) itemListTable.getModel(); // Get the table model
 
@@ -276,7 +276,7 @@ public class ListOfItems extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Item not found!"); // Show message if no items match
             sorter.setRowFilter(null); //show back all datas
         }
-    }//GEN-LAST:event_searchButtonActionPerformed
+    }//GEN-LAST:event_searchBtnActionPerformed
     
     
     
@@ -314,7 +314,6 @@ public class ListOfItems extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton backButton;
     private javax.swing.JTextField idtxt;
     private javax.swing.JTable itemListTable;
     private javax.swing.JLabel jLabel1;
@@ -323,7 +322,8 @@ public class ListOfItems extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JButton searchButton;
+    private javax.swing.JButton returnBtn;
+    private javax.swing.JButton searchBtn;
     private javax.swing.JLabel usernametxt;
     // End of variables declaration//GEN-END:variables
 }

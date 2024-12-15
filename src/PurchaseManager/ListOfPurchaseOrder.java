@@ -81,14 +81,13 @@ public class ListOfPurchaseOrder extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         usernametxt = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        searchButton = new javax.swing.JButton();
+        searchBtn = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         jScrollPane1 = new javax.swing.JScrollPane();
         orderListTable = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
+        returnBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(800, 500));
 
         idtxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -137,10 +136,10 @@ public class ListOfPurchaseOrder extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        searchButton.setText("SEARCH");
-        searchButton.addActionListener(new java.awt.event.ActionListener() {
+        searchBtn.setText("SEARCH");
+        searchBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                searchButtonActionPerformed(evt);
+                searchBtnActionPerformed(evt);
             }
         });
 
@@ -159,12 +158,12 @@ public class ListOfPurchaseOrder extends javax.swing.JFrame {
 
         jScrollPane2.setViewportView(jScrollPane1);
 
-        jButton1.setBackground(new java.awt.Color(255, 102, 102));
-        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jButton1.setText("BACK");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        returnBtn.setBackground(new java.awt.Color(255, 102, 102));
+        returnBtn.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        returnBtn.setText("BACK");
+        returnBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                returnBtnActionPerformed(evt);
             }
         });
 
@@ -181,9 +180,9 @@ public class ListOfPurchaseOrder extends javax.swing.JFrame {
                         .addGap(12, 12, 12)
                         .addComponent(idtxt, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(searchButton)
+                        .addComponent(searchBtn)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton1))
+                        .addComponent(returnBtn))
                     .addComponent(jScrollPane2))
                 .addContainerGap())
         );
@@ -196,10 +195,10 @@ public class ListOfPurchaseOrder extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel1)
-                        .addComponent(searchButton)
+                        .addComponent(searchBtn)
                         .addComponent(idtxt, javax.swing.GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(returnBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(2, 2, 2)))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 322, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -213,7 +212,7 @@ public class ListOfPurchaseOrder extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_idtxtActionPerformed
 
-    private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed
+    private void searchBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBtnActionPerformed
         String selectedItem = (String) idtxt.getText(); // Get the selected item from the combo box
         DefaultTableModel model = (DefaultTableModel) orderListTable.getModel(); // Get the table model
 
@@ -233,12 +232,12 @@ public class ListOfPurchaseOrder extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(null, "Item not found!"); // Show message if no items match
         sorter.setRowFilter(null); //show back all datas
                                                 }
-    }//GEN-LAST:event_searchButtonActionPerformed
+    }//GEN-LAST:event_searchBtnActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void returnBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_returnBtnActionPerformed
         this.dispose();
         new HomeFormPurchaseManager().setVisible(true);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_returnBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -277,7 +276,6 @@ public class ListOfPurchaseOrder extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField idtxt;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
@@ -285,7 +283,8 @@ public class ListOfPurchaseOrder extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable orderListTable;
-    private javax.swing.JButton searchButton;
+    private javax.swing.JButton returnBtn;
+    private javax.swing.JButton searchBtn;
     private javax.swing.JLabel usernametxt;
     // End of variables declaration//GEN-END:variables
 }
