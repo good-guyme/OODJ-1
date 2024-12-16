@@ -57,7 +57,7 @@ public class ListOfPurchaseOrder extends javax.swing.JFrame {
             }
 
             // Adjust this check to ensure you have the expected number of columns
-            if (data.length == 6) {
+            if (data.length == 5||data.length ==6) {
                 try {
                     model.addRow(data); // Add each row of data to the table
                 } catch (NumberFormatException e) {

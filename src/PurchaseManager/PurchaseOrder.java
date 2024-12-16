@@ -282,7 +282,7 @@ public class PurchaseOrder extends javax.swing.JFrame {
                 }
 
                 // Adjust this check to ensure you have the expected number of columns
-                if (data.length == 6) {
+                if (data.length == 5||data.length ==6) {
 
                     model.addRow(data); // Add each row of data to the table
 
@@ -320,7 +320,7 @@ public class PurchaseOrder extends javax.swing.JFrame {
         try {
 
             String filename = "order.txt";
-            FileWriter fw = new FileWriter(filename);
+            FileWriter fw = new FileWriter(filename,true);
 
             fw.write(idtxt.getText() + ";"
                     + nametxt.getText() + ";"
