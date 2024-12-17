@@ -5,3 +5,4 @@ USID4;InventoryManager;1234;IM;
 USID5;FinanceManager;1234;FM;
 USID6;Eiji ;1234;AD;
 USID7;Test;1234;AD;
+USID8;Test User 1;1234;AD;
