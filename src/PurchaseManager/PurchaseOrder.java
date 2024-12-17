@@ -66,7 +66,7 @@ public class PurchaseOrder extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         orderTable = new javax.swing.JTable();
         refreshbtn = new javax.swing.JButton();
-        returnButton = new javax.swing.JButton();
+        returnBtn = new javax.swing.JButton();
         datetxt = new com.toedter.calendar.JDateChooser();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -175,12 +175,12 @@ public class PurchaseOrder extends javax.swing.JFrame {
             }
         });
 
-        returnButton.setBackground(new java.awt.Color(255, 102, 153));
-        returnButton.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        returnButton.setText("BACK");
-        returnButton.addActionListener(new java.awt.event.ActionListener() {
+        returnBtn.setBackground(new java.awt.Color(255, 102, 153));
+        returnBtn.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        returnBtn.setText("BACK");
+        returnBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                returnButtonActionPerformed(evt);
+                returnBtnActionPerformed(evt);
             }
         });
 
@@ -200,7 +200,7 @@ public class PurchaseOrder extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addComponent(editBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(69, 69, 69)
-                                .addComponent(returnButton, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(returnBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(69, 69, 69)
                                 .addComponent(refreshbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
@@ -253,7 +253,7 @@ public class PurchaseOrder extends javax.swing.JFrame {
                     .addComponent(editBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(deleteBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(refreshbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(returnButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(returnBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -282,7 +282,7 @@ public class PurchaseOrder extends javax.swing.JFrame {
                 }
 
                 // Adjust this check to ensure you have the expected number of columns
-                if (data.length == 6) {
+                if (data.length == 5||data.length ==6) {
 
                     model.addRow(data); // Add each row of data to the table
 
@@ -320,7 +320,7 @@ public class PurchaseOrder extends javax.swing.JFrame {
         try {
 
             String filename = "order.txt";
-            FileWriter fw = new FileWriter(filename);
+            FileWriter fw = new FileWriter(filename,true);
 
             fw.write(idtxt.getText() + ";"
                     + nametxt.getText() + ";"
@@ -467,10 +467,10 @@ public class PurchaseOrder extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_idtxtActionPerformed
 
-    private void returnButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_returnButtonActionPerformed
+    private void returnBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_returnBtnActionPerformed
         this.dispose();
         new HomeFormPurchaseManager().setVisible(true);
-    }//GEN-LAST:event_returnButtonActionPerformed
+    }//GEN-LAST:event_returnBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -529,7 +529,7 @@ public class PurchaseOrder extends javax.swing.JFrame {
     private javax.swing.JTextField nametxt;
     private javax.swing.JTable orderTable;
     private javax.swing.JButton refreshbtn;
-    private javax.swing.JButton returnButton;
+    private javax.swing.JButton returnBtn;
     private javax.swing.JLabel usernametxt1;
     private javax.swing.JTextField usernametxt2;
     // End of variables declaration//GEN-END:variables
