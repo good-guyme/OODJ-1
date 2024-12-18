@@ -61,11 +61,11 @@ public class CreateRequisition extends javax.swing.JFrame {
         T4 = new javax.swing.JTextField();
         T5 = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
+        B1 = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         T1 = new javax.swing.JTextField();
-        jButton2 = new javax.swing.JButton();
+        B2 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tbl1 = new javax.swing.JTable();
         jLabel8 = new javax.swing.JLabel();
@@ -111,14 +111,14 @@ public class CreateRequisition extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(255, 204, 204));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jButton1.setText("BACK");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        B1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        B1.setText("BACK");
+        B1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                B1ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 80, 30));
+        jPanel1.add(B1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 80, 30));
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
         jLabel6.setText("CREATE REQUISITION ");
@@ -137,13 +137,13 @@ public class CreateRequisition extends javax.swing.JFrame {
         });
         getContentPane().add(T1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 120, 150, -1));
 
-        jButton2.setText("ADD");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        B2.setText("ADD");
+        B2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                B2ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 440, -1, -1));
+        getContentPane().add(B2, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 440, -1, -1));
 
         tbl1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -171,12 +171,12 @@ public class CreateRequisition extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_T1ActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void B1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B1ActionPerformed
         this.dispose();
         new HomeFormSalesManager().setVisible(true);// TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_B1ActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void B2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B2ActionPerformed
 
         try {
             //loginframe lf = new loginframe();
@@ -207,7 +207,7 @@ public class CreateRequisition extends javax.swing.JFrame {
 
 // TODO add your handling code here:
             // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_B2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -245,13 +245,13 @@ public class CreateRequisition extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton B1;
+    private javax.swing.JButton B2;
     private javax.swing.JTextField T1;
     private javax.swing.JTextField T2;
     private javax.swing.JTextField T3;
     private javax.swing.JTextField T4;
     private javax.swing.JTextField T5;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

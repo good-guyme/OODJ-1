@@ -3,140 +3,156 @@ package SalesManager;
 import Login.LoginForm;
 
 public class HomeFormSalesManager extends javax.swing.JFrame {
-    
+
     public HomeFormSalesManager() {
         initComponents();
         LoginForm lf = new LoginForm();
-        lvl1.setText(lf.getUsername());
-        
+//       lvl1.setText(lf.getUsername());
+
     }
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         lvl1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
+        B3 = new javax.swing.JButton();
+        B5 = new javax.swing.JButton();
+        B1 = new javax.swing.JButton();
+        B6 = new javax.swing.JButton();
+        B2 = new javax.swing.JButton();
+        B4 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        B7 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         getContentPane().add(lvl1, new org.netbeans.lib.awtextra.AbsoluteConstraints(86, 21, 37, -1));
 
-        jButton1.setBackground(new java.awt.Color(255, 204, 204));
-        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jButton1.setText("SalesEntry");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        B3.setBackground(new java.awt.Color(255, 204, 204));
+        B3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        B3.setText("SalesEntry");
+        B3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                B3ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 190, 130, 60));
+        getContentPane().add(B3, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 190, 130, 60));
 
-        jButton2.setBackground(new java.awt.Color(255, 204, 204));
-        jButton2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/PurchaseManager/Image/list.png"))); // NOI18N
-        jButton2.setText("ItemList");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        B5.setBackground(new java.awt.Color(255, 204, 204));
+        B5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        B5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/PurchaseManager/Image/list.png"))); // NOI18N
+        B5.setText("ItemList");
+        B5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                B5ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 270, 170, -1));
+        getContentPane().add(B5, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 270, 170, -1));
 
-        jButton3.setBackground(new java.awt.Color(255, 204, 204));
-        jButton3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/PurchaseManager/Image/purcaseorder.png"))); // NOI18N
-        jButton3.setText("List Of Purchase Orders");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        B1.setBackground(new java.awt.Color(255, 204, 204));
+        B1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        B1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/PurchaseManager/Image/purcaseorder.png"))); // NOI18N
+        B1.setText("List Of Purchase Orders");
+        B1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                B1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 190, -1, 60));
+        getContentPane().add(B1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 190, -1, 60));
 
-        jButton4.setBackground(new java.awt.Color(255, 204, 204));
-        jButton4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jButton4.setText("Stock Level");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        B6.setBackground(new java.awt.Color(255, 204, 204));
+        B6.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        B6.setText("Stock Level");
+        B6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                B6ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 270, 130, 60));
+        getContentPane().add(B6, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 270, 130, 60));
 
-        jButton5.setBackground(new java.awt.Color(255, 204, 204));
-        jButton5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/PurchaseManager/Image/supplier.png"))); // NOI18N
-        jButton5.setText("Sales Report");
-        jButton5.setPreferredSize(new java.awt.Dimension(100, 200));
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        B2.setBackground(new java.awt.Color(255, 204, 204));
+        B2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        B2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/PurchaseManager/Image/supplier.png"))); // NOI18N
+        B2.setText("Sales Report");
+        B2.setPreferredSize(new java.awt.Dimension(100, 200));
+        B2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                B2ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 190, 180, 60));
+        getContentPane().add(B2, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 190, 180, 60));
 
-        jButton6.setBackground(new java.awt.Color(255, 204, 204));
-        jButton6.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/PurchaseManager/Image/reqform.png"))); // NOI18N
-        jButton6.setText("Create Requisition");
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
+        B4.setBackground(new java.awt.Color(255, 204, 204));
+        B4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        B4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/PurchaseManager/Image/reqform.png"))); // NOI18N
+        B4.setText("Create Requisition");
+        B4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
+                B4ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 270, 260, 60));
+        getContentPane().add(B4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 270, 260, 60));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 22)); // NOI18N
         jLabel1.setText("SALES MANAGER MENU");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 20, 280, 80));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 20, 280, 80));
+
+        B7.setBackground(new java.awt.Color(255, 204, 204));
+        B7.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        B7.setText("QUIT");
+        B7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                B7ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(B7, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 390, -1, -1));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/PurchaseManager/Image/background.png"))); // NOI18N
         jLabel2.setText("jLabel2");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 810, 500));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 500));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void B5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B5ActionPerformed
         // this.dispose();
         new ItemList().setVisible(true);  // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_B5ActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void B1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B1ActionPerformed
         this.dispose();
         new ListOfPurchaseOrders().setVisible(true);// TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_B1ActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void B6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B6ActionPerformed
         this.dispose();
         new StockLevel().setVisible(true);    // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_B6ActionPerformed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+    private void B2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B2ActionPerformed
         this.dispose();
         new SalesReport().setVisible(true);
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton5ActionPerformed
+    }//GEN-LAST:event_B2ActionPerformed
 
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+    private void B4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B4ActionPerformed
         this.dispose();
         new CreateRequisition().setVisible(true);// TODO add your handling code here:
-    }//GEN-LAST:event_jButton6ActionPerformed
+    }//GEN-LAST:event_B4ActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void B3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B3ActionPerformed
         this.dispose();
         new SalesEntry().setVisible(true);
 
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_B3ActionPerformed
+
+    private void B7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B7ActionPerformed
+        this.dispose();
+        new LoginForm().setVisible(true);
+    }//GEN-LAST:event_B7ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -175,12 +191,13 @@ public class HomeFormSalesManager extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
+    private javax.swing.JButton B1;
+    private javax.swing.JButton B2;
+    private javax.swing.JButton B3;
+    private javax.swing.JButton B4;
+    private javax.swing.JButton B5;
+    private javax.swing.JButton B6;
+    private javax.swing.JButton B7;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel lvl1;

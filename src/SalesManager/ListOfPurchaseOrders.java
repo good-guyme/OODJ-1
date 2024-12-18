@@ -95,7 +95,7 @@ public class ListOfPurchaseOrders extends javax.swing.JFrame {
                     model.addRow(data); // Add each row of data to the table
 
                 } else {
-                    JOptionPane.showMessageDialog(null, "Invalid data!");
+                    JOptionPane.showMessageDialog(null, "Data Loaded Successfully");
                 }
             }
         } catch (IOException e) {

@@ -64,6 +64,7 @@ public class StockStatus extends javax.swing.JFrame {
         T1 = new javax.swing.JTable();
         B2 = new javax.swing.JButton();
         t1 = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -110,7 +111,7 @@ public class StockStatus extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(T1);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 140, 620, 350));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 120, 620, 320));
 
         B2.setText("SEARCH");
         B2.addActionListener(new java.awt.event.ActionListener() {
@@ -118,14 +119,17 @@ public class StockStatus extends javax.swing.JFrame {
                 B2ActionPerformed(evt);
             }
         });
-        getContentPane().add(B2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 100, -1, -1));
+        getContentPane().add(B2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 90, -1, -1));
 
         t1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 t1ActionPerformed(evt);
             }
         });
-        getContentPane().add(t1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 100, 150, -1));
+        getContentPane().add(t1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 90, 150, -1));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/FinanceManager/Image/Package.jpg"))); // NOI18N
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -203,6 +207,7 @@ public class StockStatus extends javax.swing.JFrame {
     private javax.swing.JTable T1;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField t1;

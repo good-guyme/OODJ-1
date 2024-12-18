@@ -68,7 +68,7 @@ public class StockLevel extends javax.swing.JFrame {
         tbl1 = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        B2 = new javax.swing.JButton();
         B1 = new javax.swing.JButton();
         txt1 = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
@@ -95,14 +95,13 @@ public class StockLevel extends javax.swing.JFrame {
         jLabel1.setText("STOCK LEVEL ");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 10, -1, -1));
 
-        jButton1.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        jButton1.setText("BACK");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        B2.setText("BACK");
+        B2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                B2ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 19, 85, 30));
+        jPanel1.add(B2, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 19, 85, 30));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 60));
 
@@ -122,13 +121,13 @@ public class StockLevel extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void B2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B2ActionPerformed
 
         this.dispose();
         new HomeFormSalesManager().setVisible(true);
 
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_B2ActionPerformed
 
     private void B1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B1ActionPerformed
   String selectedItem = (String) txt1.getText().trim(); // Get the selected item from the combo box
@@ -190,7 +189,7 @@ public class StockLevel extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton B1;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton B2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;

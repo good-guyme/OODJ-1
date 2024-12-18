@@ -95,25 +95,29 @@ public class PaymentStatus extends javax.swing.JFrame {
         getContentPane().add(b2, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 280, -1, -1));
 
         T3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Paid", "Pending", "UnPaid" }));
+        T3.setSelectedIndex(-1);
         T3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 T3ActionPerformed(evt);
             }
         });
-        getContentPane().add(T3, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 210, 100, -1));
+        getContentPane().add(T3, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 210, 150, -1));
 
         jLabel1.setBackground(new java.awt.Color(255, 102, 102));
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("ID");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 130, -1, -1));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 130, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("AMOUNT");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 170, -1, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 170, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("STATUS");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 210, -1, -1));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 210, -1, -1));
 
         b3.setText("DELETE");
         b3.addActionListener(new java.awt.event.ActionListener() {
@@ -144,11 +148,12 @@ public class PaymentStatus extends javax.swing.JFrame {
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 110, 290, 260));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 22)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("PAYMENT STATUS");
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 10, -1, -1));
 
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/FinanceManager/hjgh.jpg"))); // NOI18N
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 60, 390, 380));
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/FinanceManager/Image/Coin.jpg"))); // NOI18N
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 770, 430));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

@@ -1,13 +1,13 @@
-1;ant;2;e;
+1;ants;3;e;
 2;mobile;1;1111;
-3;Smart Light Bulb;20;25;
+3;Smart Light;14;25;
 4;Surge Protector;15;40;
 5;Wi-Fi Extender;6;70;
-6;Smart Thermostat;3;180;
 7;Smart Doorbell;4;150;
 8;Smart Lock;5;200;
 9;Smoke Detector;10;60;
 10;Security Camera;7;220;
 11;Electric Scooter;3;400;
-12;Electric Bike;2;1200;
 13;computer;2;500;
+11;ageg;2;23;
+22;mobiles;2;2000;
