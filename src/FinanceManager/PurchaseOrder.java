@@ -2,6 +2,7 @@ package FinanceManager;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -11,42 +12,97 @@ public class PurchaseOrder extends javax.swing.JFrame {
     public PurchaseOrder() {
         initComponents();
         loadDataIntoTable();
+        refreshData();
     }
 
     @SuppressWarnings("unchecked")
     private void loadDataIntoTable() {
-        DefaultTableModel model = (DefaultTableModel) T1.getModel(); // Get the table model
-        model.setRowCount(0); // Clear existing data in the table
+        // Initialize the table model
+        String[] columnNames = {"ID", "Product", "Quantity", "Date", "Customer", "Status"};
+        DefaultTableModel model = (DefaultTableModel) T1.getModel();
+        model.setRowCount(0); // Clear existing rows
 
-        // Read the data from the text file
         try (BufferedReader br = new BufferedReader(new FileReader("order.txt"))) {
             String line;
             while ((line = br.readLine()) != null) {
                 if (line.trim().isEmpty()) {
                     continue; // Skip empty lines
                 }
-                System.out.println("Read line: " + line); // for internal checking
+
+                System.out.println("Line read: " + line); // Debugging
                 String[] data = line.split(";");
-
-                // Check the data before adding to the model
-                System.out.println("Data length: " + data.length); // for internal checking
-                for (int i = 0; i < data.length; i++) {
-                    System.out.println("Data[" + i + "]: " + data[i]); // Print each piece of data
+                if (data.length != 7) {
+                    System.out.println("Skipping invalid row: " + line);
+                    continue; // Skip rows that do not have 6 values
                 }
 
-                // Adjust this check to ensure you have the expected number of columns
-                if (data.length == 6) {
-                    try {
-                        model.addRow(data); // Add each row of data to the table
-                    } catch (NumberFormatException e) {
-                        System.out.println("Error parsing quantity: " + e.getMessage());
-                    }
-                } else {
-                    System.out.println("Invalid data format: " + line);
-                }
+                model.addRow(data); // Add valid rows to the table model
             }
         } catch (IOException e) {
-            JOptionPane.showMessageDialog(null, "Unable to load data!"); // Handle the exception
+            JOptionPane.showMessageDialog(null, "Unable to load data: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
+
+    private void updateOrderStatus(String orderId, String newStatus) {
+        try {
+            String filename = "order.txt";
+            StringBuilder updatedContent = new StringBuilder();
+            boolean orderFound = false;
+
+            BufferedReader br = new BufferedReader(new FileReader(filename));
+            String line;
+            while ((line = br.readLine()) != null) {
+                String[] parts = line.split(";");
+
+                // Ensure the line has exactly 6 elements (ID, Product, Quantity, Date, Customer, Status)
+                if (parts.length == 6) {
+                    if (parts[0].equals(orderId)) {
+                        orderFound = true;
+                        parts[5] = newStatus; // Update the status in the 6th position (index 5)
+                        updatedContent.append(String.join(";", parts)).append("\n");
+                    } else {
+                        updatedContent.append(line).append("\n");
+                    }
+                } else {
+                    System.out.println("Skipping invalid row: " + line); // Debugging invalid rows
+                }
+            }
+            br.close();
+
+            if (!orderFound) {
+//                JOptionPane.showMessageDialog(null, "Order not found!");
+                return;
+            }
+
+            FileWriter fw = new FileWriter(filename);
+            fw.write(updatedContent.toString());
+            fw.close();
+
+            JOptionPane.showMessageDialog(null, "Order updated successfully!");
+            refreshData(); // Refresh the table to reflect changes when the order is updated
+
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(null, "Error: " + e.getMessage());
+        }
+    }
+
+    public void refreshData() {
+        try {
+            DefaultTableModel model = (DefaultTableModel) T1.getModel();
+            model.setRowCount(0); // Clear current table data
+
+            // Read data from file
+            BufferedReader br = new BufferedReader(new FileReader("order.txt"));
+            String line;
+            while ((line = br.readLine()) != null) {
+                String[] parts = line.split(";");
+                model.addRow(parts); // Add rows to the table
+            }
+            br.close();
+
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(null, "Error loading data: " + e.getMessage());
         }
     }
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -76,12 +132,12 @@ public class PurchaseOrder extends javax.swing.JFrame {
 
             },
             new String [] {
-                "ID", "Name", "Quantity", "Date", "Purchased By"
+                "ID", "Product", "Quantity", "Date", "Customer", "Status"
             }
         ));
         jScrollPane1.setViewportView(T1);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 90, 470, 340));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 470, 340));
 
         jButton2.setBackground(new java.awt.Color(204, 204, 255));
         jButton2.setText("Approve");
@@ -118,14 +174,31 @@ public class PurchaseOrder extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        JOptionPane.showMessageDialog(null, "Payment Approved");
+        int selectedRow = T1.getSelectedRow(); // Get the selected row
+        if (selectedRow == -1) {
+            JOptionPane.showMessageDialog(null, "Please select an order to Accept!");
+            return;
+        }
 
-        // TODO add your handling code here:
+        String orderId = T1.getValueAt(selectedRow, 0).toString(); // Get the Order ID
+        updateOrderStatus(orderId, "Accepted"); // Update the status in the file       
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        JOptionPane.showMessageDialog(null, "Payment Rejected");
-// TODO add your handling code here:
+        int selectedRow = T1.getSelectedRow(); // Get the selected row
+        if (selectedRow == -1) {
+            JOptionPane.showMessageDialog(null, "Please select an order to Reject!");
+            return;
+        }
+
+        String orderId = T1.getValueAt(selectedRow, 0).toString(); // Get the Order ID
+        String reason = JOptionPane.showInputDialog("Enter reason for rejection:");
+        if (reason != null && !reason.trim().isEmpty()) {
+            updateOrderStatus(orderId, "Rejected;Reason:" + reason); // Update the status with reason
+        } else {
+            JOptionPane.showMessageDialog(null, "Rejection requires a reason!");
+        }
+        updateOrderStatus(orderId, "Rejected"); // Update the status in the file    
     }//GEN-LAST:event_jButton3ActionPerformed
 
     /**

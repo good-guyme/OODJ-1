@@ -1,4 +1,4 @@
-1;Apple;Puchong;Electrical Kettle;20;01 Nov 2024;0123456789;COD;
+1;Apple;Puchong;Electrical Kettle;10;01 Nov 2024;0123456789;COD
 2;Banana;Puchong;Toaster;20;02 Nov 2024;1123456789;COD;
 3;Carrot;Kajang;Microwave Oven;30;03 Nov 2024;2123456789;Net 15;
 4;Potato;Kajang;Blender;40;04 Nov 2024;3123456789;Net 15;

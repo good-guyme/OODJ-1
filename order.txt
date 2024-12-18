@@ -1,18 +1,7 @@
-1;1;1;1;1; 
-01;no;11;12;me;
-1;1;1;1;1; 
-01;no;11;12;me; 
-1;1;1;1;1; 
-01;no;11;12;me; 
-1;1;1;1;1; 
-01;no;11;12;me; 
-1;1;1;1;1; 
-01;no;11;12;me; 
-1;1;1;1;1; 
-01;no;11;12;me; 
-1;1;1;1;1; 
-01;no;11;12;me; 
-1;1;1;1;1; 
-01;no;11;12;me; 
-01;no;11;12;me; 
-01;no;11;12;me; 
+1;Electrical Kettle;100;01 Nov 2024;C1;UnPaid
+2;Toaster;200;02 Nov 2024;C2;Pending
+3;Microwave Oven;300;03 Nov 2024;C3;Accepted
+4;Blender;400;04 Nov 2024;C4;Rejected;Reason:OFS
+5;Electrical Kettle;500;05 Nov 2024;C5;Pending
+6;Toaster;600;06 Nov 2024;c6;Accepted
+7;Microwave Owen;700;07 Nov 2024;c7;UnPaid
